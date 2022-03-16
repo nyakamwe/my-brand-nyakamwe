@@ -1,8 +1,22 @@
-function myFunction() {
-    const x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  } 
+
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".menu");
+  
+  hamburger.addEventListener("click", mobileMenu);
+  
+  function mobileMenu() {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+  }
+  
+  const navLink = document.querySelectorAll(".item");
+
+  navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+  function closeMenu() {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("active");
+  }
+
+
+

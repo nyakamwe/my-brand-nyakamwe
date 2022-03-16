@@ -171,119 +171,89 @@ section .title::before{
     background: none;
 }
 
-
+/* addition */
+.hamburger {
+    display: none;
+}
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
 
 /* responsive query start */
-@media (max-width: 500px){
-    .navbar{
-        background-color: rgb(78, 59, 63);
-        height: 150px;
-    }
-    .navbar .menu li a{
-         display: block;
-        font-size: 2px;
-     }
-     
-     .navbar .logo a{
-         padding-left: 10px;
-     }
 
-     /* hiding nav-link */
-     .navbar #myLinks {
-        display: none;
-      }
-      /* showing hamburger */
-      .navbar a.icon {
-        color:white;
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 25;
-        left:10;
-        width: 10px;
-        padding-right: 60px;
-      }
-
-
-
-
-
-    .home .max-width{
-         margin: 150px 0px ;
-     }
-    .home .home-content .text-1{
-        font-size:15px;
-    }
-    .home .home-content center a{
-        font-size:15px;
-        width: 150px;
-        height: 40px;
-    }
-    .about  h2{
-        font-size: 20px;
-
-    }
-    .about .about-content .column img{
-        margin-left: 40px;
-
-    }
-
-    .about .about-content .column .text{
-        font-size: 10px;
-        padding:15px 10px;
-        margin-left: 40px;
-    }
-    .about .about-content .column a{
-        margin-left: 40px;
-        font-size: 10px;
-    }
-
-
-}
-@media(max-width: 690px){
-    .max-width{
-        padding: 0 23px;
-    }
-}
-
-@media (max-width: 947px){
-     .max-width{
-       max-width: 800px;
-    }
-    .navbar .menu{
-        display: inline;
-    }
-    .navbar .menu li{
-        font-size: 5px;
-    }
-    .navbar .menu li a{
-        font-size: 15px;
-    }
-    .home .home-content .text-2{
-         font-size: 25px;
+@media only screen and (max-width: 768px) {
+        .menu {
+            position: fixed;
+            left: -100%;
+            top: 4rem;
+            flex-direction: column;
+            background-color: gray;
+            width: 100%;
+            height: 100%;
     
-    }
-.home .home-content .text-3{
-         font-size: 15px;
-   
-    }
-    .about .about-content .column{
-        width: 100%;
-    }
-    .about .about-content .right{
-        flex: 100%;
-    }
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow:
+                0 10px 27px rgba(0, 0, 0, 0.05);
+        }
     
-}
+        .menu.active {
+            left: 0;
+        }
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            top: 23;
+            left: 400;
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+    
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+    
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        .navbar .menu li a{
+            display: block;
+           font-size: 12px;
+            padding: 10px;
+    
+    
+        }
 
- 
-@media (max-width: 1111px){
-    .about .about-content .column{
-        width: calc(50% - 10px);
+        .home .home-content .text-1{
+            font-size:15px;
+        }
+        .home .home-content center a{
+            font-size:15px;
+            width: 150px;
+            height: 40px;
+        }
+
+        .about .about-content .column .text{
+            position: absolute;
+            top:1140;
+            left: 80;
+            font-size: 15px;
+            padding-right: 20px;
+        }
+        .about .about-content .column a{
+            font-size: 10px;
+            position: absolute;
+            top:1180;
+            left: 120;
+            font-size: 15px;
+        }
     }
-}
-@media (max-width: 1304px){
-    .about .about-content .column{
-        width: 50%;
-    }
-}
