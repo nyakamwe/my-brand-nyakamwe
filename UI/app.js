@@ -1,4 +1,4 @@
-
+// related to menu
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".menu");
   
@@ -18,5 +18,37 @@
       navMenu.classList.remove("active");
   }
 
+// related to hero text animation
+const text=document.querySelector('.text-1');
+const splitText=text.textContent.split("")
+console.log(splitText)
+
+text.textContent="";
+
+for(let i=0; i < splitText.length; i++){
+    text.innerHTML += "<span>" + splitText[i] + "</span>"
+
+}
+
+let char=0;
+let timer=setInterval(roll,30);
+function roll(){
+    const newText=text.querySelectorAll('span')[char];
+    newText.classList.add('rolling');
+    char++;
+
+    if(char === splitText.length){
+        end();
+        return;
+    }
 
 
+}
+
+function end(){
+    clearInterval(timer);
+    timer=null;
+}
+
+//show animation when window loads
+window.addEventListener('load',roll())

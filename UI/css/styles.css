@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,400&family=Ubuntu:ital,wght@0,500;0,700;1,400&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -8,6 +10,8 @@
 html{
     scroll-behavior: smooth;
 }
+
+
 /*navigation styling*/
 .max-width{
     max-width: 1300px;
@@ -58,7 +62,7 @@ html{
     display: flex;
     color: #000;
     min-height: 500px;
-    background: gray;
+    background: #b1b493;
     height: 670px;
 }
 .home .max-width{
@@ -66,7 +70,10 @@ html{
 }
 .home .home-content .text-1{
     font-size: 27px;
+    font-family: 'Ubuntu',sans-serif;
 }
+
+
 .home .home-content .text-2{
     font-size: 40px;
     font-weight: 300;
@@ -95,6 +102,18 @@ html{
     color: #fff;
     background: none;
 }
+
+/* add rolling effects*/
+span{
+    opacity: 0;
+    transition: all 0.4s ease-out; 
+}
+span.rolling{
+    opacity: 1;
+}
+
+
+
 /* all similar content styling */
 section{
     padding: 100px 0;
@@ -183,6 +202,7 @@ section .title::before{
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: #101010;
+    opacity: 1;
 }
 
 /* responsive query start */
@@ -196,7 +216,6 @@ section .title::before{
             background-color: gray;
             width: 100%;
             height: 100%;
-    
             border-radius: 10px;
             text-align: center;
             transition: 0.3s;
@@ -212,7 +231,7 @@ section .title::before{
             cursor: pointer;
             position: absolute;
             top: 23;
-            left: 400;
+            left: 300;
         }
         .hamburger.active .bar:nth-child(2) {
             opacity: 0;
@@ -225,21 +244,38 @@ section .title::before{
         .hamburger.active .bar:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
         }
+      
         .navbar .menu li a{
             display: block;
-           font-size: 12px;
-            padding: 10px;
+            font-size: 25px;
+            padding: 15px;
+            font-family: 'Montserrat';
     
-    
+        }
+        .home .home-content .text-1{
+            font-size:21px;
+            font-family: 'Ubuntu',sans-serif;
+            font-weight: 500;
         }
 
-        .home .home-content .text-1{
-            font-size:15px;
-        }
         .home .home-content center a{
             font-size:15px;
             width: 150px;
             height: 40px;
+        }
+
+        .about{
+            height: 870px;
+        }
+        .about h2{
+            font-size: 30px;
+        }
+        .about .about-content .left img{
+            height: 250px;
+            width: 250px;
+            border-radius: 4px;
+            border: 1px solid gray;
+            object-fit: cover;
         }
 
         .about .about-content .column .text{
@@ -249,10 +285,11 @@ section .title::before{
             font-size: 15px;
             padding-right: 20px;
         }
+
         .about .about-content .column a{
             font-size: 10px;
             position: absolute;
-            top:1180;
+            top:1200;
             left: 120;
             font-size: 15px;
         }
