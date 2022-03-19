@@ -21,7 +21,6 @@
 // related to hero text animation
 const text=document.querySelector('.text-1');
 const splitText=text.textContent.split("")
-console.log(splitText)
 
 text.textContent="";
 
@@ -51,4 +50,4 @@ function end(){
 }
 
 //show animation when window loads
-window.addEventListener('load',roll())
+window.addEventListener('DOMContentLoad',roll())

@@ -69,8 +69,10 @@ html{
     margin: auto 0 auto 40px;
 }
 .home .home-content .text-1{
-    font-size: 27px;
+    padding-left: 90px;
+    font-size: 28px;
     font-family: 'Ubuntu',sans-serif;
+    font-weight: 700;
 }
 
 
@@ -98,7 +100,7 @@ html{
     border: 2px solid crimson;
     transition: all 0.3s ease;
 }
-.home .home-content a:hover{
+.home .home-content center a:hover{
     color: #fff;
     background: none;
 }
@@ -131,7 +133,7 @@ section .title::before{
     position: absolute;
     bottom: 0px;
     left: 50%;
-    width: 90px;
+    width: 70px;
     height: 2px;
     background: crimson;  
     transform: translateX(-50%);
@@ -156,33 +158,31 @@ section .title::before{
 .about .about-content .left img{
     height: 280px;
     width: 350px;
-    border-radius: 6px;
-    border: 2px solid gray;
+    border-radius: 50%;
+    border: 1px solid gray;
     object-fit: cover;
 }
 .about .about-content .right{
     width: 65%;
 }
 .about .about-content .right .text{
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 400;
     margin-bottom: 10px;
 }
-.about .about-content .right .text span{
-    color: crimson;
-}
+
 .about .about-content .right p{
     text-align: justify;
 }
 .about .about-content .right a{
     display: inline-block;
     color: #fff;
-    background: crimson;
+    background: #b1b493;
     font-size: 20px;
     padding: 10px 30px;
     margin-top: 20px;
     border-radius: 6px;
-    border: 2px solid crimson;
+    border: 1px solid crimson;
     transition: all 0.3s ease;
 }
 .about .about-content .right a:hover{
@@ -205,103 +205,419 @@ section .title::before{
     opacity: 1;
 }
 
+
+/*work section styling*/
+.work{
+    background: #111;
+    color: #fff;
+    height: 670px;
+    padding-top: 62px;
+}
+
+.work .work-content .card{
+    width: 24%;
+    height: 160px;
+    background: #222;
+    text-align: center;
+    border-radius: 6px;
+    padding: 20px 25px;
+    cursor: pointer;
+}
+.work .work-content .card:hover{
+    background: #b1b493;
+
+}
+.work .work-content .card .box{
+    transition: all 0.3s ease;
+}
+.work .work-content .card:hover .box{
+    transform: scale(1.05);
+}
+.work .work-content .card i{
+    font-size: 20px;
+    color: crimson;
+}
+.work .work-content .card:hover i{
+    color: #fff;
+}
+.work .work-content .card .text{
+    font-size: 19px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+
+/* skill section styling  */
+.skills{
+    height:870px;
+}
+.skills .skills-content .card .text{
+    margin-left: 55px;
+}
+
+.skills .skills-content .right .line::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: crimson;
+}
+
+
 /* responsive query start */
 
-@media only screen and (max-width: 768px) {
-        .menu {
-            position: fixed;
-            left: -100%;
-            top: 4rem;
-            flex-direction: column;
-            background-color: gray;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            text-align: center;
-            transition: 0.3s;
-            box-shadow:
-                0 10px 27px rgba(0, 0, 0, 0.05);
-        }
-    
-        .menu.active {
-            left: 0;
-        }
-        .hamburger {
-            display: block;
-            cursor: pointer;
-            position: absolute;
-            top: 23;
-            left: 240;
-        }
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-    
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-    
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-        .navbar .logo a{
-            color: #fff;
-            font-size: 25px;
-            font-weight: 600;
-        }
-        .navbar .menu li a{
-            display: block;
-            font-size: 25px;
-            padding: 15px;
-            font-family: 'Montserrat';
-        }
-        .home .home-content .text-1{
-            margin-left: 0;
-            font-size:18px;
-            font-family: 'Ubuntu',sans-serif;
-            font-weight: 500;
-            position: relative;
-            left: -50;
-            top: -70;
-        }
-
-        .home .home-content center a{
-            font-size:15px;
-            width: 150px;
-            height: 40px;
-            position: relative;
-            left: -50;
-        }
-
-        .about{
-            height: 870px;
-        }
-        .about h2{
-            font-size: 25px;
-        }
-        .about .about-content .left img{
-            height: 250px;
-            width: 200px;
-            border-radius: 4px;
-            border: 1px solid gray;
-            object-fit: cover;
-            position: relative;
-            left: -40;
-        }
-
-        .about .about-content .column .text{
-            position: absolute;
-            top:1140;
-            left: 40;
-            font-size: 15px;
-            padding-right: 20px;
-        }
-
-        .about .about-content .column a{
-            font-size: 10px;
-            position: absolute;
-            top:1240;
-            left: 40;
-            font-size: 15px;
-        }
+@media screen and (max-width:1047px) {
+    section .title::before{
+        width: 60px;
     }
+    .home .home-content .text-1{
+        font-size: 22px;
+    }
+    .home .home-content a{
+        font-size: 20px;
+        padding: 10px 30px;
+        margin-top: 10px;
+        border: 1px solid crimson;
+    }
+    .about h2,.work h2,.skills h2{
+        font-size: 30px;
+    }
+    .about .about-content .left{
+        width: 35%;
+    }
+    .about .about-content .left img{
+        height: 250px;
+        width: 300px;
+        
+    }
+    .about .about-content .right .text{
+        font-size: 18px;       
+        margin-left: 40px;
+    }
+    .about .about-content .right a{
+        font-size: 18px;     
+        margin-left: 40px;
+    }
+    .skills .skills-content .card img{
+        width: 140px;
+    }
+    .skills .skills-content .card .text{
+        margin-left: 30px;
+    }
+    
+}
+@media screen and (max-width:1034px) {
+
+    .home .home-content .text-1{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width:972px) {
+
+    .home .home-content .text-1{
+        font-size: 18px;
+    }
+    .home .home-content a{
+        font-size: 18px;
+    }
+    .about .about-content .right .text{
+        font-size: 18px;       
+        margin-left: 40px;
+    }
+    .about .about-content .right a{
+        font-size: 18px;     
+        margin-left: 40px;
+    }
+    .work .work-content .card .text{
+        font-size: 15px;
+    }
+    .work .work-content .card p{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width:930px) {  
+    .about .about-content .left{
+        width: 100%;
+        /* position: relative; */
+    }
+    .about .about-content .right{
+        width: 100%;
+    }
+
+}
+@media screen and (max-width:904px) {  
+    .navbar .logo a{
+        font-size: 30px;
+    }
+    .navbar .menu li a{
+        font-size: 15px;
+    }
+    .home .home-content .text-1{
+        font-size: 15px;
+    }
+    .home .home-content a{
+        font-size: 17px;
+    }
+    .about h2,.work h2,.skills h2{
+        font-size: 20px;
+    }
+    section .title::before{
+        width: 40px;
+    }
+    .about .about-content .right .text{
+        font-size: 14px;  
+    }
+    .about .about-content .right a{
+        font-size: 14px;     
+    }
+}
+
+@media screen and (max-width:848px) { 
+    .work .work-content .card i{
+       font-size: 10px;
+    }
+    .work .work-content .card .text{
+        font-size: 15px;       
+        width: 100%;
+    }
+    .work .work-content .card p{
+        font-size: 12px;
+        width: 100%;
+    }
+    .skills .skills-content .card img{
+        width: 90px;
+    }
+    .skills .skills-content .card .text{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+ }
+
+ @media screen and (max-width:803px) {
+    .menu {
+        position: fixed;
+        left: -100%;
+        top: 4rem;
+        flex-direction: column;
+        background-color: gray;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .menu.active {
+        left: 0;
+    }
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        margin-top: -30px;
+        margin-left: 700px;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .navbar .menu li a{
+        display: block;
+        font-size: 25px;
+        padding: 15px;
+        font-family: 'Montserrat';
+    }
+    .home .home-content .text-1{
+        font-size: 20px;
+    }
+
+  }
+  @media screen and (max-width:760px) {
+    .hamburger {
+        margin-left: 600px;
+    }
+
+  }
+  @media screen and (max-width:710px) {
+    .hamburger {
+        margin-left: 550px;
+    }
+
+    .work .work-content .card{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .work .work-content button{
+        display: none;
+    }
+
+  }
+  @media screen and (max-width:610px) {
+    .hamburger {
+        margin-left: 450px;
+    }
+    .about .about-content .left{
+        margin-left: 20px;
+    }
+    .about .about-content .right{
+        margin-top: 10px;
+    }
+    .about .about-content .right a{
+        margin-left: 80px;
+    }
+  }
+  @media screen and (max-width:499px) {
+    .hamburger {
+        margin-left: 380px;
+    }
+    .home .home-content .text-1{
+        font-size:20px;
+        width: 100%;
+    }
+    .home .home-content a{
+        padding: 10px 30px;
+        margin-top: 40px;
+        margin-left: 50px;
+        border: 1px solid crimson;
+    }
+  }
+  @media screen and (max-width:435px){
+    .hamburger {
+        margin-left: 340px;
+    }
+    .home{
+        width: 100%;
+    }
+    .home .max-width{
+        margin: 0px 0px 0  0;
+        width: 100%;
+    }
+    .home .max-width .home-content{
+        width: 100%;
+        margin-left: -40px;
+    }
+    .about .about-content .left img{
+        height: 200px;
+        width: 250px;
+    }
+    .about .about-content .right a{
+        margin-left: 40px;
+        padding: 7px 12px; 
+    }
+}
+
+@media screen and (max-width:403px){
+    .hamburger {
+        margin-left: 300px;
+    }
+    .home{
+        width: 100%;
+    }
+    .home .max-width{
+        margin: 0px -60px 0  0;
+        
+    }
+    .home .max-width .home-content{
+        width: 100%;
+        margin-left: -40px;
+    }
+    .home .home-content a{
+        margin-left:90px;
+        width: 70%;
+    }
+    .home .home-content .text-1{
+        font-size:18px;
+        width: 100%;
+
+    }
+    .about .about-content .left{
+        margin-left: -30px;
+    }
+    .about .about-content .left img{
+        height: 200px;
+        width: 250px;
+    }
+    .about .about-content .right{
+        width: 100%;
+
+    }
+    .about .about-content .right p{
+        margin-left: 0;
+    }
+    .about .about-content .right a{
+        margin-left: 40px;
+        padding: 7px 12px; 
+    }
+
+}
+
+
+@media screen and (max-width:280px){
+    .hamburger {
+        margin-left: 240px;
+    }
+    .navbar{
+        height: 60px;
+    }
+    .navbar .logo a{
+        font-size: 25px;
+    }
+    .home .home-content .text-1{
+        font-size:14px;
+        width: 100%;
+        text-align: center;
+    }
+    .home .home-content a{
+        margin-left:50px;
+        width: 100%;
+    }
+    .about .about-content .left{
+        margin-left: -30px;
+    }
+    .about .about-content .left img{
+        height: 200px;
+        width: 210px;
+    }
+    .about .about-content .right{
+        width: 100%;
+
+    }
+    .about .about-content .right p{
+        margin-left: 0;
+    }
+    .about .about-content .right a{
+        margin-left: 0px;
+        padding: 4px 7px; 
+        font-size: 12px;
+        width: 100%;        
+    }
+    .work{
+        height: 830px;
+    }
+
+    .work .work-content .card{
+        height: 180px;
+    }
+    .work .work-content .card i{
+        font-size: 10px;
+     }
+     .work .work-content .card .text{
+         font-size: 13px;       
+         width: 100%;
+     }
+     .work .work-content .card p{
+         font-size: 12px;
+         width: 100%;
+     }
+
+}
