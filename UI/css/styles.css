@@ -146,7 +146,7 @@ section .title::before{
     padding-top: 62px;
 }
 
-.about .about-content, .work .work-content, .skills .skills-content, .blogs .blogs-content,.contact .contact-content{
+.about .about-content, .work .work-content, .skills .skills-content{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -265,6 +265,133 @@ section .title::before{
 }
 
 
+/* blog post styling */
+.blog{
+    background: #111;
+    color: #fff;
+    height: 750px;
+    padding-top: 62px;
+}
+.blog .title::before{
+    background: crimson;
+}
+
+.blog .blog-content .card{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  background:#111;
+}
+.blog .blog-content .card .box div{
+ font-size:24px;
+ text-align: center;
+}
+.blog .blog-content .card .box{
+  display:grid;
+  grid-template-rows: 10em 3em 2em 2em;
+  text-align:center;
+}
+.blog .blog-content .card .box img{
+  height:150px;
+  width: 170px;
+  margin-left: 100px;
+}
+.blog .blog-content .card .box p{
+  text-align:center;
+}
+.blog .blog-content .card .box a{
+  /* background:red; */
+  /*margin:0px 120px auto; */
+  height:30px;
+  width: 140px;
+  color:#fff;
+  border-radius:4px;
+}
+.blog .blog-content a#visit{
+    display: inline-block;
+    color: #fff;
+    background: crimson;
+    font-size: 15px;
+    padding: 10px 30px;
+    margin-top: 90px;
+    margin-left: 470px;
+    border-radius: 4px;
+    border: 1px solid crimson;
+    transition: all 0.3s ease;
+}
+.blog .blog-content a#visit:hover{
+    color: #fff;
+    background: none;
+}
+
+/* contact styling */
+
+.contact .contact-content{
+    padding-left: 300px;
+}
+
+.contact .contact-content .row1{
+    margin-left: 80px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 40px;
+
+}
+
+.contact .contact-content .row2{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.contact .contact-content .row2 form .fields{
+    display: flex;
+}
+
+.contact .contact-content .row2 form input{
+    height: 35px;
+    padding-left: 6px;
+    border-radius: 4px;
+    border: 1px solid #000;
+    width: 250px;
+}
+
+.contact .contact-content .row2 form .subject input{
+    width: 540px;
+    margin-bottom: 40px;
+}
+
+.contact .contact-content .row2 form .textarea textarea{
+    padding-top: 10px;
+    padding-left: 6px;
+    width: 540px;
+    border: 1px solid #000;
+    resize: none;
+
+}
+
+.contact form .field, .contact form .fields .field{
+    margin-right: 40px;
+    margin-bottom: 15px;
+}
+
+.contact form .button button{
+    height: 40px;
+    width: 70px;
+    border: 1px solid #b1b493;
+    border-radius: 4px;
+    font-size: 17px;
+    background: #b1b493;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.contact form .button button:hover{
+    color: crimson;
+    background: none;
+}
+
 /* responsive query start */
 
 @media screen and (max-width:1047px) {
@@ -280,7 +407,7 @@ section .title::before{
         margin-top: 10px;
         border: 1px solid crimson;
     }
-    .about h2,.work h2,.skills h2{
+    .about h2,.work h2,.skills h2,.blog h2,.contact h2{
         font-size: 30px;
     }
     .about .about-content .left{
@@ -305,7 +432,27 @@ section .title::before{
     .skills .skills-content .card .text{
         margin-left: 30px;
     }
-    
+    .blog .blog-content .card{
+        gap: 0;
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 20px;
+        margin-left: 90px;
+    }
+
+    .blog .blog-content .card .box p{
+        font-size: 15px;
+        margin-left: 90px;
+    }
+    .blog .blog-content a#visit{
+        margin-left: 390px;
+    }
+    .contact .contact-content .row1{
+        margin-left: 0;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -100px;
+    }
 }
 @media screen and (max-width:1034px) {
 
@@ -335,6 +482,15 @@ section .title::before{
     .work .work-content .card p{
         font-size: 15px;
     }
+    .blog .blog-content a#visit{
+        margin-left: 350px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -100px;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -200px;
+    }
 }
 @media screen and (max-width:930px) {  
     .about .about-content .left{
@@ -359,7 +515,7 @@ section .title::before{
     .home .home-content a{
         font-size: 17px;
     }
-    .about h2,.work h2,.skills h2{
+    .about h2,.work h2,.skills h2,.blog h2,.contact h2{
         font-size: 20px;
     }
     section .title::before{
@@ -370,6 +526,18 @@ section .title::before{
     }
     .about .about-content .right a{
         font-size: 14px;     
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 16px;
+        margin-left: 110px;
+    }
+    .blog .blog-content .card .box p{
+        font-size: 14px;
+        margin-left: 120px;
+    }
+
+    .blog .blog-content a#visit{
+        margin-left: 290px;
     }
 }
 
@@ -440,6 +608,34 @@ section .title::before{
     .home .home-content .text-1{
         font-size: 20px;
     }
+    .blog .blog-content .card{
+        margin-left: -100px;
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 12px;
+        margin-left: 110px;
+    }
+    .blog .blog-content .card .box p{
+        font-size: 12px;
+        margin-left: 100px;
+    }
+    .blog .blog-content a#visit{
+        margin-left: 190px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -190px;
+        font-size: 12px;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -230px;
+    }
+    .contact .contact-content .row2 form input{
+        width: 155px;
+    }
+    
+    .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
+        width: 350px;
+    }
 
   }
   @media screen and (max-width:760px) {
@@ -460,6 +656,34 @@ section .title::before{
     .work .work-content button{
         display: none;
     }
+    .blog .blog-content .card .box img{
+        height: 108px;
+        width: 104px;
+        /* margin-left: 110px; */
+
+    }
+    .blog .blog-content .card .box{
+        display: block;
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 14px;
+    }
+    .blog .blog-content .card .box p{
+       font-size: 12px;
+    }
+    .blog .blog-content a#visit{
+        margin-left: 150px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -260px;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -290px;
+    }
+
+
+
+
 
   }
   @media screen and (max-width:610px) {
@@ -475,6 +699,20 @@ section .title::before{
     .about .about-content .right a{
         margin-left: 80px;
     }
+    .blog{
+        height: 1100px;
+    }
+
+
+    .blog .blog-content .card{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .blog .blog-content .card .box{
+        margin-left: 10px;
+    }
+
   }
   @media screen and (max-width:499px) {
     .hamburger {
@@ -490,6 +728,29 @@ section .title::before{
         margin-left: 50px;
         border: 1px solid crimson;
     }
+    .blog .blog-content .card .box{
+        margin-left: 10px;
+    }
+    .blog .blog-content a#visit{
+        margin-left:90px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -300px;
+        font-size: 11px;
+
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -310px;
+    }
+    .contact .contact-content .row2 form input{
+        width: 130px;
+    }
+    
+    .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
+        width: 300px;
+    }
+
+
   }
   @media screen and (max-width:435px){
     .hamburger {
@@ -514,11 +775,31 @@ section .title::before{
         margin-left: 40px;
         padding: 7px 12px; 
     }
+    .blog .blog-content .card .box{
+        margin-left: 10px;
+    }
+    .blog .blog-content a#visit{
+        margin-left:70px;
+    }
+    .contact .contact-content .row2 form .fields{
+        display: block;
+    }
+    .contact .contact-content .row2 form input{
+        width: 200px;
+    }
+    
+    .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
+        width: 200px;
+    }
+
+
+
 }
 
 @media screen and (max-width:403px){
+
     .hamburger {
-        margin-left: 300px;
+        margin-left: 340px;
     }
     .home{
         width: 100%;
@@ -556,30 +837,42 @@ section .title::before{
     }
     .about .about-content .right a{
         margin-left: 40px;
-        padding: 7px 12px; 
+        padding: 7px 11px; 
     }
-
+    .blog .blog-content .card .box .text{
+        font-size: 20px;
+    }
+    
+    .blog .blog-content a#visit{
+        margin-left: 30px;
+        font-size: 12px;
+    }
 }
 
 
 @media screen and (max-width:280px){
     .hamburger {
-        margin-left: 240px;
+        margin-left: 180px;
+        margin-top: -25px;
+        /* margin-left: 700px; */
     }
     .navbar{
         height: 60px;
     }
     .navbar .logo a{
-        font-size: 25px;
+        font-size: 20px;
     }
+
+
+    
     .home .home-content .text-1{
         font-size:14px;
-        width: 100%;
+        /* width: 100%; */
         text-align: center;
     }
     .home .home-content a{
         margin-left:50px;
-        width: 100%;
+        /* width: 100%; */
     }
     .about .about-content .left{
         margin-left: -30px;
