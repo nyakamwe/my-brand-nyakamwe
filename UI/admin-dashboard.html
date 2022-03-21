@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="admin.css">
+    <title>Admin | Panel</title>
+</head>
+<body>
+    <main>
+        <div class="sidenav">
+            <p class="title">Portfo<span style="color:crimson">lio.</span></p>
+            <hr>
+            <ul id="sidenav-open">
+                <li><a href="#dashboard"><i class="fas fa-home"></i>&nbsp;&nbsp;Dashboard</a></li>
+                <li><a href=""><i class="fas fa-user"></i>&nbsp;&nbsp;Users</a></li>
+                <li><a href=""><i class="fas  fa-blog"></i>&nbsp;&nbsp;Articles</a></li>
+                <li><a href=""><i class="fas  fa-comment"></i>&nbsp;&nbsp;Messages</a></li>
+            </ul>
+        </div>
+        <div class="header">
+            <ul>
+                <li><a href="index.html">View Site</a></li>
+                <li><a href=""  id="logout">Logout</a></li>
+            </ul>
+            <i class="fas fa-user-circle"></i>
+            <p id="username">Admin</p>
+        </div>
+        <div class="content">
+
+            <section id="dashboard">
+                <p>Dashboard</p>
+
+                <div class="statistics">
+                    <div class="card">
+                        <p>Articles</p>
+                        <p>2</p>
+                    </div>
+                    <div class="card">
+                        <p>Hire</p>
+                        <p> 2</p>
+                    </div>
+                    <div class="card">
+                        <p>Messages</p>
+                        <p>12</p>
+                    </div> 
+                    <div class="card">
+                        <p>Users</p>
+                        <p>1</p>
+                    </div>
+                </div>
+
+                <button>
+                    <i class="fas fa-plus"></i> Add Articles
+                </button>
+
+                <!-- searching -->
+                <form action="">
+                    <input type="text" name="" id="" placeholder="Search for...." required>
+                    <a  href="" title="Search"><i class="fas fa-search"></i></a> 
+                </form>
+                
+
+                <table border="1" cellspacing="0"  cellpadding="5" align="center">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Created at</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+                    <tbody  align="center">
+                        <tr>
+                            <td>Full 3D Elements</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>12-March,2022</td>
+                            <td>
+                            <a  href="" title="Edit"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a  href="" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Full 3D Elements</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>12-March,2022</td>
+                            <td>
+                            <a  href="" title="Edit"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a  href="" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
+                            </td>
+                        </tr>
+                    </tbody>
+
+
+
+                </table>
+        </section>
+
+        
+        </div>
+    </main>
+</body>
+</html>

@@ -392,6 +392,63 @@ section .title::before{
     background: none;
 }
 
+/* styling login form */
+.site-form{
+    padding-top: 140px;
+    padding-left: 430px;
+    /* text-align: center; */
+}
+.site-form h5{
+    font-size: 20px;
+    padding-bottom: 20px;
+    padding-left: 70px;
+}
+.site-form div{
+    margin-bottom: 20px;
+}
+.site-form input{
+    height: 30px;
+    padding-left: 5px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.site-form a{
+    height: 30px;
+    background: #035D79;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: #fff;
+    margin-left: 70px;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
+/* footer section styling */
+
+footer{
+    background: #111;
+    padding: 20px 39px; 
+    text-align: center;
+    border: 1px solid #fff;
+}
+footer a{
+    color: white;
+    font-size: 18px;
+    margin-right: 10px;
+}
+footer a:hover{
+    color: aqua;
+}
+footer p{
+    color: #b1b493;
+}
+
 /* responsive query start */
 
 @media screen and (max-width:1047px) {

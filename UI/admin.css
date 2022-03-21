@@ -1,0 +1,160 @@
+body{
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.sidenav{
+    position: fixed;
+    border:1px solid #111;
+    width: 250px;
+    height: 100%;
+}
+.sidenav p{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.sidenav .title{
+    margin-left: 60px;
+    font-family: 'Ubuntu';
+}
+
+
+
+
+
+
+.sidenav ul{
+    list-style: none;
+}
+.sidenav ul li a{
+    font-size: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+.sidenav ul li a:hover{
+    background: gray;
+}
+
+
+.header{
+    position: fixed;
+    border: 1px solid #111;
+    margin-left: 250px;
+    margin-top: 10px;
+    position: absolute;
+    top: 0;
+    left:10;   
+    /* width: 610px; */
+    height: 40px;
+    padding-top: 10px;
+    /* padding-left: 800px; */
+    display: flex;
+}
+.header ul{
+    list-style: none;
+    margin-left: 714px;
+    margin-right: 10px;
+}
+.header ul li{
+    display: inline;
+    padding-left: 10px;
+}
+.header i{
+    font-size: 30px;
+}
+.header p#username{
+    margin-right: 30px;
+    margin-left: 10px;
+}
+.header ul li a:hover{
+    color:crimson;
+    text-decoration: underline;
+}
+
+.content{
+    border: 1px solid #111;
+    margin-left: 250px;
+    position: absolute;
+    top: 0;
+    left: 10;
+    margin-top: 60px;
+    width: 1010px;
+
+}
+.content p{
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+
+.content .statistics{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   gap: 20px;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+.content .statistics .card{
+    border-radius: 6px;
+    /* height: 40px; */
+}
+.content .statistics .card:nth-child(1){
+    background: green;
+    
+}
+.content .statistics .card:nth-child(2){
+    background: yellow;
+}
+.content .statistics .card:nth-child(3){
+    background: gray;
+}
+.content .statistics .card:nth-child(4){
+    background: #4E3B3F;
+}
+
+.content button{
+    margin: 10px 20px;
+    color: #fff;
+    background: #035D79;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-size:16px;
+}
+.content button:hover{
+    cursor: pointer;
+    color: gray;
+    background: none;
+}
+.content form{
+    margin: 20px 20px;
+
+}
+.content form input{
+    width: 400px;
+    height: 30px;
+    padding-left: 5px;
+    font-size: 18px;
+}
+.content form a{
+    height: 30px;
+    font-size: 20px;
+    margin-left: 5px;
+    width: 60px;
+}
+.content  table{
+    margin-left: 20px;
+    width: 970px;
+}
+
+
+
