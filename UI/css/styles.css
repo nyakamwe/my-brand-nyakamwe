@@ -392,16 +392,14 @@ section .title::before{
     background: none;
 }
 
-/* styling login form */
+/* styling login and register form */
 .site-form{
     padding-top: 140px;
     padding-left: 430px;
-    /* text-align: center; */
 }
 .site-form h5{
     font-size: 20px;
     padding-bottom: 20px;
-    padding-left: 70px;
 }
 .site-form div{
     margin-bottom: 20px;
@@ -412,6 +410,8 @@ section .title::before{
     width: 300px;
     border: 1px solid black;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
 }
 .site-form a{
     height: 30px;
@@ -419,15 +419,12 @@ section .title::before{
     padding: 10px 10px;
     text-decoration: none;
     color: #fff;
-    margin-left: 70px;
     border-radius: 4px;
 }
-
-
-
-
-
-
+.site-form a:hover{
+    color:crimson;
+    background: #b1b493;
+}
 
 /* footer section styling */
 
@@ -693,6 +690,9 @@ footer p{
     .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
         width: 350px;
     }
+    .site-form{
+        padding-left: 230px;
+    }
 
   }
   @media screen and (max-width:760px) {
@@ -769,7 +769,9 @@ footer p{
     .blog .blog-content .card .box{
         margin-left: 10px;
     }
-
+    .site-form{
+        padding-left: 170px;
+    }
   }
   @media screen and (max-width:499px) {
     .hamburger {
@@ -806,7 +808,9 @@ footer p{
     .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
         width: 300px;
     }
-
+    .site-form{
+        padding-left: 80px;
+    }
 
   }
   @media screen and (max-width:435px){
@@ -969,5 +973,30 @@ footer p{
          font-size: 12px;
          width: 100%;
      }
+     .site-form{
+        padding-left: 70px;
+    }
+
+    .site-form h5{
+        font-size: 15px;
+    }
+    .site-form div{
+        margin-bottom: 20px;
+    }
+    .site-form input{
+        width: 130px;
+    }
+    .site-form a{
+        height: 10px;
+        background: #035D79;
+        padding: 7px 7px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+    }
+    .site-form a:hover{
+        color:crimson;
+        background: #b1b493;
+    }
 
 }

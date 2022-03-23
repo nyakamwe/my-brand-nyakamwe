@@ -76,7 +76,7 @@ a{
 
 .blogs .blogs-content .card{
     width: 24%;
-    height: 160px;
+    height: 360px;
     background: #222;
     text-align: center;
     border-radius: 6px;
@@ -84,19 +84,12 @@ a{
     margin-top: 50px;
     margin-right: 50px;
 }
-.blogs .blogs-content .card:hover{
-    background: #b1b493;
-
-}
 .blogs .blogs-content .card .box{
+    padding-top: 30px;
     transition: all 0.3s ease;
 }
 .blogs .blogs-content .card:hover .box{
-    transform: scale(1.05);
-}
-.blogs .blogs-content .card i{
-    font-size: 20px;
-    color: crimson;
+    transform: scale(1.03);
 }
 .blogs .blogs-content .card:hover i{
     color: #fff;
@@ -110,8 +103,8 @@ a{
 /*  pagination   */
 #pagination{
     /* float:right; */
-    margin: 20px;
-    font-size: 18px;
+    /* margin: 20px; */
+    /* font-size: 18px; */
 }
 /*   blog detail styling   */
 
