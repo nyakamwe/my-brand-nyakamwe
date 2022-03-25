@@ -70,6 +70,9 @@ a{
     color:crimson;
     text-decoration: underline;
 }
+.main-content{
+    background:rgb(224, 223, 223);
+}
 .main-content p#title{
     font-size: 30px;
     font-weight: 700;
@@ -158,14 +161,28 @@ section{
 }
 
 /* styling forms */
+form{
+    box-sizing: border-box;
+}
+.add-form{
+    padding:20px 40px;
+    position:absolute;
+    left:530px;
+    border-radius: 10px;
+    background: #fff;
+    
+}
 .add-form h5{
     font-size: 20px;
     font-family: cursive;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    margin-left: 130px;
 }
 .add-form input{
-    margin-bottom: 10px; 
-    border: 1px solid #000;
+    width: 100px;
+    margin-bottom: 20px; 
+    height: 40px;
+    /* border: 1px solid #000; */
     border-radius: 4px;
 }
 .add-form input[type="file"]{
@@ -177,18 +194,27 @@ section{
     width: 400px;
     padding: 5px;
     border: 1px solid #000;
+    border-radius: 6px;
     font-size: 15px;
 }
 .add-form button{
     margin-left: 0;
+    width: 400px;
+    border-radius: 50;
+    cursor: pointer;
+}
+.add-form button a:hover{
+    border-color: crimson;
+    transition: .5s;
 }
 .add-form button i{
     display: inline;
 }
 .add-form select{
+    background: #fff;
     width: 400px;
     height: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border: 1px solid #000;
     font-size: 15px;
     padding-left: 5px;
@@ -217,6 +243,9 @@ section{
     .main-content  div > p{
         font-size: 20px;
         margin-left: 10px;
+    }
+    .add-form{
+        left:230px;   
     }
 }
 @media screen and (max-width:921px){
@@ -288,6 +317,7 @@ section{
     section{
         padding-top: 150px;
     }
+    
     .add-form button{
         margin-left: 0;
     }

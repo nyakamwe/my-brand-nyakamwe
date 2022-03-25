@@ -30,7 +30,7 @@ for(let i=0; i < splitText.length; i++){
 }
 
 let char=0;
-let timer=setInterval(roll,30);
+let timer=setInterval(roll,100);
 function roll(){
     const newText=text.querySelectorAll('span')[char];
     newText.classList.add('rolling');
