@@ -21,7 +21,6 @@
 // related to hero text animation
 const text=document.querySelector('.text-1');
 const splitText=text.textContent.split("")
-console.log(splitText)
 
 text.textContent="";
 
@@ -31,7 +30,7 @@ for(let i=0; i < splitText.length; i++){
 }
 
 let char=0;
-let timer=setInterval(roll,30);
+let timer=setInterval(roll,100);
 function roll(){
     const newText=text.querySelectorAll('span')[char];
     newText.classList.add('rolling');
@@ -51,4 +50,4 @@ function end(){
 }
 
 //show animation when window loads
-window.addEventListener('load',roll())
+window.addEventListener('DOMContentLoad',roll())
