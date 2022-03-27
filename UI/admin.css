@@ -22,7 +22,7 @@ a{
 .wrapper .sidenav h1{
     color: white;
     padding: 15px;
-    line-height: 50px;
+    line-height: 20px;
     border-bottom: 1px dotted white;
 }
 .wrapper .sidenav ul li{
@@ -160,7 +160,7 @@ section{
     padding-top: 90px;
 }
 
-/* styling forms */
+
 form{
     box-sizing: border-box;
 }
@@ -227,6 +227,9 @@ form{
         margin-left: 500px;
         
     }
+    .header ul li a{
+        font-size: 19px;
+    }
     .main-content .statistics .card{
         width: 90PX;
         height:100px;
@@ -240,6 +243,9 @@ form{
         margin-left: 20px;
         width: 700px;
     }
+    .main-content  table th{
+        font-size: 18px;
+    }
     .main-content  div > p{
         font-size: 20px;
         margin-left: 10px;
@@ -248,11 +254,18 @@ form{
         left:230px;   
     }
 }
-@media screen and (max-width:921px){
-     .header ul{
+
+@media screen and (max-width:916px){
+    .header ul{
         list-style: none;
         margin-left: 414px;
        
+    }
+    .header ul li a{
+        font-size: 17px;
+    }
+    #search-form input{
+        width: 350px;
     }
     .main-content  table{
         margin-left: 20px;
@@ -261,185 +274,268 @@ form{
     .main-content  table th{
         font-size: 15px;
     }
-    .main-content form input{
-        width: 300px;
-        height: 30px;
-        padding-left: 5px;
+    .add-form{
+        left:280px;
+        /* width: 500px; */
+        
+    }
+    .add-form h5{
+        font-size: 19px;
+    }
+    .add-form div>input{
+        /* width: 250px; */
+        margin-bottom: 20px; 
         font-size: 15px;
-    }
-    .main-content form a{
-        font-size: 14px;
-    }
-    .main-content button {
-        margin: 10px 20px;
-        color: #fff;
-        background: #035D79;
-        padding: 7px 20px;
+        height: 30px;
+        /* border: 1px solid #000; */
         border-radius: 4px;
-        font-size:14px;
-        border: 1px solid #111;
     }
+
 }
-@media screen and (max-width:826px){
+@media screen and (max-width:813px){
     .header ul{
-        list-style: none;
         margin-left: 360px;
        
+    }
+    .header ul li a{
+        font-size: 15px;
     }
     .main-content  table{
         margin-left: 20px;
         width: 570px;
     }
-
-}
-@media screen and (max-width:757px){
-    .header ul li a{
-        color:#111;
-        font-size: 18px;
+    .main-content  table th{
+        font-size: 15px;
     }
-    .wrapper .sidenav{
-        bottom: 0;
-        width: 100vw;
-        height: 20vh;
-    }
-    .wrapper .sidenav h1{
-        font-size: 20px;
-        line-height: 50px;
-    }
-    .wrapper .sidenav ul li{
-        float: left;
-        border-bottom: none;
-    }
-    .wrapper .main-content{
-       
-        margin-left: 0;
-    }
-    section{
-        padding-top: 150px;
-    }
-    
-    .add-form button{
-        margin-left: 0;
-    }
-}
-
-@media screen and (max-width:741px){
-    .main-content  table{
-        margin-left: 20px;
-        width: 530px;
-    }
-}
-@media screen and (max-width:691px){
-    .main-content  table{
-        margin-left: 20px;
-        width: 430px;
-    }
-    .main-content  table td{
-        font-size: 12px;
-    }
-}
-@media screen and (max-width:580px){
-    .main-content .statistics .card{
-        width: 80PX;
-        height:100px;
-    }
-    .main-content  table{
-        margin-left: 20px;
-        width: 400px;
-        overflow: visible;
-    }
-    .main-content  table td{
-        font-size: 10px;
-    }
-    .add-form textarea{
+    #search-form input{
         width: 300px;
     }
+    .add-form{
+        left:200px;
+        
+    }
 
-    
 }
-@media screen and (max-width:525px){
-
-
-    .main-content .statistics .card{
-        width: 70PX;
-        height:100px;
+@media screen and (max-width:741px){
+    .wrapper .sidenav{
+        width: 15vw;
     }
-    .main-content  table{
-        margin-left: 20px;
-        width: 380px;
-        overflow: visible;
+    .header{
+        width: 85vw;
+        margin-left: 15vw;
     }
-    .main-content  table td{
-        font-size: 10px;
+    .wrapper .main-content{
+        width: 85vw;
+        margin-left: 15vw;
+    }
+
+    .wrapper .sidenav h1{
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .wrapper .sidenav ul li a {
+        font-size: 13px;
+    }
+    .wrapper .sidenav ul li a i{
+        font-size: 13px;
+    }
+    #search-form input{
+        width: 250px;
     }
     .main-content p#title{
         font-size: 20px;
         
     }
-    .main-content  div > p{
-        font-size: 15px;
-        margin-left: 5px;
+    .main-content  table{
+        margin-left: 20px;
+        width: 530px;
+    }
+    .add-form{
+        left:140px;
     }
     
 }
-@media screen and (max-width:500px){
-    .main-content .statistics{
-        grid-template-columns: 1fr 1fr;
-     }
-    .main-content form input{
-        width: 200px;
-        height: 20px;
-    }
-    .main-content  table{
-        width: 350px;
-    }
-    .main-content  table th{
-        font-size: 10px;
-    }
-    .add-form h5{
-        font-size: 10px;
-    }
-    .add-form input{
-        width: 20px;
-    }
-    .add-form textarea{
-        width: 200px;
-    }
-    
-    .add-form select{
-        width: 200px;
-        height: 30px;
-    }
 
-}    
-@media screen and (max-width:467px){
-    body{
-        overflow: visible;
+@media screen and (max-width:716px){
+    .header ul{
+        margin-left: 30px;
+       
     }
     .wrapper .sidenav{
-        height: 140px;
+        width: 10vw;
     }
-    .section{
-        padding-top: 150px;
+    .wrapper .main-content,.header{
+        width: 90vw;
+        margin-left: 10vw;
     }
-    .main-content  table{
-        width: 310px;
+    .wrapper .sidenav h1{
+        font-size: 10px;
+        line-height: 15px;
+    }
+    .wrapper .sidenav ul li a span{
+        display: none;
+    }       
+    .add-form{
+        left:100px;
+        padding:10px 20px;
+        width: 300px;
+    }
+    .add-form div>input,.add-form textarea,.add-form select,.add-form button{
+        width: 250px;
+    }
+    .add-form h5{
+        font-size: 15px;
+        margin-left: 60px;
+
     }
    
+
+}
+
+@media screen and (max-width:612px){
+    .wrapper .sidenav h1{
+        padding-left: 5px;
+    }
+    .main-content .statistics{
+        grid-template-columns: 1fr 1fr;
+        gap:10px;
+     }
+     .main-content button {
+        font-size:12px;
+        /* width: 120px; */
+    }
+    #search-form input{
+        width: 200px;
+        font-size: 15px;
+    }
+    .main-content  table{
+        margin-left: 20px;
+        width: 430px;
+    }
+    .main-content  table td,.main-content  table th{
+        font-size: 12px;
+    }
+    .main-content  div > p{
+        font-size: 18px;
+       
+    }
+    .add-form{
+        left:50px;
+    }
+    section#delete-article form{
+        font-size: 12px;
+    }
 }
 
 
-/* large screens */
-@media screen and (min-width:600px){
-    .header{
-        /* position: fixed; */
-        /* border: 1px solid #111; */
-        /* margin-left: 250px; */
-        /* margin-top: 10px; */
-        /* display: flex; */
-        /* width: 80vw; */
-        /* margin-left: 20vw; */
-        /* height: 40px; */
+@media screen and (max-width:502px){
+    .header ul{
+    margin-left: 5px;
+   
+}
+    .wrapper .main-content{
+        overflow: visible;
+    }
+    .main-content .statistics{
+        grid-template-columns: 1fr;
+        gap:10px;
+     }
+    .main-content  table{
+        width: 370px;
     }
     
+
+}
+@media screen and (max-width:438px){
+    .main-content  table{
+        width: 340px;
+    }
+
+          
+}
+@media screen and (max-width:402px){
+    .wrapper .sidenav h1{
+        font-size: 7px;
+    }
+    .header ul li{
+        padding-left: 10px;
+    }
+    .main-content  table{
+        width: 300px;
+    }
+    .main-content  table td{
+        line-height: 10px;
+    }
+    .add-form{
+        left:30px;
+        padding:10px 20px;
+        /* width: 300px; */
+    }
+
+}
+@media screen and (max-width:358px){
+    .wrapper .sidenav h1{
+        font-size: 5px;
+    }
+    .wrapper .sidenav ul li{
+        list-style: none;
+        padding-left: 10px;
+        border-bottom: 1px solid white;
+    }
+    .main-content  table{
+        width: 220px;
+    }
+    .main-content  table td,.main-content  table th{
+        font-size: 10px;
+    }
+    .main-content  table td{
+        line-height: 10px;
+    }
+    .add-form{
+        width: 250px;
+    }
+    .add-form div>input,.add-form textarea,.add-form select,.add-form button{
+        width: 200px;
+    }
+    .add-form input[type="file"]{
+        font-size: 12px;
+    }
+    .add-form h5{
+        font-size: 15px;
+        margin-left: 20px;
+
+    }
+    section#delete-article form{
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width:302px){
+    #search-form input{
+        width: 150px;
+        font-size: 15px;
+    }
+    .add-form div>input,.add-form textarea,.add-form select,.add-form button{
+        width: 120px;
+        font-size: 10px;
+    }
+    .add-form{
+        width: 180px;
+        /* padding: 10px 12px; */
+    }
+    .add-form input[type="file"],.add-form p, .add-form p a{
+        font-size: 12px;
+       
+    }
+    .add-form h5{
+        font-size:12px;
+        margin-left: 15px;
+
+    }
+   
+    .add-form button a{
+        font-size: 10px;
+    }
+
 }

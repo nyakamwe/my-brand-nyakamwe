@@ -430,6 +430,77 @@ section#work,section#skills,section#contact{
     height: 80vh;
 }
 
+/* blogs site styling */
+
+.blogs-site .blogs-site-content .card .box{
+    display:grid;
+    grid-template-rows: 10em 3em 2em 2em;
+    text-align:center;
+  }
+
+.blogs-site-detail .box .poster span#poster,.blogs-site-detail .box .time span#timer{
+font-size:1em;
+font-weight: 700;
+color: #000;
+opacity: 1;
+}  
+.blogs-site-detail .box #title{
+    font-weight: 700;
+    margin: 20px auto;
+
+}
+.blogs-site-detail .box .description{
+    margin-bottom: 10px;
+    text-align: justify;
+}
+.blogs-site-detail .box .time,.blogs-site-detail .box .poster{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .like{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .like button{
+    border: none;
+    background: none;
+}
+.blogs-site-detail .like:hover,.blogs-site-detail .like button:hover{
+    cursor: pointer;
+    color:crimson
+}
+.blogs-site-detail .comment-form{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .comment-form h4{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .comment-form input{
+    height: 30px;
+    width: 250px;
+    border: 1px solid;
+    border-radius: 6px;
+    padding-left: 5px;
+}
+.blogs-site-detail .comment-form input[type="submit"]{
+    border-radius: 4px;
+    cursor: pointer;
+    padding-right: 5px;
+    width: 70px;
+}
+.blogs-site-detail .comment-form input[type="submit"]:hover{
+    border-color: green;
+    color: crimson;
+}
+.blogs-site-detail .comments{
+    display: flex;
+}
+.blogs-site-detail .comments div{
+    margin-left: 10px;
+}
+.blogs-site-detail .comments div>p{
+    padding-bottom: 10px;
+}
+
+
 
 /* footer section styling */
 
@@ -598,6 +669,9 @@ footer p{
     .blog .blog-content a#visit{
         margin-left: 290px;
     }
+    .blogs-site-detail .box img{
+        width: 450px
+    }
 }
 
 @media screen and (max-width:848px) { 
@@ -698,6 +772,9 @@ footer p{
     .site-form{
         padding-left: 230px;
     }
+    .blogs-site-detail .box img{
+        width: 380px
+    }
 
   }
   @media screen and (max-width:760px) {
@@ -780,6 +857,13 @@ footer p{
     .site-form{
         padding-left: 170px;
     }
+    .blogs-site-detail .box img{
+        width: 300px
+    }
+    .blogs-site-detail .box .description{
+        text-align: justify;
+    }
+
   }
   @media screen and (max-width:499px) {
     .hamburger {
@@ -818,6 +902,15 @@ footer p{
     }
     .site-form{
         padding-left: 80px;
+    }
+    .blogs-site-detail .box img{
+        width: 250px
+    }
+    .blogs-site-detail .comment-form input[type="submit"]{
+        margin-top: 20px;
+    }
+    .blogs-site-detail .box .description{
+        text-align: justify;
     }
 
   }
@@ -860,7 +953,9 @@ footer p{
     .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
         width: 200px;
     }
-
+    .blogs-site-detail .box .description{
+        text-align: justify;
+    }
 
 
 }
@@ -917,9 +1012,31 @@ footer p{
         font-size: 12px;
     }
 }
+@media screen and (max-width:370px){
+    .hamburger {
+        margin-left: 300px;
+    }
+    .blogs-site-detail .comment-form input{
+        width: 150px;
+    }
+}
+@media screen and (max-width:330px){
+    .hamburger {
+        margin-left: 260px;
+    }
 
+}
 
 @media screen and (max-width:280px){
+    .menu {
+        top: 3.7rem;
+        border-radius: 0px;
+    }
+   
+    .navbar .menu li a{
+        font-size: 20px;
+        
+    }
     .hamburger {
         margin-left: 180px;
         margin-top: -25px;
@@ -1006,5 +1123,30 @@ footer p{
         color:crimson;
         background: #b1b493;
     }
+    .blogs-site-detail .box #title{
+        font-size: 13px;
+    }
+    .blogs-site-detail .box img{
+        width: 180px
+    }
+    .blogs-site-detail .box .description{
+        text-align: left;
+    }
+    .blogs-site-detail .comments{
+        display: block;
+    }
+    .blogs-site-detail .comments div{
+        margin-top: 10px;
+    }
+    .blogs-site-detail .comments div>p{
+        font-size: 15px;
+    }
+    footer a{
+        font-size: 15px;
+    }
+    footer p{
+        font-size: 12px;
+    }
 
+    
 }
