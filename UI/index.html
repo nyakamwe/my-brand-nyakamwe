@@ -185,21 +185,25 @@
                     </div>
 
                     <div class="row2">
-                        <form action="">
+                        <form action="" id="form-contact">
                             <div class="fields">
-                                <div class="field name">
-                                    <input type="text" placeholder="Your Name" required>
+                                <div class="field name control">
+                                    <input type="text" placeholder="Your Name" id="name">
+                                    <small>Error message</small>
                                 </div>
-                                <div class="field email">
-                                    <input type="email" placeholder="example@host.com" required>
+                                <div class="field email control">
+                                    <input type="text" placeholder="example@host.com" id="email">
+                                    <small>Error message</small>
                                 </div>
                                 
                             </div>        
-                                <div class="subject">
-                                    <input type="text" placeholder="Subject" required > 
+                                <div class="subject control">
+                                    <input type="text" placeholder="Subject" id="subject"> 
+                                    <small>Error message</small>
                                 </div>
-                                <div class="field textarea">
-                                    <textarea cols="30" rows="8" placeholder="Your Message" required></textarea>
+                                <div class="field textarea control">
+                                    <textarea cols="30" rows="8" placeholder="Your Message" id="text"></textarea>
+                                    <small>Error message</small>
                                 </div>
                                 <div class="button">
                                     <button type="submit">Send</button>
@@ -219,6 +223,7 @@
         </footer>
 
 <script src="app.js"></script>
+<script src="validate-contact.js"></script>
 </main>        
 </body>
 </html>

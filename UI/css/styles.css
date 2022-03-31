@@ -386,6 +386,32 @@ section .title::before{
     transition: all 0.3s ease;
 
 }
+.control{
+    margin-bottom: 10px;
+    margin-right: 30px;
+}
+#form-contact small{
+    font-size: 10px;
+    display: block;
+    visibility: hidden;
+
+}
+
+#form-contact .error small{
+    visibility: visible;
+    color: red;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#form-contact .success input, #form-contact .success textarea{
+    padding-right: 40px;
+    border-color: green;
+}
+#form-contact .error input, #form-contact .error textarea{
+    border-color: red;
+}
+
 
 .contact form .button button:hover{
     color: crimson;
