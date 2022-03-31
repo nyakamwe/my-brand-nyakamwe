@@ -46,7 +46,7 @@ function checkInputs(){
         setErrorFor(email, "Email is not valid!")
     }
     else{
-        
+
         //show success
         setSuccessFor(email)
 
@@ -117,3 +117,7 @@ function setSuccessFor(input){
 function isEmail(email){
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
 }
+
+
+
+

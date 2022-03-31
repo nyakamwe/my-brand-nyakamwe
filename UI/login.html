@@ -27,15 +27,21 @@
             </nav>
         </header>
 
-        <form action="" class="site-form">
+        <form action="" class="site-form" id="form-login">
             <h5>Login Here</h5>
-            <div>
+            <div class="form-control">
                 <label for="username">Username:</label>
-                <input type="text" name="" id="username" placeholder="Your Username" required>
+                <input type="text" name="" id="username-login" placeholder="Your Username">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
             </div>
-            <div>
+            <div class="form-control">
                 <label for="password">Password:</label>
-                <input type="password" name="" id="password" placeholder="Your Password" required>   
+                <input type="password" name="" id="password-login" placeholder="Your Password">  
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small> 
             </div>
             <!-- <input type="text" name="" id="password" placeholder="Your Password">   -->
             
@@ -52,6 +58,7 @@
             <p>Copyright Reserved by  N.A &copy; 2022</p>
         </footer>
 </main>
-<script src="app.js"></script>        
+<script src="app.js"></script>   
+<script src="validate-login.js"></script>     
 </body>
 </html>
