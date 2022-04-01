@@ -81,15 +81,16 @@ function checkInputs(){
         users.push({
             email:emailValue,
             username:usernameValue,
-            password:passwordValue
+            password:passwordValue,
+            role:"Admin"
         })
 
         localStorage.setItem('users', JSON.stringify(users))
 
-        
 
-        }
-
+        // redirect to login page
+        window.location.href="login.html"
+    }
 }
 
 

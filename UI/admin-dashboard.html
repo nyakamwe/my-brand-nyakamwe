@@ -112,12 +112,12 @@
                         </tr>
 
                     </thead>
-                    <tbody  align="center">
-                        <tr>
+                    <tbody  align="center" id="users-table-body">
+                        <!-- <tr>
                             <td>test</td>
                             <td>test@gmail.com</td>
                             <td>Admin</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
 
                 </table>
@@ -131,11 +131,11 @@
                             <th>Sender</th>
                             <th>Message</th>
                             <th>Date</th>
-
+                            
                         </tr>
 
                     </thead>
-                    <tbody  align="center">
+                    <tbody  align="center" id="messages-table-body">
                         <tr>
                             <td>test@gmail.com</td>
                             <td>Lorem ipsum dolor sit amet consectetur.</td>
@@ -158,25 +158,8 @@
                         </tr>
 
                     </thead>
-                    <tbody  align="center">
-                        <tr>
-                            <td>Full 3D Elements</td>
-                            <td>Lorem ipsum dolor sit amet consectetur.</td>
-                            <td>12-March,2022</td>
-                            <td>
-                            <a  href="#edit-article" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
-                            <a  href="#delete-article" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Full 3D Elements</td>
-                            <td>Lorem ipsum dolor sit amet consectetur.</td>
-                            <td>12-March,2022</td>
-                            <td>
-                            <a  href="#edit-article" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
-                            <a  href="#delete-article" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
-                            </td>
-                        </tr>
+                    <tbody  align="center" id="blogs-table-body">
+                        
                     </tbody>
 
                 </table>
@@ -185,18 +168,24 @@
 
             <!-- add article section start -->
             <section id="add-article">
-                <form action="" class="add-form">
+                <form action="" class="add-form" id="add-article-form">
                     <h5>Add New Article</h5>
-                    <div>
-                        <input type="text" name="" placeholder="Enter Title" required>
+                    <div class="form-control">
+                        <input type="text" name="blog-title" id="blog-title" placeholder="Enter Title">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
-                    <div>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Description"></textarea>
+                    <div class="form-control">
+                        <textarea name="blog-description" id="blog-description" cols="30" rows="10" placeholder="Description"></textarea>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
-                    <input type="file" name="article-poster"><br>
+                    <input type="file" name="blog-poster" id="blog-poster"><br>
                     
                     <button type="submit">
-                        <a href=""><i class="fas fa-save"></i> Save</a>
+                        <i class="fas fa-save"></i> Save
                     </button>
                 </form>
 
@@ -207,10 +196,10 @@
                 <form action="" class="add-form">
                     <h5>Edit Article</h5>
                     <div>
-                        <input type="text" name="" value="Full 3D Elements" required>
+                        <input type="text" name="" value="Symposium in ICT" required>
                     </div>
                     <div>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Description">Lorem ipsum dolor sit amet consectetur.</textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Description">Symposium in ICT</textarea>
                     </div>
                    <p>Currently:<a href="images/profile-1.jpg" style="color:black">profile-1.jpg</a></p>
                     <input type="file" name="article-poster"><br>
@@ -239,26 +228,32 @@
 
             <!-- add user section start -->
             <section id="add-user">
-                <form action="" class="add-form">
+                <form action="" class="add-form" id="add-user-form">
                     <h5>Add a New User</h5>
-                    <div>
-                        <input type="text" name="" id="" placeholder="Enter Username" required>
+                    <div class="form-control">
+                        <input type="text" name="" id="username" placeholder="Enter Username">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" name="" id="email" placeholder="Enter Email">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
                     <div>
-                        <input type="email" name="" id="" placeholder="Enter Email" required>
-                    </div>
-                    <div>
-                        <select name="" id="">
+                        <select name="role" id="role">
                             <option value="">--Assign Role--</option>
                             <option value="admin">Admin</option>  
                             <option value="blogger">Blogger</option>
                         </select>
                     </div>
                     
-                    <input type="file" name="profile-image"><br>
+                    <input type="file" name="" id="profile-image"><br>
                     
                     <button>
-                        <a href=""><i class="fas fa-save"></i> Save</a>
+                        <i class="fas fa-save"></i> Save
                     </button>
                 </form>
 
@@ -266,5 +261,6 @@
         </div>
 
     </div>
+    <script src="admin.js"></script>
 </body>
 </html>

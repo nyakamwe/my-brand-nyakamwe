@@ -1,4 +1,4 @@
-
+let messages = []
 const form_contact = document.getElementById('form-contact')
 const senderName = document.getElementById('name')
 const senderEmail = document.getElementById('email')
@@ -65,33 +65,27 @@ function checkInputs(){
         setSuccessFor(senderEmail)
         
 
-        // const logged_user={
-        //     usernameValue,
-        //     passwordValue
-        // }
-
-        // // check if user exists in our localStorage
-
-        // let usersJSON= localStorage.getItem('users');
-        // users = JSON.parse(usersJSON);
-        // users.forEach(function(user){
-
-        //  if (user.username === usernameValue && user.password === passwordValue){
-             
-        //      window.location.href="admin-dashboard.html"
-        //  }
-        //  else{
-
-        //      //show error
-        //     setErrorFor(username_login,"Username or Password do not exists!")
-
-        //      //show error
-        //      setErrorFor(password_login,"Username or Password do not exists!")
-        //  }
-        // })
         
+    }
+    
+    if(senderEmailValue !== '' && textValue !== '' && subjectValue !== '' && senderNameValue !== ''){
         
-        
+        window.location.href="index.html"
+
+        const messagesJSON = localStorage.getItem('messages')
+        if(messagesJSON !== null){
+            messages = JSON.parse(messagesJSON)
+            
+        }
+
+        messages.push({
+            sender:senderEmailValue,
+            name:senderNameValue,
+            message:textValue,
+            date:"31 March, 2022"
+            
+        })
+        localStorage.setItem('messages',JSON.stringify(messages))
     }
 }
 

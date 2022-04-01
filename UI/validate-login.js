@@ -51,6 +51,8 @@ function checkInputs(){
          if (user.username === usernameValue && user.password === passwordValue){
              
              window.location.href="admin-dashboard.html"
+           
+
          }
          else{
 
