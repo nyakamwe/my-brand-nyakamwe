@@ -13,7 +13,7 @@
         <header>
             <nav class="navbar">
                 <div class="max-width">
-                    <div class="logo"><a href="">Aima<span style="color:crimson,;opacity: 1;">ble</sp></a></div>
+                    <div class="logo"><a href="index.html">Aima<span style="color:crimson,;opacity: 1;">ble</sp></a></div>
                     <ul class="menu" id="myLinks">
                         <li class="menu-item"><a href="index.html" class="item">Home</a></li>
                         <li class="menu-item"><a href="login.html" class="item">Login</a></li>
@@ -27,30 +27,44 @@
             </nav>
         </header>
 
-        <form action="" class="site-form">
-            <h5>Register Here</h5>
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" name="" id="username" placeholder="Enter Username" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" name="" id="email" placeholder="Enter Email" required>
-            </div>
-
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="" id="password" placeholder="Enter Password" required>   
-            </div>
-
-            <div>
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" name="" id="confirm-password" placeholder="Confirm Your Password" required>   
-            </div>
-            
-            <a href="">Register</a>
-           
-        </form>
+        <div class="form-container">
+            <form action="" class="site-form" id="form-register">
+                <h5>Register Here</h5>
+                <div class="form-control">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" placeholder="Enter Username" >
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email" placeholder="Enter Email" >
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+    
+                <div class="form-control">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="Enter Password" >   
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+    
+                <div class="form-control">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Your Password" >
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <button>Register</button>
+                
+            </form>
+        </div>
+        
 
 
 
@@ -62,6 +76,7 @@
             <p>Copyright Reserved by  N.A &copy; 2022</p>
         </footer>
 </main>
-<script src="app.js"></script>        
+<script src="app.js"></script>  
+<script src="validation.js"></script>      
 </body>
 </html>
