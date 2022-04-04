@@ -13,7 +13,6 @@ form_register.addEventListener("submit", function(e){
 
     checkInputs();
 
-    form_register.reset();
 })
 
 
@@ -69,7 +68,9 @@ function checkInputs(){
     
     else{
         setSuccessFor(confirm_password)
-
+        // reset the form
+        form_register.reset();
+        
         // add user to the localstorage
 
         const usersJSON = localStorage.getItem('users')

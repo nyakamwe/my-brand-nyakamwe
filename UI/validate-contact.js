@@ -10,7 +10,6 @@ form_contact.addEventListener('submit',(e)=>{
 
     checkInputs();
 
-    form_contact.reset();
 })
 
 function checkInputs(){

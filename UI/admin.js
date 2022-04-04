@@ -16,7 +16,6 @@ add_form.addEventListener('submit', (e)=>{
 
     checkInputs();
 
-    add_form.reset();
 })
 
 function checkInputs(){
@@ -64,6 +63,8 @@ function checkInputs(){
         })
 
         localStorage.setItem('articles',JSON.stringify(articles))
+
+        window.location.href="admin-dashboard.html#dashboard"
     }
 
 
@@ -107,6 +108,9 @@ function checkInputs(){
 
         localStorage.setItem('users',JSON.stringify(users))
 
+        //clear the form
+        form_add_user.reset()
+
         //redirect to users page
         window.location.href="admin-dashboard.html#users"
     }
@@ -121,7 +125,7 @@ form_add_user.addEventListener('submit',function(e){
 
     checkInputs();
 
-    form_add_user.reset();
+    // form_add_user.reset();
 })
 
 // function to show error

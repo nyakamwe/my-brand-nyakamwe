@@ -11,7 +11,6 @@ form_login.addEventListener('submit',(e)=>{
 
     checkInputs();
 
-    form_login.reset();
 })
 
 function checkInputs(){
@@ -49,7 +48,14 @@ function checkInputs(){
         users.forEach(function(user){
 
          if (user.username === usernameValue && user.password === passwordValue){
-             
+
+            setSuccessFor(username_login)
+            setSuccessFor(password_login)
+
+            //clear the form
+            form_login.reset();
+
+            // redirect to admin page
              window.location.href="admin-dashboard.html"
            
 
