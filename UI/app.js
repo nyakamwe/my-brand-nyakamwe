@@ -51,3 +51,5 @@ function end(){
 
 //show animation when window loads
 window.addEventListener('DOMContentLoad',roll())
+
+
