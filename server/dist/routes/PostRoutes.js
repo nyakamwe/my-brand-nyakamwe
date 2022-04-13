@@ -24,6 +24,20 @@ router.get("/posts/:id", _postControllers.post_get_one); // updating post
 
 router.patch("/posts/:id", _uploadConfig.default.single('poster'), _postControllers.post_update); // delete post
 
-router.delete("/posts/:id", _postControllers.post_delete);
+router.delete("/posts/:id", _postControllers.post_delete); //comment
+
+router.post("/posts/:id/comment", _postControllers.authenticateToken, _postControllers.comment_one); //Contact or Messages
+
+router.get("/messages/", _postControllers.messages_get_all);
+router.post("/messages/", _postControllers.message_create); //like a post
+
+router.put("/posts/like", _postControllers.authenticateToken, _postControllers.post_like); //unlike a post
+
+router.put("/posts/:id/unlike", _postControllers.authenticateToken, _postControllers.post_unlike); //users//
+
+router.get("/users", _postControllers.users_get_all);
+router.post("/users", _postControllers.user_create); //login user
+
+router.post("/users/login", _postControllers.user_get_token);
 var _default = router;
 exports.default = _default;
