@@ -1,34 +1,26 @@
 import {mongoose} from "mongoose"
-import bcrypt from 'bcrypt'
-
-
-const userSchema = new mongoose.Schema({
-	username:{
-		type: String,
-		required: true
-	},
-	email:{
-		type: String
-	},
-	password:{
-		type: String,
-		required: true
-	}
-
-})
 
 const commentSchema = new mongoose.Schema({
+	postId:{
+		type:mongoose.Schema.Types.ObjectId,
+		ref:'Post'
+	},
     description:String
 })
 
-const contactSchema = new mongoose.Schema({
-	sender:{
-		type:String
+const likeSchema = new mongoose.Schema({
+	postId:{
+		type:mongoose.Schema.Types.ObjectId,
+		ref:'Post'
 	},
-	message:{
-		type:String
+	userId:{
+		type:mongoose.Schema.Types.ObjectId,
+		ref:'User'
 	}
-},{timestamps:true})
+    
+})
+
+
 
 
 const schema = new mongoose.Schema({
@@ -44,12 +36,7 @@ const schema = new mongoose.Schema({
 
 	comments:[commentSchema],
 
-	likes:[
-		{
-		type:mongoose.Schema.Types.ObjectId,
-		ref:'User'
-		}
-	],
+	likes:[likeSchema],
 
 	postedBy:{
 		type:mongoose.Schema.Types.ObjectId,
@@ -59,32 +46,6 @@ const schema = new mongoose.Schema({
 },{timestamps:true})
 
 
-
-userSchema.statics.isThisEmailInUSe = async function(email){
-	try {
-		const user = await this.findOne({email})
-		if(user) {
-			return false;
-		}else{
-			return true;
-		}
-		
-		
-	} catch (error) {
-		console.log('error', error.message);
-		return false;
-		
-	}
-
-	
-}
-
-userSchema.methods.passwordComparison = function(inputPassword){
-let user = this;
-  return bcrypt.compare(inputPassword, user.password);
-};
-
-export const User =mongoose.model("User", userSchema)
+export const Comment = mongoose.model("Comment", commentSchema)
 export const Post = mongoose.model("Post", schema)
-export const Contact = mongoose.model("Messages", contactSchema)
 

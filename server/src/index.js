@@ -7,11 +7,24 @@ const port = process.env.PORT || 3000
 
 // getting routes
 import routes from "./routes/PostRoutes"
+import userroutes from "./routes/UserRoutes"
+import contactroutes from "./routes/MessageRoutes"
+import commentroutes from "./routes/CommentRoutes"
+import likeroutes from "./routes/LikeRoutes"
 
 //creating express app
 const app =express();
+
+// allow to pass json into body
 app.use(express.json());
+
+//routing routes
 app.use("/api", routes);
+app.use("/api", userroutes);
+app.use("/api", contactroutes);
+app.use("/api", commentroutes);
+app.use("/api", likeroutes);
+
 app.use("/poster", express.static("uploads/blog/images"))
 
 app.use(express.urlencoded({extended:true}))

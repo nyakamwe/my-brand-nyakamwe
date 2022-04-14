@@ -6,6 +6,14 @@ var _mongoose = require("mongoose");
 
 var _PostRoutes = _interopRequireDefault(require("./routes/PostRoutes"));
 
+var _UserRoutes = _interopRequireDefault(require("./routes/UserRoutes"));
+
+var _MessageRoutes = _interopRequireDefault(require("./routes/MessageRoutes"));
+
+var _CommentRoutes = _interopRequireDefault(require("./routes/CommentRoutes"));
+
+var _LikeRoutes = _interopRequireDefault(require("./routes/LikeRoutes"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 require("dotenv").config();
@@ -13,9 +21,15 @@ require("dotenv").config();
 const port = process.env.PORT || 3000; // getting routes
 
 //creating express app
-const app = (0, _express.default)();
-app.use(_express.default.json());
+const app = (0, _express.default)(); // allow to pass json into body
+
+app.use(_express.default.json()); //routing routes
+
 app.use("/api", _PostRoutes.default);
+app.use("/api", _UserRoutes.default);
+app.use("/api", _MessageRoutes.default);
+app.use("/api", _CommentRoutes.default);
+app.use("/api", _LikeRoutes.default);
 app.use("/poster", _express.default.static("uploads/blog/images"));
 app.use(_express.default.urlencoded({
   extended: true
