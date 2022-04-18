@@ -7,9 +7,9 @@
     "build": "babel src -d dist",
     "start": "npm run build && nodemon dist/index.js",
     "test": "mocha src/test --timeout 50000",
-    "testLike": "mocha src/test/like_test.js",
     "coverage": "nyc npm run test",
-    "make-badges": "istanbul-badges-readme --readmeDir='../'"
+    "make-badges": "istanbul-badges-readme --readmeDir='../'",
+    "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "coverageReporters": [
     "json-summary"
@@ -39,6 +39,7 @@
     "@babel/register": "^7.17.7",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
+    "codecov": "^3.8.3",
     "istanbul-badges-readme": "^1.8.1",
     "mocha": "^9.2.2",
     "nyc": "^15.1.0"
