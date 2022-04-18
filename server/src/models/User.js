@@ -40,4 +40,8 @@ let user = this;
   return bcrypt.compare(inputPassword, user.password);
 };
 
+userSchema.statics.getUser = function (username) {
+	return this.find({ username: username });
+}
+
 export const User =mongoose.model("User", userSchema)

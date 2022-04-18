@@ -13,7 +13,7 @@ const post_like = async (req, res)=>{
 				return res.status(422).json({err:err})
 			}
 			else{
-				return res.status(200).json({message:"post liked!", result})
+				return res.status(200).json({message:"post liked!"})
 			}
 		})
 }
@@ -29,7 +29,7 @@ const post_unlike = (req, res)=>{
 				return res.status(422).json({err:err})
 			}
 			else{
-				return res.status(200).json({message:"unliked post!", result})
+				return res.status(200).json({message:"unliked post!"})
 			}
 		})
 }

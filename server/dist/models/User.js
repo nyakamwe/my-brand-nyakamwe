@@ -47,6 +47,12 @@ userSchema.methods.passwordComparison = function (inputPassword) {
   return _bcrypt.default.compare(inputPassword, user.password);
 };
 
+userSchema.statics.getUser = function (username) {
+  return this.find({
+    username: username
+  });
+};
+
 const User = _mongoose.default.model("User", userSchema);
 
 exports.User = User;

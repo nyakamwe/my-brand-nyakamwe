@@ -11,21 +11,25 @@ const post_get_all = async (req, res) => {
 
 // create new post
 const post_create = async (req, res) => {
-	if(req.body.title === '' || req.body.content === ''){
-		return res.status(203).json({message:"Title and content are required"})
-	}
-	else{
-		const post = new Post({
-			title: req.body.title,
-			content: req.body.content,
-			image:req.file.filename,
+	try {
+		if(req.body.title === '' || req.body.content === ''){
+			return res.status(400).json({message:"Title and content are required"})
+		}
+		else{
+			const post = new Post({
+				title: req.body.title,
+				content: req.body.content
+				
+		
+			})
+			await post.save()
 	
-		})
-		await post.save()
-
-		return res.status(201).json({data:post, status:201, message:"Post Saved successfully", 
-									imageUrl:`http://localhost:${process.env.PORT}/poster/${req.file.filename}`})
+			return res.status(201).json({status:201, message:"Post Saved successfully"})
+		}
+	} catch (error) {
+		return res.status(403).json({message:"Invalid token"})
 	}
+	
 	
 }
 
@@ -35,13 +39,13 @@ const post_get_one = async (req, res) => {
 		const post = await Post.findOne({ _id: req.params.id })
 
 		if(post === null){
-			return res.status(204).json({message:"Post of that id is not available"});
+			return res.status(404).json({message:"Post of that id is not available"});
 		}
 
 		return res.status(200).json({data:post, message:"successfully fetched"});
 
 	} catch {
-		return res.status(404).json({error: "Post doesn't exist!"})
+		return res.status(404).json({error: "Post does not exist!"})
 	}
 }
 
@@ -50,21 +54,18 @@ const post_update = async (req, res) => {
 	try {
 		const post = await Post.findOne({ _id: req.params.id })
 
-		if (req.body.title) {
-			post.title = req.body.title
-		}
-
-		if (req.body.content) {
+		if (req.body.title.length > 0 && req.body.content.length > 0) {
+			post.title = req.body.title,
 			post.content = req.body.content
-			post.comment=req.body.comment,
-			post.likes=req.body.likes
-		}
-		
 
-		await post.save()
-		return res.status(200).json({data:post, message:"Post successfully updated!", 
-									imageUrl:`http://localhost:${process.env.PORT}}/poster/${req.file.filename}`});
-		
+
+			await post.save()
+			return res.status(200).json({message:"Post successfully updated!"});
+		}
+		else{
+			return res.status(400).json({message:"Title and content need value!"});
+		}
+
 	} catch {
 		return res.status(404).json({error: "Post doesn't exist!"})
 	}
@@ -73,11 +74,19 @@ const post_update = async (req, res) => {
 // delete a post
 const post_delete = async (req, res) => {
 	try {
-		await Post.deleteOne({ _id: req.params.id })
+		const post = await Post.findById(req.params.id)
+		if(post != null){
 
-		return res.status(204).json({Message: "Post deleted successfully!"})
+			await post.remove();
+			return res.status(200).json({message: "Post deleted successfully!"})
+		}
+		else{
+			return res.status(404).json({error: "Post doesn't exist!"})
+		}
+
+		
 	} catch {
-		return res.status(404).json({error: "Post doesn't exist!"})
+		return res.status(500).json({error: "Server error"})
 	}
 }
 

@@ -32,7 +32,7 @@ const user_create = async (req, res)=>{
 	
 		await user.save()
 	
-		return res.status(201).json({data:user, message:"user created!"})
+		return res.status(201).json({message:"user created!"})
 		
 	} catch (error) {
 		return res.status(500).json({error:error.message})

@@ -3,7 +3,7 @@ import {Contact} from '../models/Contact'
 //contact or mesages
 const messages_get_all = (req, res)=>{
     const messages = Contact.find().then((result)=>{
-        return res.status(200).json({data:result, messages:"contacts fetched!"})
+        return res.status(200).json({message:"contacts fetched!"})
     }).catch(error =>{
         console.log(error)
     })
@@ -22,7 +22,7 @@ const message_create = async(req, res)=>{
         })
         await message.save()
 
-        return res.status(201).json({data:message, message:"Message Sent successfully"})
+        return res.status(201).json({message:"Message Sent successfully"})
     }
 }
 

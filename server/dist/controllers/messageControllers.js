@@ -11,8 +11,7 @@ var _Contact = require("../models/Contact");
 const messages_get_all = (req, res) => {
   const messages = _Contact.Contact.find().then(result => {
     return res.status(200).json({
-      data: result,
-      messages: "contacts fetched!"
+      message: "contacts fetched!"
     });
   }).catch(error => {
     console.log(error);
@@ -34,7 +33,6 @@ const message_create = async (req, res) => {
     });
     await message.save();
     return res.status(201).json({
-      data: message,
       message: "Message Sent successfully"
     });
   }

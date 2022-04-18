@@ -1,9 +1,10 @@
 import express from 'express'
-
+import cors from 'cors'
+import morgan from "morgan";
 require("dotenv").config();
-
+import swaggerUI from 'swagger-ui-express'
+import swaggerDoc from "../swagger.json";
 import {mongoose} from 'mongoose'
-const port = process.env.PORT || 3000
 
 // getting routes
 import routes from "./routes/PostRoutes"
@@ -15,8 +16,12 @@ import likeroutes from "./routes/LikeRoutes"
 //creating express app
 const app =express();
 
+const port = process.env.PORT || 3000
+
 // allow to pass json into body
 app.use(express.json());
+
+
 
 //routing routes
 app.use("/api", routes);
@@ -25,9 +30,30 @@ app.use("/api", contactroutes);
 app.use("/api", commentroutes);
 app.use("/api", likeroutes);
 
+
+//swagger documentation
+app.use(morgan("dev"));
+app.use("/api/", routes, userroutes, contactroutes, commentroutes, likeroutes);
+app.use(
+	"/api-docs",
+	swaggerUI.serve,
+	swaggerUI.setup(swaggerDoc, { explorer: true })
+);
+
+app.use("*", (req, res, next) => {
+	res.status(404).json({
+		error: "NOT FOUND",
+	});
+});
+
+
+//serve static images
 app.use("/poster", express.static("uploads/blog/images"))
 
 app.use(express.urlencoded({extended:true}))
+
+app.use(cors())
+
 
 // Connect to MongoDB database
 const dbURI =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@node-applications.fe4au.mongodb.net/node-tutorial?retryWrites=true&w=majority`
@@ -40,10 +66,7 @@ mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true}).then((re
     })
     
 //listening to the request on server
-app.listen(port, ()=>{
-    console.log('Server started listening')
+export default app.listen(port, ()=>{
+    console.log('Server started listening on ' + port)
   
 });    
-
-
-

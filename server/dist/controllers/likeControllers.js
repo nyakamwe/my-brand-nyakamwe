@@ -27,8 +27,7 @@ const post_like = async (req, res) => {
       });
     } else {
       return res.status(200).json({
-        message: "post liked!",
-        result
+        message: "post liked!"
       });
     }
   });
@@ -56,8 +55,7 @@ const post_unlike = (req, res) => {
       });
     } else {
       return res.status(200).json({
-        message: "unliked post!",
-        result
+        message: "unliked post!"
       });
     }
   });

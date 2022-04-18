@@ -21,10 +21,10 @@ const comment_one = async (req, res) => {
     post.comments.push(newComment);
     await post.save();
     return res.status(201).json({
-      comments: newComment
+      comment: newComment
     });
   } else {
-    return res.json({
+    return res.status(404).json({
       message: "Post not available"
     });
   }
@@ -46,12 +46,11 @@ const comment_get_all = async (req, res) => {
 
     if (comments.length > 0) {
       return res.status(200).json({
-        comments,
-        post
+        comments
       });
     } else {
       return res.status(404).json({
-        comments: "no comments related to this post"
+        comment: "no comments related to this post"
       });
     }
   } catch (error) {
@@ -69,7 +68,7 @@ const comment_get_one = async (req, res) => {
     const commentId = req.params.id;
     const comment = await _Post.Comment.findById(commentId);
 
-    if (comment) {
+    if (comment != null) {
       return res.status(200).json({
         comment
       });
@@ -93,7 +92,7 @@ const comment_delete = async (req, res) => {
     const commentId = req.params.id;
     const comment = await _Post.Comment.findById(commentId);
 
-    if (comment) {
+    if (comment != null) {
       // delete a comment
       await _Post.Comment.deleteOne(comment);
       return res.status(200).json({
