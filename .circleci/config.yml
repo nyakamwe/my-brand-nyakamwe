@@ -10,10 +10,7 @@ jobs:
     steps:
       - checkout:
           path: ~/project
-      - node/install-packages:
-          app-dir: ~/project/server
-          cache-path: node_modules
-          pkg-manager: npm
+      - run: npm install
       - run: npm run test
       - run: npm run build
 
