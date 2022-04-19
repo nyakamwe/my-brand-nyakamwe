@@ -151,3 +151,16 @@ if (req.body.content) {
 
 imageUrl: `http://localhost:${process.env.PORT}}/poster/${req.file.filename}`; ///
 //625943e64e9dd47477f9be96
+///
+
+
+it('when post have no comment', done => {
+  const postId = id;
+  chai.request(server).get(`/api/posts/${postId}/comment`).send({
+    postId
+  }).end((err, response) => {
+    response.should.have.status(404);
+    response.body.should.have.property('comment').eql("no comments related to this post");
+    done();
+  });
+});

@@ -5,3 +5,4 @@ requests.rest
 .nyc_output
 coverage
 *.lcov
+blog_test.js

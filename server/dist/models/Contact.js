@@ -21,6 +21,6 @@ const contactSchema = new _mongoose.mongoose.Schema({
   timestamps: true
 });
 
-const Contact = _mongoose.mongoose.model("Messages", contactSchema);
+const Contact = _mongoose.mongoose.model("Message", contactSchema);
 
 exports.Contact = Contact;
