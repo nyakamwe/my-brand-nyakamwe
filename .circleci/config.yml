@@ -6,6 +6,10 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers
       - image: circleci/mongo:4.2
+        environment:
+          - DB_USER: dbUser
+          - DB_PASSWORD: test12345
+        
     working_directory: ~/project/server
     steps:
       - checkout:
