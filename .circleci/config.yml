@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout:
           path: ~/project
-      - node/install-npm
       - node/install-packages:
           app-dir: ~/project/server
           cache-path: node_modules
