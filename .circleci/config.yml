@@ -6,14 +6,24 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers
       - image: circleci/mongo:4.2
+        port: 27017:27017
         environment:
-          - DB_USER: dbUser
-          - DB_PASSWORD: test12345
+          - DB_USER: "dbUser"
+          - DB_PASSWORD: "test12345"
         
     working_directory: ~/project/server
     steps:
       - checkout:
           path: ~/project
+      - run:
+          name: MongoDB Install
+          command: |
+            sudo apt-get install -y mongodb
+      - run:
+          name: Database Setup
+          command: mongodb && mongo --eval 'db.createUser({ user: "dbUser", pwd: "test12345", roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] })'
+
+          
       - run: npm install
       - run: npm run build
       - run: npm run test
