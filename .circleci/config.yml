@@ -1,37 +1,32 @@
 version: 2
 jobs:
-  lint:
-    docker:
-      - image: circleci/node:12.4
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: npm install eslint
-      - run: npm run lint
   node-6.0:
     docker:
       - image: circleci/node:6
-    working_directory: ~/repo
+    working_directory: ~/project/server
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
       - run: npm install
       - run: npm run test
 
   node-12.4:
     docker:
       - image: circleci/node:12.4
-    working_directory: ~/repo
+    working_directory: ~/project/server
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
       - run: npm install
       - run: npm run test
 
   codecov:
     docker:
       - image: circleci/node:12.4
-    working_directory: ~/repo
+    working_directory: ~/project/server
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
       - run: npm install
       - run: npm run coverage
       - run: npm run codecov
@@ -40,7 +35,6 @@ workflows:
   version: 2
   build:
     jobs:
-      - lint
       - node-6.0
       - node-12.4
       - codecov
