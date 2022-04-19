@@ -4,13 +4,19 @@ orbs:
 jobs:
   node-12.4:
     docker:
-      - image: circleci/node:12.4
+      - image: cimg/node:12.4
+      - image: circleci/mongo:4.2
     working_directory: ~/project/server
     steps:
       - checkout:
           path: ~/project
-      - run: npm install
+      - node/install-npm
+      - node/install-packages:
+          app-dir: ~/project/server
+          cache-path: node_modules
+          pkg-manager: npm
       - run: npm run test
+      - run: npm run build
 
 workflows:
   version: 2
