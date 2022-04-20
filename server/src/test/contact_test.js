@@ -7,7 +7,6 @@ require("dotenv").config();
 
 
 //to mock a function during testing
-import sinon from 'sinon'
 import { User } from '../models/User';
 
 let user, autToken;
