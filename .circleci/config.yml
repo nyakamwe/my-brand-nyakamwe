@@ -16,7 +16,7 @@ jobs:
       - run: npm run build
       - run:
           name: copy env file
-          command: cp .env .env
+          command: cp .env.example .env
       - run: npm run test
       - run: npm run coverage
       - run: npm run make-badges
