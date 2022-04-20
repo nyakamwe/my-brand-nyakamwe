@@ -11,12 +11,9 @@ jobs:
     working_directory: ~/project/server
     steps:
       - checkout:
-          path: ~/project 
+          path: ~/project
       - run: npm install
       - run: npm run build
-      - run:
-          name: copy env file
-          command: cp .env .env
       - run: npm run test
       - run: npm run coverage
       - run: npm run make-badges
