@@ -45,7 +45,12 @@ describe('Test for Comment Endpoints', () => {
   */
 
   describe('POST /api/posts/:id/comment', () => {
-    // create user and login 
+    before(() => {
+      _mongoose.default.connection.dropCollection('users');
+
+      _mongoose.default.connection.dropCollection('comments');
+    }); // create user and login 
+
     it('creates new user ', done => {
       const newUser = new _User.User({
         username: "menase",
@@ -101,7 +106,7 @@ describe('Test for Comment Endpoints', () => {
         postId,
         description: "testing a comment"
       });
-      newComment.save;
+      newComment.save();
 
       _chai.default.request(_index.default).post(`/api/posts/${postId}/comment`).send(newComment).set('Authorization', 'Bearer ' + autToken).end((err, response) => {
         response.should.have.status(201);
@@ -131,49 +136,6 @@ describe('Test for Comment Endpoints', () => {
   */
 
   describe('GET /api/posts/:id/comment', () => {
-    // /**
-    // * POST comment route
-    // */
-    //  describe('POST /api/posts/:id/comment', ()=>{
-    //     it('comment on a post', (done)=>{
-    //         const postId = id;
-    //         const newComment ={
-    //             postId,
-    //             description:"testing a comment"
-    //         };
-    //         chai.request(server)
-    //         .post(`/api/posts/${postId}/comment`)
-    //         .send(newComment)
-    //         .set('Authorization', 'Bearer ' + autToken )
-    //         .end((err, response)=>{
-    //             response.should.have.status(201);
-    //             response.body.should.be.a('object');
-    //             response.body.should.have.property('comment')
-    //         done();
-    //         })
-    //     })
-    //     it('handles when you want to comment on non existing post', (done)=>{
-    //         const postId = "62597f8412f8da13b4e0a385"
-    //         const newComment ={
-    //             postId,
-    //             description:"testing a comment"
-    //         };
-    //         chai.request(server)
-    //         .post(`/api/posts/${postId}/comment`)
-    //         .send(newComment)
-    //         .set('Authorization', 'Bearer ' + autToken )
-    //         .end((err, response)=>{
-    //             response.should.have.status(404);
-    //             response.body.should.be.a('object');
-    //             response.body.should.have.property('message').eql("Post not available");
-    //         done();
-    //         })
-    //     })
-    // })
-
-    /**
-    * GET comment route
-    */
     it('shows all comments related to specific post', done => {
       const postId = id;
 
@@ -186,7 +148,6 @@ describe('Test for Comment Endpoints', () => {
       });
     });
     it('show error when that post in not in DB', done => {
-      console.log(cId);
       const postId = "625b07c93cc2f2b0163f1a75";
 
       _chai.default.request(_index.default).get(`/api/posts/${postId}/comment`).send({
