@@ -8,24 +8,16 @@ jobs:
       - image: circleci/mongo:4.2
         port: 27017:27017
         environment:
-          - DB_USER: "dbUser"
-          - DB_PASSWORD: "test12345"
-        
+          - DB_CONNECTION_STRING: `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@node-applications.fe4au.mongodb.net/node-tutorial?retryWrites=true&w=majority`
     working_directory: ~/project/server
     steps:
       - checkout:
-          path: ~/project
-      - run:
-          name: MongoDB Install
-          command: |
-            sudo apt-get install -y mongodb
-      - run:
-          name: Database Setup
-          command: mongodb && mongo --eval 'db.createUser({ user: "dbUser", pwd: "test12345", roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] })'
-
-          
+          path: ~/project 
       - run: npm install
       - run: npm run build
+      - run:
+          name: copy env file
+          command: cp .env .env
       - run: npm run test
       - run: npm run coverage
       - run: npm run make-badges
