@@ -8,7 +8,7 @@ jobs:
       - image: circleci/mongo:4.2
         port: 27017:27017
         environment:
-          - DB_CONNECTION_STRING: `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@node-applications.fe4au.mongodb.net/node-tutorial?retryWrites=true&w=majority`
+          - DB_CONNECTION_STRING: "mongodb+srv://${DB_USER}:${DB_PASSWORD}@node-applications.fe4au.mongodb.net/node-tutorial?retryWrites=true&w=majority"
     working_directory: ~/project/server
     steps:
       - checkout:
