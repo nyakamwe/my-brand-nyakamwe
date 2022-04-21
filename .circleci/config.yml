@@ -1,0 +1,26 @@
+version: 2
+orbs:
+  node: circleci/node@4.7.0
+jobs:
+  node-12.4:
+    docker:
+      - image: circleci/node:latest-browsers
+      - image: circleci/mongo:4.2
+        environment:
+          - DB_CONNECTION_STRING: "mongodb+srv://${DB_USER}:${DB_PASSWORD}@node-applications.fe4au.mongodb.net/node-tutorial?retryWrites=true&w=majority"
+    working_directory: ~/project/server
+    steps:
+      - checkout:
+          path: ~/project
+      - run: npm install
+      - run: npm run build
+      - run: npm run test
+      - run: npm run coverage
+      - run: npm run make-badges
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - node-12.4: 
+          context: mongo
