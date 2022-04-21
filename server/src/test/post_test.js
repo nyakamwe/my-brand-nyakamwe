@@ -186,16 +186,16 @@ describe("POST /api/posts", ()=>{
         
     })
 
-    it("not returns all posts", (done)=>{
-        chai.request(server)
-        .get("/api/post")
-        .end((err, response)=>{
-            response.should.have.status(404);
+    // it("not returns all posts", (done)=>{
+    //     chai.request(server)
+    //     .get("/api/post")
+    //     .end((err, response)=>{
+    //         response.should.have.status(404);
 
-        done();
-        })
+    //     done();
+    //     })
         
-    })
+    // })
 
     
 });

@@ -7,23 +7,27 @@ exports.Post = exports.Comment = void 0;
 
 var _mongoose = require("mongoose");
 
+var _User = _interopRequireDefault(require("./User"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const commentSchema = new _mongoose.mongoose.Schema({
   postId: {
     type: _mongoose.mongoose.Schema.Types.ObjectId,
     ref: 'Post'
   },
   description: String
-});
-const likeSchema = new _mongoose.mongoose.Schema({
-  postId: {
-    type: _mongoose.mongoose.Schema.Types.ObjectId,
-    ref: 'Post'
-  },
-  userId: {
-    type: _mongoose.mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }
-});
+}); // const likeSchema = new mongoose.Schema({
+// 	userId:{
+// 		type:mongoose.Schema.Types.ObjectId,
+// 		ref: 'User'
+// 	},
+// 	postId:{
+// 		type:mongoose.Schema.Types.ObjectId,
+// 		ref:'Post'
+// 	}
+// })
+
 const schema = new _mongoose.mongoose.Schema({
   title: {
     type: String,
@@ -35,7 +39,7 @@ const schema = new _mongoose.mongoose.Schema({
   },
   image: String,
   comments: [commentSchema],
-  likes: [likeSchema],
+  likes: [],
   postedBy: {
     type: _mongoose.mongoose.Schema.Types.ObjectId,
     ref: 'User'

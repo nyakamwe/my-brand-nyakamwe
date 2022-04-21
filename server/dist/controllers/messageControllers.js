@@ -8,14 +8,17 @@ exports.messages_get_all = exports.message_create = void 0;
 var _Contact = require("../models/Contact");
 
 //contact or mesages
-const messages_get_all = (req, res) => {
-  const messages = _Contact.Contact.find().then(result => {
+const messages_get_all = async (req, res) => {
+  try {
+    const messages = await _Contact.Contact.find();
+    if (messages == null) return res.status(404);
     return res.status(200).json({
+      data: messages,
       message: "contacts fetched!"
     });
-  }).catch(error => {
-    console.log(error);
-  });
+  } catch (error) {
+    return res.status(404);
+  }
 };
 
 exports.messages_get_all = messages_get_all;

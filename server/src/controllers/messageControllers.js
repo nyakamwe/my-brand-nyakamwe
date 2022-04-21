@@ -1,14 +1,17 @@
 import {Contact} from '../models/Contact'
 
 //contact or mesages
-const messages_get_all = (req, res)=>{
-    const messages = Contact.find().then((result)=>{
-        return res.status(200).json({message:"contacts fetched!"})
-    }).catch(error =>{
-        console.log(error)
-    })
+const messages_get_all = async (req, res)=>{
+    try{
+        const messages = await Contact.find();
+        if (messages == null) return  res.status(404)
+       
+        return res.status(200).json({data:messages, message:"contacts fetched!"})
+        } catch(error){
+        return res.status(404)
     }
     
+}
 const message_create = async(req, res)=>{
     if(req.body.sender === '' || req.body.message === ''){
         return res.status(403).json({message:"sender and message are required"})

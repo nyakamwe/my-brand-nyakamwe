@@ -5,3 +5,4 @@ requests.rest
 coverage
 *.lcov
 blog_test.js
+.env

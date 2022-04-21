@@ -10,8 +10,6 @@ var _chaiHttp = _interopRequireDefault(require("chai-http"));
 
 var _Post = require("../models/Post");
 
-var _sinon = _interopRequireDefault(require("sinon"));
-
 var _User = require("../models/User");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -89,12 +87,13 @@ describe('Test for Message Endpoints', () => {
         response.body.should.property('message').eql("contacts fetched!");
         done();
       });
-    });
-    it('don\'t return any message', done => {
-      _chai.default.request(_index.default).get("/api/message").end((err, response) => {
-        response.should.have.status(404);
-        done();
-      });
-    });
+    }); // it('don\'t return any message', (done)=>{
+    //     chai.request(server)
+    //     .get("/api/message")
+    //     .end((err, response)=>{
+    //         response.should.have.status(404);
+    //     done();
+    //     })
+    // })
   });
 });

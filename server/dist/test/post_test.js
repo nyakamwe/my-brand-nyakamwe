@@ -10,8 +10,6 @@ var _chaiHttp = _interopRequireDefault(require("chai-http"));
 
 var _Post = require("../models/Post");
 
-var _sinon = _interopRequireDefault(require("sinon"));
-
 var _User = require("../models/User");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -138,13 +136,14 @@ describe('Test for Post Endpoints', () => {
         response.body.message.should.be.eq("Fetched successfully");
         done();
       });
-    });
-    it("not returns all posts", done => {
-      _chai.default.request(_index.default).get("/api/post").end((err, response) => {
-        response.should.have.status(404);
-        done();
-      });
-    });
+    }); // it("not returns all posts", (done)=>{
+    //     chai.request(server)
+    //     .get("/api/post")
+    //     .end((err, response)=>{
+    //         response.should.have.status(404);
+    //     done();
+    //     })
+    // })
   });
   /**
    * test GET(by id) post route

@@ -10,8 +10,6 @@ var _chaiHttp = _interopRequireDefault(require("chai-http"));
 
 var _Post = require("../models/Post");
 
-var _sinon = _interopRequireDefault(require("sinon"));
-
 var _User = require("../models/User");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

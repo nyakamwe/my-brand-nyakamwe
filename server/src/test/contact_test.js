@@ -93,19 +93,20 @@ describe('POST /api/messages', ()=>{
         .get("/api/messages")
         .end((err, response)=>{
             response.should.have.status(200);
+            
             response.body.should.property('message').eql("contacts fetched!")
         done();
         })
     })
 
-    it('don\'t return any message', (done)=>{
-        chai.request(server)
-        .get("/api/message")
-        .end((err, response)=>{
-            response.should.have.status(404);
-        done();
-        })
-    })
+    // it('don\'t return any message', (done)=>{
+    //     chai.request(server)
+    //     .get("/api/message")
+    //     .end((err, response)=>{
+    //         response.should.have.status(404);
+    //     done();
+    //     })
+    // })
 })
 
 

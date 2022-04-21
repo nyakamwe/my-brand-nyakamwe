@@ -4,15 +4,17 @@ import { Post } from "../models/Post"
 // like a post
 const post_like = async (req, res)=>{
 	const id = req.body.postId
+	
 
 	Post.findByIdAndUpdate(id,{
-		$push:{likes:{postId:id, userId:req.user.id}}},{
+		$push:{likes:{postId:id, user:req.user.username}}},{
 			new:true
 		}).exec((err, result)=>{
 			if(err){
 				return res.status(422).json({err:err})
 			}
 			else{
+				
 				return res.status(200).json({message:"post liked!"})
 			}
 		})

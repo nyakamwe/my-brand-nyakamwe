@@ -15,7 +15,7 @@ const post_like = async (req, res) => {
     $push: {
       likes: {
         postId: id,
-        userId: req.user.id
+        user: req.user.username
       }
     }
   }, {
