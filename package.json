@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist",
     "start_dev": "npm run build && nodemon dist/index.js",
-    "start": "npm run buil && node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "test": "mocha src/test --timeout 600000 --exit",
     "coverage": "nyc npm run test",
     "make-badges": "istanbul-badges-readme --readmeDir='../'",
