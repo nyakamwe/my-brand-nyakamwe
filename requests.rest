@@ -1,0 +1,43 @@
+GET http://localhost:3000/api/messages/
+
+###
+GET http://localhost:3000/api/posts/
+
+
+###
+GET http://localhost:3000/api/users
+
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "username":"kezay",
+    "email":"kezay@gmail.com",
+    "password":"kayi"
+}
+
+###
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+    "username":"test",
+    "password":"test12345"
+}
+### 
+POST http://localhost:3000/api/posts/625529b975999033f849ee60/comment/
+Content-Type: application/json
+
+{
+    "comment":"hey it is good post"
+}
+
+### 
+PUT http://localhost:3000/api/posts/like
+
+Content-Type: application/json
+
+{
+    "postId":"625529b975999033f849ee60"
+}
