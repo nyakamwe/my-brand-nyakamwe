@@ -33,13 +33,16 @@ const schema = new mongoose.Schema({
 		type:String,
 		required:true
 	},
-	image:String,
+	poster: {
+		type:String,
+		required:true
+	},
 
 	comments:[commentSchema],
 
 	likes:[],
 
-	postedBy:{
+	postedBy: {
 		type:mongoose.Schema.Types.ObjectId,
 		ref:'User'
 	}

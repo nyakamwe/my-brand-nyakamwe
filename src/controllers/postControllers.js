@@ -1,33 +1,52 @@
 // import models
 import {Post} from '../models/Post'
-
+import cloudinary from '../helpers/cloudinaryImage'
 
 
 // get all posts
 const post_get_all = async (req, res) => {
 	const posts = await Post.find().sort({createdAt: -1})
-	return res.json({data:posts, status:200, message:"Fetched successfully"})
+	return res.json({posts, status:200, message:"Fetched successfully"})
 }
 
 // create new post
 const post_create = async (req, res) => {
+	
 	try {
 		if(req.body.title === '' || req.body.content === ''){
 			return res.status(400).json({message:"Title and content are required"})
 		}
 		else{
+
+			// generating link from cloudinary
+			const cloud_save = await cloudinary.uploader.upload(req.file.path, {
+				with:500,
+				height:500,
+				crop:'fill'
+
+			})
+
+			// new post
 			const post = new Post({
 				title: req.body.title,
-				content: req.body.content
+				content: req.body.content,
+				poster: cloud_save.url
 				
-		
+				
 			})
+
+			
 			await post.save()
 	
-			return res.status(201).json({status:201, message:"Post Saved successfully"})
+			return res.status(201).json({
+				status:201, 
+				message:"Post Saved successfully", 
+				success:1,
+				posterUrl:`${cloud_save.url}`
+			})
 		}
 	} catch (error) {
-		return res.status(403).json({message:"Invalid token"})
+		return res.status(403).json({message:error.message})
 	}
 	
 	

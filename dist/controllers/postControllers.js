@@ -7,6 +7,10 @@ exports.post_update = exports.post_get_one = exports.post_get_all = exports.post
 
 var _Post = require("../models/Post");
 
+var _cloudinaryImage = _interopRequireDefault(require("../helpers/cloudinaryImage"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 // import models
 // get all posts
 const post_get_all = async (req, res) => {
@@ -14,7 +18,7 @@ const post_get_all = async (req, res) => {
     createdAt: -1
   });
   return res.json({
-    data: posts,
+    posts,
     status: 200,
     message: "Fetched successfully"
   });
@@ -30,19 +34,29 @@ const post_create = async (req, res) => {
         message: "Title and content are required"
       });
     } else {
+      // generating link from cloudinary
+      const cloud_save = await _cloudinaryImage.default.uploader.upload(req.file.path, {
+        with: 500,
+        height: 500,
+        crop: 'fill'
+      }); // new post
+
       const post = new _Post.Post({
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        poster: cloud_save.url
       });
       await post.save();
       return res.status(201).json({
         status: 201,
-        message: "Post Saved successfully"
+        message: "Post Saved successfully",
+        success: 1,
+        posterUrl: `${cloud_save.url}`
       });
     }
   } catch (error) {
     return res.status(403).json({
-      message: "Invalid token"
+      message: error.message
     });
   }
 }; // get individual post

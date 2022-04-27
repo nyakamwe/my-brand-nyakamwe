@@ -83,14 +83,12 @@ describe('Test for Comment Endpoints', () => {
 
     it("creates a new post", done => {
       const userToken = 'Bearer ' + autToken;
-      const post = new _Post.Post({
-        title: "unit testing",
-        content: "I am testing nodejs api using mocha with chai assertion library"
-      });
-      post.save();
 
       _chai.default.request(_index.default).post("/api/posts") //set the auth header with our token
-      .set('Authorization', 'Bearer ' + autToken).send(post).end(function (error, response) {
+      .set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
+        title: "unit testing",
+        content: "I am testing nodejs api using mocha with chai assertion library"
+      }).attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png').end(function (error, response) {
         response.should.have.status(201);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("Post Saved successfully");

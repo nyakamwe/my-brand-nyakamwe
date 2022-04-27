@@ -99,23 +99,57 @@ describe("POST /api/posts", ()=>{
             content: "I am testing nodejs api using mocha with chai assertion library"
             
         })
+        
         post.save()
         
         chai.request(server)
         .post("/api/posts")
     
         //set the auth header with our token
+        .set('Content-Type', 'multipart/form-data')
         .set('Authorization', 'Bearer ' + autToken)
-        .send(post)
+        .field({
+            title: "unit testing",
+            content: "I am testing nodejs api using mocha with chai assertion library"
+            
+        })
+        .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
         .end(function(error, response) {
             response.should.have.status(201);
             response.body.should.be.a('object');
             response.body.should.have.property('message').eql("Post Saved successfully");
 
-            id= post.id
+            id = post.id;
         done();  
         });
     })
+
+    // it("creates a new post", (done)=>{
+    //     const userToken = 'Bearer ' + autToken
+        
+    //     const post = new Post({
+    //         title: "unit testing",
+    //         content: "I am testing nodejs api using mocha with chai assertion library"
+            
+    //     })
+        
+    //     post.save()
+        
+    //     chai.request(server)
+    //     .post("/api/posts")
+    
+    //     //set the auth header with our token
+    //     .set('Authorization', 'Bearer ' + autToken)
+    //     .send(post)
+    //     .end(function(error, response) {
+    //         response.should.have.status(201);
+    //         response.body.should.be.a('object');
+    //         response.body.should.have.property('message').eql("Post Saved successfully");
+
+    //         id= post.id
+    //     done();  
+    //     });
+    // })
         
 
     const userToken = 'Bearer ' + autToken
@@ -136,7 +170,7 @@ describe("POST /api/posts", ()=>{
         .set('Authorization', userToken)
         .end(function(error, response) {
             response.should.have.status(403);
-            response.body.should.have.property('message').eql("Invalid token");
+            response.body.should.have.property('message').eql("Invalid Token");
         done();  
         });
        
@@ -178,6 +212,7 @@ describe("POST /api/posts", ()=>{
     it("returns all posts", (done)=>{
         chai.request(server)
         .get("/api/posts")
+        .set('Authorization', 'Bearer ' + autToken)
         .end((err, response)=>{
             response.should.have.status(200);
             response.body.message.should.be.eq("Fetched successfully")
@@ -210,6 +245,7 @@ describe("GET /api/posts/:id", ()=>{
         const postId = id;
         chai.request(server)
         .get(`/api/posts/${postId}`)
+        .set('Authorization', 'Bearer ' + autToken)
         .end((err, response)=>{
             response.should.have.status(200);
             response.body.should.be.a('object');
@@ -225,6 +261,7 @@ describe("GET /api/posts/:id", ()=>{
         const postId = 1234;
         chai.request(server)
         .get(`/api/posts/${postId}`)
+        .set('Authorization', 'Bearer ' + autToken)
         .end((err, responseponse)=>{
             responseponse.should.have.status(404);
             responseponse.body.error.should.be.eq("Post does not exist!")

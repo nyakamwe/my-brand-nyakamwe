@@ -8,23 +8,23 @@
 			"name": "NYAKAMWE Aimable",
 			"email": "aimable.nyakamwe@yahoo.com",
 			"url":"web.com"
-			
 		}
 		
 	},
-	"securityDefinitions": {
-		"Bearer": {
-			"type": "apiKey",
-			"name": "Authorization",
-			"in": "header"
-		}
-	},
+
 	"servers": [
 		{
 			"url": "http://localhost:3000",
 			"name": "DEV"
 		}
 	],
+
+	"schemes":["HTTP", "HTTPS"],
+	
+
+	"security": [{
+		"bearerAuth": []
+	  }],
 
 	"paths": {
 		"/api/users": {
@@ -90,8 +90,8 @@
 					}
 				],
 				"responses": {
-					"201": {
-						"description": "success"
+					"200": {
+						"description": "successfully logged in."
 					}
 				}
 			}
@@ -132,127 +132,187 @@
 					"201": {
 						"description": "success"
 					}
+					
 				}
 			},
 			"get": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Messages | Contacts"],
 				"summary": "get all messages",
 				"description": "get all messages",
 				"operationId": "get all messages",
-				"responses": {
-					"201": {
-						"description": "success"
-					}
-				},
-				"security": [
+				"parameters":[
 					{
-						"Bearer": []
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
 					}
+					
 				]
+
+				,
+				"responses": {
+					"200": {
+						"description": "success"
+					},
+					"401":{
+						"description": "You need to Login"
+					}
+				}
+				
 			}
 		},
 		"/api/messages/{id}": {
 			"get": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Messages | Contacts"],
 				"summary": "Get Single message",
 				"description": "get single message",
 				"operationId": "get single message",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
+				
 				"produces": ["application/json"],
 				"parameters": [
 					{
-						"name": "id",
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
+					{
+						"name": "messageId",
 						"in": "path",
 						"type": "string",
-						"description": "Query Id",
+						"description": "Message Id",
 						"required": true
 					}
 				],
 				"responses": {
-					"201": {
+					"200": {
 						"description": "success"
+					},
+					"404": {
+						"description": "Not Found"
 					}
 				}
 			},
 			"delete": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Messages | Contacts"],
 				"summary": "delete message",
 				"description": "delete message",
 				"operationId": "delete message",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
+				
 				"produces": ["application/json"],
 				"parameters": [
 					{
-						"name": "id",
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
+					{
+						"name": "messageId",
 						"in": "path",
 						"type": "string",
-						"description": "Query Id",
+						"description": "Message Id",
 						"required": true
 					}
 				],
 				"responses": {
-					"201": {
-						"description": "success"
+					"200": {
+						"description": "successfull deleted"
+					},
+					"404": {
+						"description": "contact not found"
 					}
 				}
 			}
 		},
 		"/api/posts": {
 			"get": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Posts"],
 				"summary": "Get all posts",
 				"description": "get all posts",
 				"operationId": "get all posts",
+				"parameters":[
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					}
+				],
 				"responses": {
-					"201": {
+					"200": {
 						"description": "success"
 					}
-				},
-				"security": [
-					{
-						"Bearer": []
-					}
-				]
+				}
+				
 			},
 			"post": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Posts"],
 				"summary": "Create a new Post",
 				"description": "New Post",
 				"operationId": "New Post",
+				"consumes":"multipart/form-data",
 				"parameters": [
 					{
-						"in": "body",
-						"name": "body",
-						"description": "Resource payload",
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
 						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"title": {
-									"type": "string"
-								},
-								"content": {
-									"type": "string"
-								}
-
-							},
-							"required": ["title", "content"]
-						}
-					}
-				],
-				"security": [
+						"type": "string",
+						"default": "Bearer "
+					},
 					{
-						"Bearer": []
+						"in":"formData",
+						"name":"title",
+						"type":"string",
+						"description":"Describe your post",
+						"required":true
+
+					},
+					{
+						"in":"formData",
+						"name":"content",
+						"type":"string",
+						"description":"Title of post",
+						"required":true
+
+					},
+					{
+						"in":"formData",
+						"name":"poster",
+						"type":"file",
+						"description":"Thumbnail for post",
+						"required":true
+
 					}
+					
+					
 				],
+				
 				"responses": {
 					"201": {
 						"description": "success"
@@ -262,98 +322,131 @@
 		},
 		"/api/posts/{id}": {
 			"get": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Posts"],
 				"summary": "Get Single Post",
 				"description": "get single Post",
 				"operationId": "get single Post",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
+				
 				"produces": ["application/json"],
 				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
 					{
 						"name": "id",
 						"in": "path",
 						"type": "string",
-						"description": "Article Id",
+						"description": "Post Id",
 						"required": true
 					}
 				],
 				"responses": {
-					"201": {
+					"200": {
 						"description": "successfully fetched"
 					}
 				}
 			},
-			"put": {
+			"patch": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Posts"],
 				"summary": "Update Post",
 				"description": "Update Post",
 				"operationId": "Update Post",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
+				
 				"produces": ["application/json"],
 				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
 					{
 						"name": "id",
 						"in": "path",
 						"type": "string",
-						"description": "Article Id",
+						"description": "Post Id",
 						"required": true
 					},
 					{
-						"in": "body",
-						"name": "body",
-						"description": "Resource payload",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"title": {
-									"type": "string"
-								},
-								"content": {
-									"type": "string"
-								}
-							},
-							"required": ["title", "content"]
-						}
+						"in":"formData",
+						"name":"title",
+						"type":"string",
+						"description":"Describe your post",
+						"required":true
+
+					},
+					{
+						"in":"formData",
+						"name":"content",
+						"type":"string",
+						"description":"Title of post",
+						"required":true
+
+					},
+					{
+						"in":"formData",
+						"name":"poster",
+						"type":"file",
+						"description":"Thumbnail for post",
+						"required":true
+
 					}
+					
+					
 				],
+				
+				
 				"responses": {
-					"201": {
-						"description": "success"
+					"200": {
+						"description": "successfully Updated!"
 					}
 				}
 			},
 			"delete": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Posts"],
 				"summary": "Delete Post",
 				"description": "delete post",
 				"operationId": "delete post",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
 				"produces": ["application/json"],
 				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
 					{
 						"name": "id",
 						"in": "path",
 						"type": "string",
-						"description": "Article Id",
+						"description": "Post Id",
 						"required": true
 					}
-				],
+				],   
 				"responses": {
-					"201": {
-						"description": "success"
+					"200": {
+						"description": "successfully deleted!"
+					},
+					"404": {
+						"description": "Post doesn't exist"
 					}
 				}
 			}
@@ -369,32 +462,42 @@
 						"name": "id",
 						"in": "path",
 						"type": "string",
-						"description": "Article Id",
+						"description": "Post Id",
 						"required": true
 					}
 				],
 				"responses": {
 					"201": {
 						"description": "success"
+					},
+					"404": {
+						"description": "not found"
 					}
-				},
-				"security": [
-					{
-						"Bearer": []
-					}
-				]
+				}
+				
 			},
 			"post": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Comments"],
 				"summary": "Post a new comment",
 				"description": "New comment",
 				"operationId": "New comment",
 				"parameters": [
 					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
+					{
 						"name": "id",
 						"in": "path",
 						"type": "string",
-						"description": "Article Id",
+						"description": "Post Id",
 						"required": true
 					},
 					{
@@ -405,37 +508,31 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"content": {
+								"comment": {
 									"type": "string"
 								}
 							},
-							"required": ["content"]
+							"required": ["comment"]
 						}
 					}
 				],
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
+				
 				"responses": {
 					"201": {
-						"description": "success"
+						"description": "successfully commented!"
+					},
+					"401": {
+						"description": "you need to login"
 					}
 				}
 			}
 		},
-		"/api/comment/{id}": {
+		"/api/comments/{id}": {
 			"get": {
 				"tags": ["Comments"],
 				"summary": "Get Single comment",
 				"description": "get single comment",
 				"operationId": "get single comment",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
 				"produces": ["application/json"],
 				"parameters": [
 					{
@@ -447,23 +544,36 @@
 					}
 				],
 				"responses": {
-					"201": {
-						"description": "comment fetched"
+					"200": {
+						"description": "comments fetched"
+					},
+					"401": {
+						"description": "you need to login."
+					},
+					"404": {
+						"description": "comment not found"
 					}
 				}
 			},
 			"delete": {
+				"security": [{
+					"bearerAuth": []
+				  }],
 				"tags": ["Comments"],
 				"summary": "Delete comment",
 				"description": "delete comment",
 				"operationId": "delete comment",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
+				
 				"produces": ["application/json"],
 				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
 					{
 						"name": "id",
 						"in": "path",
@@ -473,22 +583,39 @@
 					}
 				],
 				"responses": {
-					"201": {
-						"description": "success"
+					"200": {
+						"description": "commented deleted!"
+					},
+					"401": {
+						"description": "you need to login."
+					},
+					"404": {
+						"description": "comment not found."
 					}
 				}
 			}
 		},
 		"/api/posts/like": {
-			"post": {
+			"security": [{
+				"bearerAuth": []
+			  }],
+			"put": {
 				"tags": ["like a post"],
 				"summary": "like a post",
 				"description": "like a post",
 				"operationId": "New like",
 				"parameters": [
 					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
+					{
 						"in": "body",
-						"name": "body",
+						"name": "postId",
 						"description": "Resource payload",
 						"required": true,
 						"schema": {
@@ -503,21 +630,45 @@
 					}
 				],
 				"responses": {
-					"201": {
+					"200": {
 						"description": "success"
+					},
+					"401": {
+						"description": "you need to login."
+					},
+					"404": {
+						"description": "post not found."
 					}
 				}
 			}
 			
 		},
 
-		"/api/posts/unlike": {
-			"post": {
+		"/api/posts/{id}/unlike": {
+			"security": [{
+				"bearerAuth": []
+			  }],
+			"put": {
 				"tags": ["unlike a post"],
 				"summary": "unlike a post",
 				"description": "unlike a post",
 				"operationId": "remove like",
 				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"type": "string",
+						"description": "Post Id",
+						"required": true
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					},
 					{
 						"in": "body",
 						"name": "body",
@@ -535,8 +686,14 @@
 					}
 				],
 				"responses": {
-					"201": {
-						"description": "success"
+					"200": {
+						"description": "successfully unliked!"
+					},
+					"401": {
+						"description": "you need to login."
+					},
+					"404": {
+						"description": "post not found."
 					}
 				}
 			}

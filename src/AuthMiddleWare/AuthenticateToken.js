@@ -7,10 +7,12 @@ export function authenticateToken(req, res, next){
 	if(token == null) return res.status(401).json({message:'Token is required'})
 
 	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user)=>{
-		if(error) return res.status(403).json({message:"Invalid token"})
+		// console.log(error.message)
+	
+		if(error) return res.status(403).json({message:"Invalid Token"})
 
-		req.user=user;
-
+		req.user = user;
+		
 		next();
 	})
 }
