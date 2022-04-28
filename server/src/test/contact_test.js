@@ -131,6 +131,7 @@ describe('POST /api/messages', ()=>{
  describe('GET /api/messages', ()=>{
     after(()=>{
         mongoose.connection.dropCollection('messages')
+        mongoose.connection.dropCollection('users')
     })
     it('get all messages', (done)=>{
         chai.request(server)
