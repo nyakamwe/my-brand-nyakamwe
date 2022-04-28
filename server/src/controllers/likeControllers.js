@@ -4,7 +4,6 @@ import { Post } from "../models/Post"
 // like a post
 const post_like = async (req, res)=>{
 	const id = req.body.postId
-	
 
 	Post.findByIdAndUpdate(id,{
 		$push:{likes:{postId:id, user:req.user.username}}},{
@@ -24,7 +23,7 @@ const post_like = async (req, res)=>{
 const post_unlike = (req, res)=>{
 	const id = req.params.id
 	Post.findByIdAndUpdate(id,{
-		$pull:{likes:{postId:id, userId:req.user.id}}},{
+		$pull:{likes:{postId:id, userId:req.user.username}}},{
 			new:true
 		}).exec((err, result)=>{
 			if(err){

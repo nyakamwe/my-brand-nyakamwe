@@ -33,7 +33,7 @@ const comment_get_all = async (req, res)=>{
 
 		if(comments.length > 0){
             
-			return res.status(200).json({comments});
+			return res.status(200).json({comments:comments});
 		}else{
 			return res.status(404).json({comment:"no comments related to this post"});
 		}

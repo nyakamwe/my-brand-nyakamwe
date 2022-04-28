@@ -20,12 +20,12 @@ const router = _express.default.Router();
 // Get all posts
 router.get("/posts", _postControllers.post_get_all); // create post
 
-router.post("/posts", _uploadConfig.default.single('poster'), _AuthenticateToken.authenticateToken, _postControllers.post_create); // getting individual post
+router.post("/posts", _AuthenticateToken.authenticateToken, _uploadConfig.default.single('poster'), _postControllers.post_create); // getting individual post
 
-router.get("/posts/:id", _postControllers.post_get_one); // updating post
+router.get("/posts/:id", _AuthenticateToken.authenticateToken, _postControllers.post_get_one); // updating post
 
-router.patch("/posts/:id", _uploadConfig.default.single('poster'), _AuthenticateToken.authenticateToken, _postControllers.post_update); // delete post
+router.patch("/posts/:id", _AuthenticateToken.authenticateToken, _uploadConfig.default.single('poster'), _postControllers.post_update); // delete post
 
-router.delete("/posts/:id", _postControllers.post_delete);
+router.delete("/posts/:id", _AuthenticateToken.authenticateToken, _postControllers.post_delete);
 var _default = router;
 exports.default = _default;

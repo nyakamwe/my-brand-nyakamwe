@@ -37,17 +37,17 @@ app.use("/api/", routes, userroutes, contactroutes, commentroutes, likeroutes);
 
 // set swagger doc as default route
 app.use(
-	"",
+	"/api-docs",
 	swaggerUI.serve,
 	swaggerUI.setup(swaggerDoc, { explorer: true })
 );
 
-app.use("*", (req, res, next) => {
-	res.status(404).json({
-		error: "NOT FOUND",
-	});
-	next()
-});
+// app.use("*", (req, res, next) => {
+// 	res.status(404).json({
+// 		error: "NOT FOUND",
+// 	});
+// 	next()
+// });
 
 
 //serve static images

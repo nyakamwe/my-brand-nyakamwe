@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "start": "npm run build && nodemon dist/index.js",
+    "start_dev": "npm run build && nodemon dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "test": "mocha src/test --timeout 600000 --exit",
     "coverage": "nyc npm run test",
     "make-badges": "istanbul-badges-readme --readmeDir='../'",
@@ -17,8 +18,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
     "@babel/runtime": "^7.17.9",
     "bcrypt": "^5.0.1",
+    "cloudinary": "^1.29.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -32,9 +37,6 @@
     "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.7",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",

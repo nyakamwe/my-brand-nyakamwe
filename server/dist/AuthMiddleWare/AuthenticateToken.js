@@ -17,8 +17,9 @@ function authenticateToken(req, res, next) {
   });
 
   _jsonwebtoken.default.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
+    // console.log(error.message)
     if (error) return res.status(403).json({
-      message: "Invalid token"
+      message: "Invalid Token"
     });
     req.user = user;
     next();

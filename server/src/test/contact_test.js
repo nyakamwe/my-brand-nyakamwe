@@ -42,6 +42,50 @@ describe('Test for Message Endpoints', ()=>{
 describe('POST /api/messages', ()=>{
     before(()=>{
         mongoose.connection.dropCollection('messages')
+        mongoose.connection.dropCollection('users')
+    })
+    
+    // create user and login 
+    it('creates new user ', (done)=>{
+
+        const newUser = new User({
+            username:"menase",
+            email:"menase@mail.com",
+            password:"password test"
+       
+        })
+
+        chai.request(server)
+        .post("/api/users")
+        .send(newUser)
+        .end((err, response)=>{
+            response.should.have.status(201);
+            response.body.should.be.a('object');
+            response.body.should.have.property('message').eql("user created!");
+        done();   
+        })
+    })
+
+    // login
+    const logInUser = {
+        username:'menase',
+        password:'password test'
+    }
+
+    it('login a user', (done)=>{
+        chai.request(server)
+        .post('/api/users/login')
+        .send({username:logInUser.username, password:logInUser.password})
+        .end(function(err, response) {
+            if (err) return done(err);
+
+            response.should.have.status(200);
+            response.body.should.be.a('object');
+            autToken = response.body.Token
+            
+            done();
+        });
+
     })
 
     it('Send messages', (done)=>{
@@ -91,6 +135,7 @@ describe('POST /api/messages', ()=>{
     it('get all messages', (done)=>{
         chai.request(server)
         .get("/api/messages")
+        .set('Authorization', 'Bearer ' + autToken)
         .end((err, response)=>{
             response.should.have.status(200);
             

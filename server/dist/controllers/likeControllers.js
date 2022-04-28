@@ -43,7 +43,7 @@ const post_unlike = (req, res) => {
     $pull: {
       likes: {
         postId: id,
-        userId: req.user.id
+        userId: req.user.username
       }
     }
   }, {
