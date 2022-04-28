@@ -46,7 +46,7 @@ app.use("/api", _LikeRoutes.default); //swagger documentation
 app.use((0, _morgan.default)("dev"));
 app.use("/api/", _PostRoutes.default, _UserRoutes.default, _MessageRoutes.default, _CommentRoutes.default, _LikeRoutes.default); // set swagger doc as default route
 
-app.use("", _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_swagger.default, {
+app.use("/api-docs", _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_swagger.default, {
   explorer: true
 })); // app.use("*", (req, res, next) => {
 // 	res.status(404).json({
