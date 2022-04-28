@@ -99,11 +99,9 @@ describe('Test for Comment Endpoints', () => {
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("Post Saved successfully");
         id = post.id;
-        console.log(id);
         done();
       });
-    });
-    console.log(id); // it("creates a new post", (done)=>{
+    }); // it("creates a new post", (done)=>{
     //     const userToken = 'Bearer ' + autToken
     //     chai.request(server)
     //     .post("/api/posts")
@@ -126,7 +124,6 @@ describe('Test for Comment Endpoints', () => {
 
     it('comment on a post', done => {
       const postId = id;
-      console.log(postId);
       const newComment = new _Post.Comment({
         postId,
         description: "testing a comment"
@@ -163,7 +160,6 @@ describe('Test for Comment Endpoints', () => {
   describe('GET /api/posts/:id/comment', () => {
     it('shows all comments related to specific post', done => {
       const postId = id;
-      console.log(postId);
 
       _chai.default.request(_index.default).get(`/api/posts/${postId}/comment`).send({
         postId
