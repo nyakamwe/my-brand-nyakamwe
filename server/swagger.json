@@ -289,7 +289,7 @@
 						"in":"formData",
 						"name":"title",
 						"type":"string",
-						"description":"Describe your post",
+						"description":"Title of post",
 						"required":true
 
 					},
@@ -297,7 +297,7 @@
 						"in":"formData",
 						"name":"content",
 						"type":"string",
-						"description":"Title of post",
+						"description":"Describe your post",
 						"required":true
 
 					},
