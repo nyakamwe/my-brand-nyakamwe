@@ -19,7 +19,7 @@
 		}
 	],
 
-	"schemes":["HTTP", "HTTPS"],
+	"schemes":["http", "https"],
 	
 
 	"security": [{
