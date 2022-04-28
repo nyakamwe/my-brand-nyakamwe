@@ -37,7 +37,7 @@ app.use("/api/", routes, userroutes, contactroutes, commentroutes, likeroutes);
 
 // set swagger doc as default route
 app.use(
-	"/api-docs",
+	"",
 	swaggerUI.serve,
 	swaggerUI.setup(swaggerDoc, { explorer: true })
 );
