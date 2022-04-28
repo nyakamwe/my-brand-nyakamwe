@@ -90,7 +90,16 @@ describe('Test for Comment Endpoints', ()=>{
     //post creation
     it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
-
+        
+        const post = new Post({
+            title: "unit testing",
+            content: "I am testing nodejs api using mocha with chai assertion library",
+            poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
+            
+        })
+        
+        post.save()
+        
         chai.request(server)
         .post("/api/posts")
     
@@ -109,14 +118,41 @@ describe('Test for Comment Endpoints', ()=>{
             response.body.should.have.property('message').eql("Post Saved successfully");
 
             id = post.id;
+            
         done();  
         });
     })
+    
+    // it("creates a new post", (done)=>{
+    //     const userToken = 'Bearer ' + autToken
+
+    //     chai.request(server)
+    //     .post("/api/posts")
+    
+    //     //set the auth header with our token
+    //     .set('Content-Type', 'multipart/form-data')
+    //     .set('Authorization', 'Bearer ' + autToken)
+    //     .field({
+    //         title: "unit testing",
+    //         content: "I am testing nodejs api using mocha with chai assertion library"
+            
+    //     })
+    //     .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
+    //     .end(function(error, response) {
+    //         response.should.have.status(201);
+    //         response.body.should.be.a('object');
+    //         response.body.should.have.property('message').eql("Post Saved successfully");
+
+    //         id = post.id;
+    //     done();  
+    //     });
+    // })
 
     
 
     it('comment on a post', (done)=>{
         const postId = id;
+        
         const newComment = new Comment({
             postId,
             description:"testing a comment"
@@ -134,6 +170,7 @@ describe('Test for Comment Endpoints', ()=>{
             response.body.should.have.property('comment')
             
             cId = newComment.id
+            
         done();
         })
     })
@@ -167,6 +204,7 @@ describe('Test for Comment Endpoints', ()=>{
 
     it('shows all comments related to specific post', (done)=>{
             const postId = id
+            
             chai.request(server)
             .get(`/api/posts/${postId}/comment`)
             .send({postId})

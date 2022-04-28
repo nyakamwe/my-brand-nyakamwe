@@ -91,12 +91,14 @@ describe("POST /api/posts", ()=>{
 
     })
 
+    //post creation
     it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
         
         const post = new Post({
             title: "unit testing",
-            content: "I am testing nodejs api using mocha with chai assertion library"
+            content: "I am testing nodejs api using mocha with chai assertion library",
+            poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
             
         })
         
@@ -120,9 +122,43 @@ describe("POST /api/posts", ()=>{
             response.body.should.have.property('message').eql("Post Saved successfully");
 
             id = post.id;
+            
         done();  
         });
     })
+
+    // it("creates a new post", (done)=>{
+    //     const userToken = 'Bearer ' + autToken
+        
+    //     const post = new Post({
+    //         title: "unit testing",
+    //         content: "I am testing nodejs api using mocha with chai assertion library"
+            
+    //     })
+        
+    //     post.save()
+        
+    //     chai.request(server)
+    //     .post("/api/posts")
+    
+    //     //set the auth header with our token
+    //     .set('Content-Type', 'multipart/form-data')
+    //     .set('Authorization', 'Bearer ' + autToken)
+    //     .field({
+    //         title: "unit testing",
+    //         content: "I am testing nodejs api using mocha with chai assertion library"
+            
+    //     })
+    //     .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
+    //     .end(function(error, response) {
+    //         response.should.have.status(201);
+    //         response.body.should.be.a('object');
+    //         response.body.should.have.property('message').eql("Post Saved successfully");
+
+    //         id = post.id;
+    //     done();  
+    //     });
+    // })
 
     // it("creates a new post", (done)=>{
     //     const userToken = 'Bearer ' + autToken

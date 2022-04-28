@@ -83,6 +83,12 @@ describe('Test for Comment Endpoints', () => {
 
     it("creates a new post", done => {
       const userToken = 'Bearer ' + autToken;
+      const post = new _Post.Post({
+        title: "unit testing",
+        content: "I am testing nodejs api using mocha with chai assertion library",
+        poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
+      });
+      post.save();
 
       _chai.default.request(_index.default).post("/api/posts") //set the auth header with our token
       .set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
@@ -93,11 +99,34 @@ describe('Test for Comment Endpoints', () => {
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("Post Saved successfully");
         id = post.id;
+        console.log(id);
         done();
       });
     });
+    console.log(id); // it("creates a new post", (done)=>{
+    //     const userToken = 'Bearer ' + autToken
+    //     chai.request(server)
+    //     .post("/api/posts")
+    //     //set the auth header with our token
+    //     .set('Content-Type', 'multipart/form-data')
+    //     .set('Authorization', 'Bearer ' + autToken)
+    //     .field({
+    //         title: "unit testing",
+    //         content: "I am testing nodejs api using mocha with chai assertion library"
+    //     })
+    //     .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
+    //     .end(function(error, response) {
+    //         response.should.have.status(201);
+    //         response.body.should.be.a('object');
+    //         response.body.should.have.property('message').eql("Post Saved successfully");
+    //         id = post.id;
+    //     done();  
+    //     });
+    // })
+
     it('comment on a post', done => {
       const postId = id;
+      console.log(postId);
       const newComment = new _Post.Comment({
         postId,
         description: "testing a comment"
@@ -134,6 +163,7 @@ describe('Test for Comment Endpoints', () => {
   describe('GET /api/posts/:id/comment', () => {
     it('shows all comments related to specific post', done => {
       const postId = id;
+      console.log(postId);
 
       _chai.default.request(_index.default).get(`/api/posts/${postId}/comment`).send({
         postId

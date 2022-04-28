@@ -8,10 +8,10 @@ const router = express.Router();
 router.post("/posts/:id/comment",  authenticateToken, comment_one)
 
 // get all comment of a post
-router.get("/posts/:id/comment", authenticateToken, comment_get_all)
+router.get("/posts/:id/comment",  comment_get_all)
 
 // get one comment
-router.get("/comments/:id", authenticateToken, comment_get_one)
+router.get("/comments/:id",  comment_get_one)
 
 // delete comment 
 router.delete("/comments/:id", authenticateToken, comment_delete)
