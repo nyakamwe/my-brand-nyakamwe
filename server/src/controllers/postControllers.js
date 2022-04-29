@@ -39,6 +39,7 @@ const post_create = async (req, res) => {
 			await post.save()
 	
 			return res.status(201).json({
+				id:post.id,
 				status:201, 
 				message:"Post Saved successfully", 
 				success:1,

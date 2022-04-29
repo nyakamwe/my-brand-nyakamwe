@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import chai from 'chai';
+import chai,{expect} from 'chai';
 import server from "../index";
 import chaiHttp from "chai-http";
 import {Post,Comment} from "../models/Post";
@@ -91,18 +91,9 @@ describe('Test for Comment Endpoints', ()=>{
     it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
         
-        const post = new Post({
-            title: "unit testing",
-            content: "I am testing nodejs api using mocha with chai assertion library",
-            poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
-            
-        })
-        
-        post.save()
-        
         chai.request(server)
         .post("/api/posts")
-    
+        
         //set the auth header with our token
         .set('Content-Type', 'multipart/form-data')
         .set('Authorization', 'Bearer ' + autToken)
@@ -113,11 +104,13 @@ describe('Test for Comment Endpoints', ()=>{
         })
         .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
         .end(function(error, response) {
+            response.body.should.have.property('id')
             response.should.have.status(201);
             response.body.should.be.a('object');
             response.body.should.have.property('message').eql("Post Saved successfully");
 
-            id = post.id;
+            
+           id = response.body.id
             
         done();  
         });

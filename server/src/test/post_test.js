@@ -95,14 +95,14 @@ describe("POST /api/posts", ()=>{
     it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
         
-        const post = new Post({
-            title: "unit testing",
-            content: "I am testing nodejs api using mocha with chai assertion library",
-            poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
+        // const post = new Post({
+        //     title: "unit testing",
+        //     content: "I am testing nodejs api using mocha with chai assertion library",
+        //     poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
             
-        })
+        // })
         
-        post.save()
+        // post.save()
         
         chai.request(server)
         .post("/api/posts")
@@ -117,11 +117,12 @@ describe("POST /api/posts", ()=>{
         })
         .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
         .end(function(error, response) {
+            response.body.should.have.property('id')
             response.should.have.status(201);
             response.body.should.be.a('object');
             response.body.should.have.property('message').eql("Post Saved successfully");
 
-            id = post.id;
+            id = response.body.id;
             
         done();  
         });
