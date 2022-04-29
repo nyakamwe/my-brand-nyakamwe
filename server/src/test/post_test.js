@@ -94,10 +94,10 @@ describe("POST /api/posts", ()=>{
     //post creation
     it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
-        
+
         chai.request(server)
         .post("/api/posts")
-    
+        
         //set the auth header with our token
         .set('Content-Type', 'multipart/form-data')
         .set('Authorization', 'Bearer ' + autToken)

@@ -90,7 +90,7 @@ describe('Test for Comment Endpoints', ()=>{
     //post creation
     it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
-        
+       
         chai.request(server)
         .post("/api/posts")
         
