@@ -102,7 +102,7 @@ describe('Test for Comment Endpoints', ()=>{
             content: "I am testing nodejs api using mocha with chai assertion library"
             
         })
-        .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'MPAMAVUTA.jpg')
+        .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg')
         .end(function(error, response) {
             response.body.should.have.property('id')
             response.should.have.status(201);
