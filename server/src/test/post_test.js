@@ -4,7 +4,7 @@ import server from "../index";
 import chaiHttp from "chai-http";
 import {Post} from "../models/Post";
 require("dotenv").config();
-
+import fs from 'fs'
 
 //to mock a function during testing
 import { User } from '../models/User';
@@ -95,15 +95,6 @@ describe("POST /api/posts", ()=>{
     it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
         
-        // const post = new Post({
-        //     title: "unit testing",
-        //     content: "I am testing nodejs api using mocha with chai assertion library",
-        //     poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
-            
-        // })
-        
-        // post.save()
-        
         chai.request(server)
         .post("/api/posts")
     
@@ -115,7 +106,7 @@ describe("POST /api/posts", ()=>{
             content: "I am testing nodejs api using mocha with chai assertion library"
             
         })
-        .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
+        .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg')
         .end(function(error, response) {
             response.body.should.have.property('id')
             response.should.have.status(201);
