@@ -23,4 +23,6 @@ workflows:
   build:
     jobs:
       - node-12.4: 
-          context: mongo
+          context: 
+            - mongo
+            - cloudinary
