@@ -39,15 +39,17 @@ const post_create = async (req, res) => {
         with: 500,
         height: 500,
         crop: 'fill'
-      }); // new post
+      });
+      const setPoster = cloud_save ? cloud_save.url : ' '; // new post
 
       const post = new _Post.Post({
         title: req.body.title,
         content: req.body.content,
-        poster: cloud_save.url
+        poster: setPoster
       });
       await post.save();
       return res.status(201).json({
+        id: post.id,
         status: 201,
         message: "Post Saved successfully",
         success: 1,
@@ -77,7 +79,7 @@ const post_get_one = async (req, res) => {
     }
 
     return res.status(200).json({
-      data: post,
+      post,
       message: "successfully fetched"
     });
   } catch {
