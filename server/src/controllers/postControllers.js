@@ -63,7 +63,7 @@ const post_get_one = async (req, res) => {
 			return res.status(404).json({message:"Post of that id is not available"});
 		}
 
-		return res.status(200).json({data:post, message:"successfully fetched"});
+		return res.status(200).json({post, message:"successfully fetched"});
 
 	} catch {
 		return res.status(404).json({error: "Post does not exist!"})

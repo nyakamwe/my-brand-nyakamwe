@@ -27,7 +27,7 @@
 	  }],
 
 	"paths": {
-		"/api/users": {
+		"/api/users/register": {
 			"post": {
 				"tags": ["Authentication"],
 				"summary": "User Registration",
@@ -92,6 +92,36 @@
 				"responses": {
 					"200": {
 						"description": "successfully logged in."
+					}
+				}
+			}
+		},
+		"/api/users":{
+			"security": [{
+				"bearerAuth": []
+			  }],
+			"get":{
+				"tags":["Authentication"],
+				"summary":"Returns all registered users",
+				"description":"get all users",
+				"operationId":"get all users",
+				"parameters":[
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Add the token in the format 'Bearer token'",
+						"required": true,
+						"type": "string",
+						"default": "Bearer "
+					}
+					
+				],
+				"responses":{
+					"200":{
+						"description":"success"
+					},
+					"401":{
+						"description":"You need to Login"
 					}
 				}
 			}
@@ -595,7 +625,7 @@
 				}
 			}
 		},
-		"/api/posts/like": {
+		"/api/posts/{id}/like": {
 			"security": [{
 				"bearerAuth": []
 			  }],
@@ -606,28 +636,21 @@
 				"operationId": "New like",
 				"parameters": [
 					{
+						"name":"id",
+						"in":"path",
+						"type":"string",
+						"description":"Post Id",
+						"required":true
+					},
+					{
 						"name": "Authorization",
 						"in": "header",
 						"description": "Add the token in the format 'Bearer token'",
 						"required": true,
 						"type": "string",
 						"default": "Bearer "
-					},
-					{
-						"in": "body",
-						"name": "postId",
-						"description": "Resource payload",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"postId": {
-									"type": "string"
-								}
-							},
-							"required": ["postId"]
-						}
 					}
+				
 				],
 				"responses": {
 					"200": {
@@ -636,61 +659,8 @@
 					"401": {
 						"description": "you need to login."
 					},
-					"404": {
-						"description": "post not found."
-					}
-				}
-			}
-			
-		},
-
-		"/api/posts/{id}/unlike": {
-			"security": [{
-				"bearerAuth": []
-			  }],
-			"put": {
-				"tags": ["unlike a post"],
-				"summary": "unlike a post",
-				"description": "unlike a post",
-				"operationId": "remove like",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"type": "string",
-						"description": "Post Id",
-						"required": true
-					},
-					{
-						"name": "Authorization",
-						"in": "header",
-						"description": "Add the token in the format 'Bearer token'",
-						"required": true,
-						"type": "string",
-						"default": "Bearer "
-					},
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Resource payload",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"postId": {
-									"type": "string"
-								}
-							},
-							"required": ["postId"]
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "successfully unliked!"
-					},
-					"401": {
-						"description": "you need to login."
+					"403": {
+						"description": "Invalid Token"
 					},
 					"404": {
 						"description": "post not found."
@@ -699,5 +669,7 @@
 			}
 			
 		}
+
+		
 	}
 }

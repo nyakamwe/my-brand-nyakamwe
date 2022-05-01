@@ -10,12 +10,13 @@ var _chaiHttp = _interopRequireDefault(require("chai-http"));
 
 var _Post = require("../models/Post");
 
+var _fs = _interopRequireDefault(require("fs"));
+
 var _User = require("../models/User");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-require("dotenv").config(); //to mock a function during testing
-
+require("dotenv").config();
 
 let user, autToken, id; //assertion style
 
@@ -83,22 +84,17 @@ describe('Test for Post Endpoints', () => {
 
     it("creates a new post", done => {
       const userToken = 'Bearer ' + autToken;
-      const post = new _Post.Post({
-        title: "unit testing",
-        content: "I am testing nodejs api using mocha with chai assertion library",
-        poster: "/home/nyakamwe/Pictures/MPAMAVUTA.png"
-      });
-      post.save();
 
       _chai.default.request(_index.default).post("/api/posts") //set the auth header with our token
       .set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
         title: "unit testing",
         content: "I am testing nodejs api using mocha with chai assertion library"
-      }).attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png').end(function (error, response) {
+      }).attach('poster', _fs.default.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg').end(function (error, response) {
+        response.body.should.have.property('id');
         response.should.have.status(201);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("Post Saved successfully");
-        id = post.id;
+        id = response.body.id;
         done();
       });
     }); // it("creates a new post", (done)=>{

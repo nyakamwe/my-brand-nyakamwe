@@ -16,8 +16,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const router = _express.default.Router();
 
 //like a post
-router.put("/posts/like", _AuthenticateToken.authenticateToken, _likeControllers.post_like); //unlike a post
+router.put("/posts/:id/like", _AuthenticateToken.authenticateToken, _likeControllers.post_like); //unlike a post
+// router.put("/posts/:id/unlike", authenticateToken, post_unlike)
 
-router.put("/posts/:id/unlike", _AuthenticateToken.authenticateToken, _likeControllers.post_unlike);
 var _default = router;
 exports.default = _default;
