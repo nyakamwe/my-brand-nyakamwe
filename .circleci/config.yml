@@ -16,7 +16,12 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run test
-      - run: npm run coverage
+      - run:
+          name: coverage
+          command: npm run coverage
+
+      - coveralls/upload
+
       - run: npm run make-badges
 
 workflows:
