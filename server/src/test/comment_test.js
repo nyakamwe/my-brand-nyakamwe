@@ -103,7 +103,6 @@ describe('Test for Comment Endpoints', ()=>{
             
         })
         .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg')
-        // .attach('poster', fs.readFileSync(`${__dirname}/MPAMAVUTA.png`), 'tests/MPAMAVUTA.png')
         .end(function(error, response) {
             response.body.should.have.property('id')
             response.should.have.status(201);

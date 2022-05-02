@@ -1,6 +1,7 @@
 version: 2
 orbs:
   node: circleci/node@4.7.0
+  coveralls: coveralls/coveralls@1.0.5
 jobs:
   node-12.4:
     docker:
@@ -26,3 +27,6 @@ workflows:
           context: 
             - mongo
             - cloudinary
+notify: 
+  webhooks: 
+    - url: https://coveralls.io/webhook?repo_token=${process.env.COVERALLS_REPO_TOKEN}

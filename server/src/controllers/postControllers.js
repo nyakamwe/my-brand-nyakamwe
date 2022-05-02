@@ -25,7 +25,7 @@ const post_create = async (req, res) => {
 				crop:'fill'
 
 			})
-
+			// const imageUrl = cloud_save ? cloud_save.url : 
 			// new post
 			const post = new Post({
 				title: req.body.title,
@@ -35,6 +35,7 @@ const post_create = async (req, res) => {
 				
 			})
 
+			console.log(post)
 			
 			await post.save()
 	
