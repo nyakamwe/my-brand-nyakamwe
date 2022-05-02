@@ -1,6 +1,5 @@
 import mongoose from "mongoose"
 import bcrypt from 'bcrypt'
-import Joi from 'joi'
 
 const userSchema = new mongoose.Schema({
 	username:{
@@ -8,7 +7,7 @@ const userSchema = new mongoose.Schema({
 		required: true
 	},
 	email:{
-		type:String
+		type: String
 	},
 	password:{
 		type: String,

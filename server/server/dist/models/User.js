@@ -9,8 +9,6 @@ var _mongoose = _interopRequireDefault(require("mongoose"));
 
 var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
-var _joi = _interopRequireDefault(require("joi"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const userSchema = new _mongoose.default.Schema({

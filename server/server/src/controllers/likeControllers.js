@@ -21,7 +21,7 @@ const post_like = async (req, res)=>{
 				const idx = post.likes.indexOf(ex)
 				post.likes.splice(idx, 1)
 				post.save()
-				return res.status(200).json({message:"post unliked!", likes:likes.length})
+				return res.status(200).json({message:"post unliked!"})
 			})
 		
 		}
@@ -30,7 +30,7 @@ const post_like = async (req, res)=>{
 		post.likes.push({postId:req.params.id, user:req.user.username})
 		post.save()
 
-		return res.status(200).json({message:"post liked!", likes:likes.length})
+		return res.status(200).json({message:"post liked!"})
 		
 		}
 

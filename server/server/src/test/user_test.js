@@ -55,10 +55,9 @@ describe('Test for User Endpoints', ()=>{
                 password:"password test"
            
             })
-         
 
             chai.request(server)
-            .post("/api/users/register")
+            .post("/api/users")
             .send(newUser)
             .end((err, response)=>{
                 response.should.have.status(201);
@@ -79,7 +78,7 @@ describe('Test for User Endpoints', ()=>{
             })
 
             chai.request(server)
-            .post("/api/users/register")
+            .post("/api/users")
             .send(user)
             .end((err, response)=>{
                 response.should.have.status(403);
@@ -100,7 +99,7 @@ describe('Test for User Endpoints', ()=>{
             })
 
             chai.request(server)
-            .post("/api/users/register")
+            .post("/api/users")
             .send(user)
             .end((err, response)=>{
                 response.should.have.status(403);

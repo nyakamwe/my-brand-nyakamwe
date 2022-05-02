@@ -57,7 +57,7 @@ describe('Test for Post Endpoints', () => {
         password: "password test"
       });
 
-      _chai.default.request(_index.default).post("/api/users/register").send(newUser).end((err, response) => {
+      _chai.default.request(_index.default).post("/api/users").send(newUser).end((err, response) => {
         response.should.have.status(201);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("user created!");
@@ -89,7 +89,7 @@ describe('Test for Post Endpoints', () => {
       .set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
         title: "unit testing",
         content: "I am testing nodejs api using mocha with chai assertion library"
-      }).attach('poster', _fs.default.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.png').end(function (error, response) {
+      }).attach('poster', _fs.default.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg').end(function (error, response) {
         response.body.should.have.property('id');
         response.should.have.status(201);
         response.body.should.be.a('object');

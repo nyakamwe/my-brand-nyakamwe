@@ -35,7 +35,7 @@ describe('Test for Message Endpoints', ()=>{
     });     
     
 
-/**
+    /**
  * POST Contact route
  */
 
@@ -56,7 +56,7 @@ describe('POST /api/messages', ()=>{
         })
 
         chai.request(server)
-        .post("/api/users/register")
+        .post("/api/users")
         .send(newUser)
         .end((err, response)=>{
             response.should.have.status(201);
@@ -145,6 +145,14 @@ describe('POST /api/messages', ()=>{
         })
     })
 
+    // it('don\'t return any message', (done)=>{
+    //     chai.request(server)
+    //     .get("/api/message")
+    //     .end((err, response)=>{
+    //         response.should.have.status(404);
+    //     done();
+    //     })
+    // })
 })
 
 

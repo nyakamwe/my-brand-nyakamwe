@@ -1,7 +1,6 @@
 version: 2
 orbs:
   node: circleci/node@4.7.0
-  coveralls: coveralls/coveralls@1.0.5
 jobs:
   node-12.4:
     docker:
@@ -16,7 +15,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run test
-
+      - run: npm run coverage
       - run: npm run make-badges
 
 workflows:
@@ -27,7 +26,3 @@ workflows:
           context: 
             - mongo
             - cloudinary
-            - coveralls
-notify: 
-  webhooks: 
-    - url: https://coveralls.io/webhook?repo_token=${COVERALLS_REPO_TOKEN}

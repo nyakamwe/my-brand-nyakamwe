@@ -26,8 +26,7 @@ const post_like = async (req, res) => {
         post.likes.splice(idx, 1);
         post.save();
         return res.status(200).json({
-          message: "post unliked!",
-          likes: likes.length
+          message: "post unliked!"
         });
       });
     } else {
@@ -37,8 +36,7 @@ const post_like = async (req, res) => {
       });
       post.save();
       return res.status(200).json({
-        message: "post liked!",
-        likes: likes.length
+        message: "post liked!"
       });
     }
   }

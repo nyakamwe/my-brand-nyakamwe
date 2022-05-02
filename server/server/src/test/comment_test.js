@@ -55,7 +55,7 @@ describe('Test for Comment Endpoints', ()=>{
         })
 
         chai.request(server)
-        .post("/api/users/register")
+        .post("/api/users")
         .send(newUser)
         .end((err, response)=>{
             response.should.have.status(201);
@@ -88,33 +88,40 @@ describe('Test for Comment Endpoints', ()=>{
     })
 
     //post creation
-    it("creates a new post", async ()=>{
+    it("creates a new post", (done)=>{
         const userToken = 'Bearer ' + autToken
-        const res = await chai.request(server)
+       
+        chai.request(server)
         .post("/api/posts")
+        
+        //set the auth header with our token
         .set('Content-Type', 'multipart/form-data')
         .set('Authorization', 'Bearer ' + autToken)
         .field({
             title: "unit testing",
             content: "I am testing nodejs api using mocha with chai assertion library"
-        })
-        .attach('poster', fs.readFileSync(`${__dirname}/MPAMAVUTA.png`), 'MPAMAVUTA.png');
-            res.body.should.have.property('id')
-            res.should.have.status(201);
-            res.body.should.be.a('object');
-            res.body.should.have.property('message').eql("Post Saved successfully");
             
-            id = res.body.id
+        })
+        .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg')
+        .end(function(error, response) {
+            response.body.should.have.property('id')
+            response.should.have.status(201);
+            response.body.should.be.a('object');
+            response.body.should.have.property('message').eql("Post Saved successfully");
+
+            
+           id = response.body.id
+            
+        done();  
+        });
     })
-
-
-    // //post creation
+    
     // it("creates a new post", (done)=>{
     //     const userToken = 'Bearer ' + autToken
-       
+
     //     chai.request(server)
     //     .post("/api/posts")
-        
+    
     //     //set the auth header with our token
     //     .set('Content-Type', 'multipart/form-data')
     //     .set('Authorization', 'Bearer ' + autToken)
@@ -123,19 +130,17 @@ describe('Test for Comment Endpoints', ()=>{
     //         content: "I am testing nodejs api using mocha with chai assertion library"
             
     //     })
-    //     .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg')
+    //     .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
     //     .end(function(error, response) {
-    //         response.body.should.have.property('id')
     //         response.should.have.status(201);
     //         response.body.should.be.a('object');
     //         response.body.should.have.property('message').eql("Post Saved successfully");
 
-            
-    //        id = response.body.id
-            
+    //         id = post.id;
     //     done();  
     //     });
     // })
+
     
 
     it('comment on a post', (done)=>{
@@ -217,6 +222,8 @@ describe('Test for Comment Endpoints', ()=>{
     })
 
     
+
+        
     it('shows individual comment', (done)=>{
         const commentId = cId
         chai.request(server)
@@ -243,6 +250,7 @@ describe('Test for Comment Endpoints', ()=>{
         })
     })
 
+        
         
     })
 

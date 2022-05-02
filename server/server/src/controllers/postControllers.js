@@ -25,17 +25,17 @@ const post_create = async (req, res) => {
 				crop:'fill'
 
 			})
-			// const imageUrl = cloud_save ? cloud_save.url : 
+			const setPoster = cloud_save ? cloud_save.url : ' '
+
 			// new post
 			const post = new Post({
 				title: req.body.title,
 				content: req.body.content,
-				poster: cloud_save.url
+				poster: setPoster
 				
 				
 			})
 
-			console.log(post)
 			
 			await post.save()
 	
@@ -74,38 +74,21 @@ const post_get_one = async (req, res) => {
 const post_update = async (req, res) => {
 	try {
 		const post = await Post.findOne({ _id: req.params.id })
-		if(post){
-			if(req.file){
 
-				const cloud_save = await cloudinary.uploader.upload(req.file.path, {
-					with:500,
-					height:500,
-					crop:'fill'
-		
-				})
-				post.title = req.body.title || post.title,
-				post.content = req.body.content || post.content
-				post.poster = cloud_save.url
+		if (req.body.title.length > 0 && req.body.content.length > 0) {
+			post.title = req.body.title,
+			post.content = req.body.content
 
-				post.save()
-				return res.status(200).json({message:"Post successfully updated!"});
 
-			}else{
-				post.title = req.body.title || post.title,
-				post.content = req.body.content || post.content
-				post.poster = post.poster
-
-				post.save()
-				return res.status(200).json({message:"Post successfully updated!"});
-			}
-			
+			await post.save()
+			return res.status(200).json({message:"Post successfully updated!"});
 		}
 		else{
-			return res.status(404).json({error: "Post doesn't exist!"})
+			return res.status(400).json({message:"Title and content need value!"});
 		}
 
-	} catch(error) {
-		return res.status(404).json({error: error.message})
+	} catch {
+		return res.status(404).json({error: "Post doesn't exist!"})
 	}
 }
 
