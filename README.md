@@ -5,8 +5,6 @@
 [![CircleCI](https://circleci.com/gh/nyakamwe/my-brand-nyakamwe/tree/develop.svg?style=svg)](https://circleci.com/gh/nyakamwe/my-brand-nyakamwe/tree/develop)
 
 
-[![CircleCI](https://circleci.com/gh/nyakamwe/my-brand-nyakamwe/tree/Ft-fix-badges.svg?style=svg)](https://circleci.com/gh/nyakamwe/my-brand-nyakamwe/tree/Ft-fix-badges)
-
 
 <!-- | Statements                  | Branches                | Functions                 | Lines             |
 | --------------------------- | ----------------------- | ------------------------- | ----------------- |
