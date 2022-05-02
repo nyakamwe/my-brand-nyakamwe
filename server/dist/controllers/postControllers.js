@@ -124,17 +124,7 @@ const post_update = async (req, res) => {
       return res.status(404).json({
         error: "Post doesn't exist!"
       });
-    } // if (req.body.title.length > 0 && req.body.content.length > 0) {
-    // 	post.title = req.body.title ? req.body.title : post.title,
-    // 	post.content = req.body.content ? req.body.content : post.content
-    // 	post.poster = cloud_save ? cloud_save.url : post.poster
-    // 	await post.save()
-    // 	return res.status(200).json({message:"Post successfully updated!"});
-    // }
-    // else{
-    // 	return res.status(400).json({message:"Title and content need value!"});
-    // }
-
+    }
   } catch (error) {
     return res.status(404).json({
       error: error.message
