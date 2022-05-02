@@ -20,6 +20,7 @@ const post_like = async (req, res) => {
     });
 
     if (exist.length === 1) {
+      // if already liked it turns to unlike
       exist.forEach(ex => {
         const idx = post.likes.indexOf(ex);
         post.likes.splice(idx, 1);

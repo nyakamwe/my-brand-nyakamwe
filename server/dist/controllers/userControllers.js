@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const users_get_all = (req, res) => {
   const users = _User.User.find().then(result => {
     return res.status(200).json({
-      data: result
+      users: result
     });
   });
 }; // creating a new user

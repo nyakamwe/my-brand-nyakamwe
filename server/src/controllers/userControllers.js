@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 const users_get_all= (req, res)=>{
 	
 	const users = User.find().then((result)=>{
-		return res.status(200).json({data:result})
+		return res.status(200).json({users:result})
 	})
 }
 
