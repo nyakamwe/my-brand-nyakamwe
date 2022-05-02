@@ -53,7 +53,7 @@ describe('Test for User Endpoints', () => {
         password: "password test"
       });
 
-      _chai.default.request(_index.default).post("/api/users").send(newUser).end((err, response) => {
+      _chai.default.request(_index.default).post("/api/users/register").send(newUser).end((err, response) => {
         response.should.have.status(201);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("user created!");
@@ -67,7 +67,7 @@ describe('Test for User Endpoints', () => {
         password: "password test"
       });
 
-      _chai.default.request(_index.default).post("/api/users").send(user).end((err, response) => {
+      _chai.default.request(_index.default).post("/api/users/register").send(user).end((err, response) => {
         response.should.have.status(403);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("user already exists");
@@ -81,7 +81,7 @@ describe('Test for User Endpoints', () => {
         password: ""
       });
 
-      _chai.default.request(_index.default).post("/api/users").send(user).end((err, response) => {
+      _chai.default.request(_index.default).post("/api/users/register").send(user).end((err, response) => {
         response.should.have.status(403);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("All fields are required");

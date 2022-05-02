@@ -414,24 +414,23 @@
 						"in":"formData",
 						"name":"title",
 						"type":"string",
-						"description":"Describe your post",
-						"required":true
+						"description":"title of post"
 
 					},
 					{
 						"in":"formData",
 						"name":"content",
 						"type":"string",
-						"description":"Title of post",
-						"required":true
+						"description":"Description of post"
+						
 
 					},
 					{
 						"in":"formData",
 						"name":"poster",
 						"type":"file",
-						"description":"Thumbnail for post",
-						"required":true
+						"description":"Thumbnail for post"
+						
 
 					}
 					

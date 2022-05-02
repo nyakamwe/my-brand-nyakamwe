@@ -61,7 +61,7 @@ describe('Test for Comment Endpoints', () => {
         password: "password test"
       });
 
-      _chai.default.request(_index.default).post("/api/users").send(newUser).end((err, response) => {
+      _chai.default.request(_index.default).post("/api/users/register").send(newUser).end((err, response) => {
         response.should.have.status(201);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("user created!");
@@ -101,27 +101,7 @@ describe('Test for Comment Endpoints', () => {
         id = response.body.id;
         done();
       });
-    }); // it("creates a new post", (done)=>{
-    //     const userToken = 'Bearer ' + autToken
-    //     chai.request(server)
-    //     .post("/api/posts")
-    //     //set the auth header with our token
-    //     .set('Content-Type', 'multipart/form-data')
-    //     .set('Authorization', 'Bearer ' + autToken)
-    //     .field({
-    //         title: "unit testing",
-    //         content: "I am testing nodejs api using mocha with chai assertion library"
-    //     })
-    //     .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
-    //     .end(function(error, response) {
-    //         response.should.have.status(201);
-    //         response.body.should.be.a('object');
-    //         response.body.should.have.property('message').eql("Post Saved successfully");
-    //         id = post.id;
-    //     done();  
-    //     });
-    // })
-
+    });
     it('comment on a post', done => {
       const postId = id;
       const newComment = new _Post.Comment({

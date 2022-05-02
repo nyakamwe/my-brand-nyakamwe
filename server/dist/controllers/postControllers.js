@@ -39,14 +39,15 @@ const post_create = async (req, res) => {
         with: 500,
         height: 500,
         crop: 'fill'
-      });
-      const setPoster = cloud_save ? cloud_save.url : ' '; // new post
+      }); // const imageUrl = cloud_save ? cloud_save.url : 
+      // new post
 
       const post = new _Post.Post({
         title: req.body.title,
         content: req.body.content,
-        poster: setPoster
+        poster: cloud_save.url
       });
+      console.log(post);
       await post.save();
       return res.status(201).json({
         id: post.id,
@@ -98,20 +99,45 @@ const post_update = async (req, res) => {
       _id: req.params.id
     });
 
-    if (req.body.title.length > 0 && req.body.content.length > 0) {
-      post.title = req.body.title, post.content = req.body.content;
-      await post.save();
-      return res.status(200).json({
-        message: "Post successfully updated!"
-      });
+    if (post) {
+      if (req.file) {
+        const cloud_save = await _cloudinaryImage.default.uploader.upload(req.file.path, {
+          with: 500,
+          height: 500,
+          crop: 'fill'
+        });
+        post.title = req.body.title || post.title, post.content = req.body.content || post.content;
+        post.poster = cloud_save.url;
+        post.save();
+        return res.status(200).json({
+          message: "Post successfully updated!"
+        });
+      } else {
+        post.title = req.body.title || post.title, post.content = req.body.content || post.content;
+        post.poster = post.poster;
+        post.save();
+        return res.status(200).json({
+          message: "Post successfully updated!"
+        });
+      }
     } else {
-      return res.status(400).json({
-        message: "Title and content need value!"
+      return res.status(404).json({
+        error: "Post doesn't exist!"
       });
-    }
-  } catch {
+    } // if (req.body.title.length > 0 && req.body.content.length > 0) {
+    // 	post.title = req.body.title ? req.body.title : post.title,
+    // 	post.content = req.body.content ? req.body.content : post.content
+    // 	post.poster = cloud_save ? cloud_save.url : post.poster
+    // 	await post.save()
+    // 	return res.status(200).json({message:"Post successfully updated!"});
+    // }
+    // else{
+    // 	return res.status(400).json({message:"Title and content need value!"});
+    // }
+
+  } catch (error) {
     return res.status(404).json({
-      error: "Post doesn't exist!"
+      error: error.message
     });
   }
 }; // delete a post
