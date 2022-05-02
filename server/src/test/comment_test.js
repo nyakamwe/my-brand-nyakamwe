@@ -116,32 +116,6 @@ describe('Test for Comment Endpoints', ()=>{
         });
     })
     
-    // it("creates a new post", (done)=>{
-    //     const userToken = 'Bearer ' + autToken
-
-    //     chai.request(server)
-    //     .post("/api/posts")
-    
-    //     //set the auth header with our token
-    //     .set('Content-Type', 'multipart/form-data')
-    //     .set('Authorization', 'Bearer ' + autToken)
-    //     .field({
-    //         title: "unit testing",
-    //         content: "I am testing nodejs api using mocha with chai assertion library"
-            
-    //     })
-    //     .attach('poster', '/home/nyakamwe/Pictures/MPAMAVUTA.png')
-    //     .end(function(error, response) {
-    //         response.should.have.status(201);
-    //         response.body.should.be.a('object');
-    //         response.body.should.have.property('message').eql("Post Saved successfully");
-
-    //         id = post.id;
-    //     done();  
-    //     });
-    // })
-
-    
 
     it('comment on a post', (done)=>{
         const postId = id;
@@ -222,8 +196,6 @@ describe('Test for Comment Endpoints', ()=>{
     })
 
     
-
-        
     it('shows individual comment', (done)=>{
         const commentId = cId
         chai.request(server)
@@ -250,7 +222,6 @@ describe('Test for Comment Endpoints', ()=>{
         })
     })
 
-        
         
     })
 
