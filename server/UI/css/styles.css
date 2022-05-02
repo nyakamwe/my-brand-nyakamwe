@@ -1,0 +1,1265 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,400&family=Ubuntu:ital,wght@0,500;0,700;1,400&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: cursive;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+
+/*navigation styling*/
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+.navbar{
+    position: fixed;
+    width: 100%;
+    padding: 15px 0;
+    z-index: 999;
+    background-color: rgb(78, 59, 63);
+    height: 70px;
+}
+.navbar .max-width{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+.navbar .logo a{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+}
+.navbar .logo a span{
+    color: crimson;
+}
+.navbar .menu li{
+    display: inline;
+
+}
+.navbar .menu li a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+.navbar .menu li a:hover{
+    color: crimson;
+}
+.navbar a.icon {
+    display: none;
+  }
+
+/* Home section styling */
+.home{
+    display: flex;
+    color: #000;
+    min-height: 500px;
+    background: #b1b493;
+    height: 670px;
+}
+.home .max-width{
+    margin: auto 0 auto 40px;
+}
+.home .home-content .text-1{
+    padding-left: 90px;
+    font-size: 28px;
+    font-family: 'Ubuntu',sans-serif;
+    font-weight: 700;
+}
+
+
+.home .home-content .text-2{
+    font-size: 40px;
+    font-weight: 300;
+    margin-left: -3px;
+}
+.home .home-content .text-3{
+    font-size: 35px;
+    margin: 5px 0;
+}
+.home .home-content .text-3 span{
+    color: crimson;
+    font-weight: 500;
+}
+.home .home-content a{
+    display: inline-block;
+    color: #fff;
+    background: crimson;
+    font-size: 25px;
+    padding: 12px 36px;
+    margin-top: 80px;
+    border-radius: 6px;
+    border: 2px solid crimson;
+    transition: all 0.3s ease;
+}
+.home .home-content center a:hover{
+    color: #fff;
+    background: none;
+}
+
+/* add rolling effects*/
+span{
+    opacity: 0;
+    transition: all 0.4s ease-out; 
+}
+span.rolling{
+    opacity: 1;
+}
+
+
+
+/* all similar content styling */
+section{
+    padding: 100px 0;
+}
+section .title{
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 4px;
+}
+section .title::before{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 70px;
+    height: 2px;
+    background: crimson;  
+    transform: translateX(-50%);
+
+}
+
+/* about section styling */
+.about{
+    height: 670px;
+    padding-top: 62px;
+}
+
+.about .about-content, .work .work-content, .skills .skills-content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.about .about-content .left{
+    width: 35%;
+}
+.about .about-content .left img{
+    height: 280px;
+    width: 350px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    object-fit: cover;
+}
+.about .about-content .right{
+    width: 65%;
+}
+.about .about-content .right .text{
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.about .about-content .right p{
+    text-align: justify;
+}
+.about .about-content .right a{
+    display: inline-block;
+    color: #fff;
+    background: #b1b493;
+    font-size: 20px;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: 1px solid crimson;
+    transition: all 0.3s ease;
+}
+.about .about-content .right a:hover{
+    color: crimson;
+    background: none;
+}
+
+/* addition */
+.hamburger {
+    display: none;
+}
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+    opacity: 1;
+}
+
+
+/*work section styling*/
+.work{
+    background: #111;
+    color: #fff;
+    height: 670px;
+    padding-top: 62px;
+}
+
+.work .work-content .card{
+    width: 24%;
+    height: 160px;
+    background: #222;
+    text-align: center;
+    border-radius: 6px;
+    padding: 20px 25px;
+    cursor: pointer;
+}
+.work .work-content .card:hover{
+    background: #b1b493;
+
+}
+.work .work-content .card .box{
+    transition: all 0.3s ease;
+}
+.work .work-content .card:hover .box{
+    transform: scale(1.05);
+}
+.work .work-content .card i{
+    font-size: 20px;
+    color: crimson;
+}
+.work .work-content .card:hover i{
+    color: #fff;
+}
+.work .work-content .card .text{
+    font-size: 19px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+
+/* skill section styling  */
+.skills{
+    height:870px;
+}
+.skills .skills-content .card .text{
+    margin-left: 55px;
+}
+
+.skills .skills-content .right .line::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: crimson;
+}
+
+
+/* blog post styling */
+.blog{
+    background: #111;
+    color: #fff;
+    height: 750px;
+    padding-top: 62px;
+}
+.blog .title::before{
+    background: crimson;
+}
+
+.blog .blog-content .card{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  background:#111;
+}
+.blog .blog-content .card .box div{
+ font-size:24px;
+ text-align: center;
+}
+.blog .blog-content .card .box{
+  display:grid;
+  grid-template-rows: 10em 3em 2em 2em;
+  text-align:center;
+}
+.blog .blog-content .card .box img{
+  height:150px;
+  width: 170px;
+  margin-left: 100px;
+}
+.blog .blog-content .card .box p{
+  text-align:center;
+}
+.blog .blog-content .card .box a{
+  /* background:red; */
+  /*margin:0px 120px auto; */
+  height:30px;
+  width: 140px;
+  color:#fff;
+  border-radius:4px;
+}
+.blog .blog-content a#visit{
+    display: inline-block;
+    color: #fff;
+    background: crimson;
+    font-size: 15px;
+    padding: 10px 30px;
+    margin-top: 90px;
+    margin-left: 470px;
+    border-radius: 4px;
+    border: 1px solid crimson;
+    transition: all 0.3s ease;
+}
+.blog .blog-content a#visit:hover{
+    color: #fff;
+    background: none;
+}
+
+/* contact styling */
+
+.contact .contact-content{
+    padding-left: 300px;
+}
+
+.contact .contact-content .row1{
+    margin-left: 80px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 40px;
+
+}
+
+.contact .contact-content .row2{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.contact .contact-content .row2 form .fields{
+    display: flex;
+}
+
+.contact .contact-content .row2 form input{
+    height: 35px;
+    padding-left: 6px;
+    border-radius: 4px;
+    border: 1px solid #000;
+    width: 250px;
+}
+
+.contact .contact-content .row2 form .subject input{
+    width: 540px;
+    margin-bottom: 40px;
+}
+
+.contact .contact-content .row2 form .textarea textarea{
+    padding-top: 10px;
+    padding-left: 6px;
+    width: 540px;
+    border: 1px solid #000;
+    resize: none;
+
+}
+
+.contact form .field, .contact form .fields .field{
+    margin-right: 40px;
+    margin-bottom: 15px;
+}
+
+.contact form .button button{
+    height: 40px;
+    width: 70px;
+    border: 1px solid #b1b493;
+    border-radius: 4px;
+    font-size: 17px;
+    background: #b1b493;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+.control{
+    margin-bottom: 10px;
+    margin-right: 30px;
+}
+#form-contact small{
+    font-size: 10px;
+    display: block;
+    visibility: hidden;
+
+}
+
+#form-contact .error small{
+    visibility: visible;
+    color: red;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#form-contact .success input, #form-contact .success textarea{
+    padding-right: 40px;
+    border-color: green;
+}
+#form-contact .error input, #form-contact .error textarea{
+    border-color: red;
+}
+
+
+.contact form .button button:hover{
+    color: crimson;
+    background: none;
+}
+
+/* styling login and register form */
+.site-form{
+    padding-top: 140px;
+    padding-left: 430px;
+}
+.site-form h5{
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+.site-form div{
+    margin-bottom: 20px;
+}
+.site-form input{
+    height: 30px;
+    padding-left: 5px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+.site-form button{
+    display: block;
+    font-size: 16px;
+    background: #035D79;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+}
+.site-form a:hover{
+    color:crimson;
+    background: #b1b493;
+}
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.form-control label{
+    margin-bottom: 5px;
+}
+.form-control i{
+    position: absolute;
+    top: 25px;
+    left: 270px;
+    visibility: hidden;
+}
+.form-control.success i.fa-check-circle{
+    visibility: visible;
+    color: green;
+}
+.form-control.error i.fa-exclamation-circle{
+    visibility: visible;
+    color: red;
+}
+.form-control small{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+.form-control.error small{
+    visibility: visible;
+    color: red;
+}
+.form-control.success input{
+    border-color: green;
+}
+.form-control.error input{
+    border-color: red;
+}
+section#work,section#skills,section#contact{
+    height: 80vh;
+}
+
+/* blogs site styling */
+
+.blogs-site .blogs-site-content .card .box{
+    display:grid;
+    grid-template-rows: 10em 3em 2em 2em;
+    text-align:center;
+  }
+
+.blogs-site-detail .box .poster span#poster,.blogs-site-detail .box .time span#timer{
+font-size:1em;
+font-weight: 700;
+color: #000;
+opacity: 1;
+}  
+.blogs-site-detail .box #title{
+    font-weight: 700;
+    margin: 20px auto;
+
+}
+.blogs-site-detail .box .description{
+    margin-bottom: 10px;
+    text-align: justify;
+}
+.blogs-site-detail .box .time,.blogs-site-detail .box .poster{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .like{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .like button{
+    border: none;
+    background: none;
+}
+.blogs-site-detail .like:hover,.blogs-site-detail .like button:hover{
+    cursor: pointer;
+    color:crimson
+}
+.blogs-site-detail .comment-form{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .comment-form h4{
+    margin-bottom: 10px;
+}
+.blogs-site-detail .comment-form input{
+    height: 30px;
+    width: 250px;
+    border: 1px solid;
+    border-radius: 6px;
+    padding-left: 5px;
+}
+.blogs-site-detail .comment-form input[type="submit"]{
+    border-radius: 4px;
+    cursor: pointer;
+    padding-right: 5px;
+    width: 70px;
+}
+.blogs-site-detail .comment-form input[type="submit"]:hover{
+    border-color: green;
+    color: crimson;
+}
+.blogs-site-detail .comments{
+    display: flex;
+}
+.blogs-site-detail .comments div{
+    margin-left: 10px;
+}
+.blogs-site-detail .comments div>p{
+    padding-bottom: 10px;
+}
+
+
+
+/* footer section styling */
+
+footer{
+    background: #111;
+    padding: 20px 39px; 
+    text-align: center;
+    border: 1px solid #fff;
+}
+footer a{
+    color: white;
+    font-size: 18px;
+    margin-right: 10px;
+}
+footer a:hover{
+    color: aqua;
+}
+footer p{
+    color: #b1b493;
+}
+
+/* responsive query start */
+
+@media screen and (max-width:1047px) {
+    section .title::before{
+        width: 60px;
+    }
+    .home .home-content .text-1{
+        font-size: 22px;
+    }
+    .home .home-content a{
+        font-size: 20px;
+        padding: 10px 30px;
+        margin-top: 10px;
+        border: 1px solid crimson;
+    }
+    .about h2,.work h2,.skills h2,.blog h2,.contact h2{
+        font-size: 30px;
+    }
+    .about .about-content .left{
+        width: 35%;
+    }
+    .about .about-content .left img{
+        height: 250px;
+        width: 300px;
+        
+    }
+    .about .about-content .right .text{
+        font-size: 18px;       
+        margin-left: 40px;
+    }
+    .about .about-content .right a{
+        font-size: 18px;     
+        margin-left: 40px;
+    }
+    .skills .skills-content .card img{
+        width: 140px;
+    }
+    .skills .skills-content .card .text{
+        margin-left: 30px;
+    }
+    .blog .blog-content .card{
+        gap: 0;
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 20px;
+        margin-left: 90px;
+    }
+
+    .blog .blog-content .card .box p{
+        font-size: 15px;
+        margin-left: 90px;
+    }
+    .blog .blog-content a#visit{
+        margin-left: 390px;
+    }
+    .contact .contact-content .row1{
+        margin-left: 0;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -100px;
+    }
+}
+@media screen and (max-width:1034px) {
+
+    .home .home-content .text-1{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width:972px) {
+
+    .home .home-content .text-1{
+        font-size: 18px;
+    }
+    .home .home-content a{
+        font-size: 18px;
+    }
+    .about .about-content .right .text{
+        font-size: 18px;       
+        margin-left: 40px;
+    }
+    .about .about-content .right a{
+        font-size: 18px;     
+        margin-left: 40px;
+    }
+    .work .work-content .card .text{
+        font-size: 15px;
+    }
+    .work .work-content .card p{
+        font-size: 15px;
+    }
+    .blog .blog-content a#visit{
+        margin-left: 350px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -100px;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -200px;
+    }
+}
+@media screen and (max-width:930px) {  
+    .about .about-content .left{
+        width: 100%;
+        /* position: relative; */
+    }
+    .about .about-content .right{
+        width: 100%;
+    }
+
+}
+@media screen and (max-width:904px) {  
+    .navbar .logo a{
+        font-size: 30px;
+    }
+    .navbar .menu li a{
+        font-size: 15px;
+    }
+    .home .home-content .text-1{
+        font-size: 15px;
+    }
+    .home .home-content a{
+        font-size: 17px;
+    }
+    .about h2,.work h2,.skills h2,.blog h2,.contact h2{
+        font-size: 20px;
+    }
+    section .title::before{
+        width: 40px;
+    }
+    .about .about-content .right .text{
+        font-size: 14px;  
+    }
+    .about .about-content .right a{
+        font-size: 14px;     
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 16px;
+        margin-left: 110px;
+    }
+    .blog .blog-content .card .box p{
+        font-size: 14px;
+        margin-left: 120px;
+    }
+
+    .blog .blog-content a#visit{
+        margin-left: 290px;
+    }
+    .blogs-site-detail .box img{
+        width: 450px
+    }
+}
+
+@media screen and (max-width:848px) { 
+    .work .work-content .card i{
+       font-size: 10px;
+    }
+    .work .work-content .card .text{
+        font-size: 15px;       
+        width: 100%;
+    }
+    .work .work-content .card p{
+        font-size: 12px;
+        width: 100%;
+    }
+    .skills .skills-content .card img{
+        width: 90px;
+    }
+    .skills .skills-content .card .text{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+ }
+
+ @media screen and (max-width:803px) {
+    .menu {
+        position: fixed;
+        left: -100%;
+        top: 4rem;
+        flex-direction: column;
+        background-color: gray;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .menu.active {
+        left: 0;
+    }
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        margin-top: -30px;
+        margin-left: 700px;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .navbar .menu li a{
+        display: block;
+        font-size: 25px;
+        padding: 15px;
+        font-family: 'Montserrat';
+    }
+    .home .home-content .text-1{
+        font-size: 20px;
+    }
+    .blog .blog-content .card{
+        margin-left: -100px;
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 12px;
+        margin-left: 110px;
+    }
+    .blog .blog-content .card .box p{
+        font-size: 12px;
+        margin-left: 100px;
+    }
+    .blog .blog-content a#visit{
+        margin-left: 190px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -190px;
+        font-size: 12px;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -230px;
+    }
+    .contact .contact-content .row2 form input{
+        width: 155px;
+    }
+    
+    .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
+        width: 350px;
+    }
+    .site-form{
+        padding-left: 230px;
+    }
+    .blogs-site-detail .box img{
+        width: 380px
+    }
+
+  }
+  @media screen and (max-width:760px) {
+    .hamburger {
+        margin-left: 600px;
+    }
+
+  }
+  @media screen and (max-width:710px) {
+    section#work{
+        height: 100vh;
+    }
+    .hamburger {
+        margin-left: 550px;
+    }
+
+    .work .work-content .card{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .work .work-content button{
+        display: none;
+    }
+    .blog .blog-content .card .box img{
+        height: 108px;
+        width: 104px;
+        /* margin-left: 110px; */
+
+    }
+    .blog .blog-content .card .box{
+        display: block;
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 14px;
+    }
+    .blog .blog-content .card .box p{
+       font-size: 12px;
+    }
+    .blog .blog-content a#visit{
+        margin-left: 150px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -260px;
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -290px;
+    }
+
+
+
+
+
+  }
+  @media screen and (max-width:610px) {
+    .hamburger {
+        margin-left: 450px;
+    }
+    .about .about-content .left{
+        margin-left: 20px;
+    }
+    .about .about-content .right{
+        margin-top: 10px;
+    }
+    .about .about-content .right a{
+        margin-left: 80px;
+    }
+    .blog{
+        height: 1100px;
+    }
+
+
+    .blog .blog-content .card{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .blog .blog-content .card .box{
+        margin-left: 10px;
+    }
+    .site-form{
+        padding-left: 170px;
+    }
+    .blogs-site-detail .box img{
+        width: 300px
+    }
+    .blogs-site-detail .box .description{
+        text-align: justify;
+    }
+
+  }
+  @media screen and (max-width:499px) {
+    .hamburger {
+        margin-left: 380px;
+    }
+    .home .home-content .text-1{
+        font-size:20px;
+        width: 100%;
+    }
+    .home .home-content a{
+        padding: 10px 30px;
+        margin-top: 40px;
+        margin-left: 50px;
+        border: 1px solid crimson;
+    }
+    .blog .blog-content .card .box{
+        margin-left: 10px;
+    }
+    .blog .blog-content a#visit{
+        margin-left:90px;
+    }
+    .contact .contact-content .row1{
+        margin-left: -300px;
+        font-size: 11px;
+
+    }
+    .contact .contact-content .row2 form{
+        margin-left: -310px;
+    }
+    .contact .contact-content .row2 form input{
+        width: 130px;
+    }
+    
+    .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
+        width: 300px;
+    }
+    .site-form{
+        padding-left: 80px;
+    }
+    .blogs-site-detail .box img{
+        width: 250px
+    }
+    .blogs-site-detail .comment-form input[type="submit"]{
+        margin-top: 20px;
+    }
+    .blogs-site-detail .box .description{
+        text-align: justify;
+    }
+
+  }
+  @media screen and (max-width:435px){
+    .hamburger {
+        margin-left: 340px;
+    }
+    .home{
+        width: 100%;
+    }
+    .home .max-width{
+        margin: 0px 0px 0  0;
+        width: 100%;
+    }
+    .home .max-width .home-content{
+        width: 100%;
+        margin-left: -40px;
+    }
+    .about .about-content .left img{
+        height: 200px;
+        width: 250px;
+    }
+    .about .about-content .right a{
+        margin-left: 40px;
+        padding: 7px 12px; 
+    }
+    .blog .blog-content .card .box{
+        margin-left: 10px;
+    }
+    .blog .blog-content a#visit{
+        margin-left:70px;
+    }
+    .contact .contact-content .row2 form .fields{
+        display: block;
+    }
+    .contact .contact-content .row2 form input{
+        width: 200px;
+    }
+    
+    .contact .contact-content .row2 form .subject input,.contact .contact-content .row2 form .textarea textarea{
+        width: 200px;
+    }
+    .blogs-site-detail .box .description{
+        text-align: justify;
+    }
+
+    .site-form input{
+        /* height: 30px;
+        padding-left: 5px; */
+        width: 200px;
+        /* border: 1px solid black;
+        border-radius: 4px;
+        display: flex;
+        align-items: center; */
+    }
+    .form-control i{
+        /* position: absolute; */
+        /* top: 25px; */
+        left: 175px;
+        /* visibility: hidden; */
+    }
+    .site-form button{
+        font-size: 12px;
+        padding: 6px;
+    }
+
+
+}
+
+@media screen and (max-width:403px){
+
+    .hamburger {
+        margin-left: 340px;
+    }
+    .home{
+        width: 100%;
+    }
+    .home .max-width{
+        margin: 0px -60px 0  0;
+        
+    }
+    .home .max-width .home-content{
+        width: 100%;
+        margin-left: -40px;
+    }
+    .home .home-content a{
+        margin-left:90px;
+        width: 70%;
+    }
+    .home .home-content .text-1{
+        font-size:18px;
+        width: 100%;
+
+    }
+    .about .about-content .left{
+        margin-left: -30px;
+    }
+    .about .about-content .left img{
+        height: 200px;
+        width: 250px;
+    }
+    .about .about-content .right{
+        width: 100%;
+
+    }
+    .about .about-content .right p{
+        margin-left: 0;
+    }
+    .about .about-content .right a{
+        margin-left: 40px;
+        padding: 7px 11px; 
+    }
+    .blog .blog-content .card .box .text{
+        font-size: 20px;
+    }
+    
+    .blog .blog-content a#visit{
+        margin-left: 30px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:370px){
+    .hamburger {
+        margin-left: 300px;
+    }
+    .blogs-site-detail .comment-form input{
+        width: 150px;
+    }
+}
+@media screen and (max-width:330px){
+    .hamburger {
+        margin-left: 260px;
+    }
+    .site-form input{
+        /* height: 30px;
+        padding-left: 5px; */
+        width: 150px;
+        /* border: 1px solid black;
+        border-radius: 4px;
+        display: flex;
+        align-items: center; */
+    }
+    .form-control i{
+        /* position: absolute; */
+        /* top: 25px; */
+        left: 125px;
+        /* visibility: hidden; */
+    }
+    .site-form button{
+        font-size: 12px;
+        padding: 6px;
+    }
+
+}
+
+@media screen and (max-width:280px){
+    .menu {
+        top: 3.7rem;
+        border-radius: 0px;
+    }
+   
+    .navbar .menu li a{
+        font-size: 20px;
+        
+    }
+    .hamburger {
+        margin-left: 180px;
+        margin-top: -25px;
+        /* margin-left: 700px; */
+    }
+    .navbar{
+        height: 60px;
+    }
+    .navbar .logo a{
+        font-size: 20px;
+    }
+
+
+    
+    .home .home-content .text-1{
+        font-size:14px;
+        /* width: 100%; */
+        text-align: center;
+    }
+    .home .home-content a{
+        margin-left:50px;
+        /* width: 100%; */
+    }
+    .about .about-content .left{
+        margin-left: -30px;
+    }
+    .about .about-content .left img{
+        height: 200px;
+        width: 210px;
+    }
+    .about .about-content .right{
+        width: 100%;
+
+    }
+    .about .about-content .right p{
+        margin-left: 0;
+    }
+    .about .about-content .right a{
+        margin-left: 0px;
+        padding: 4px 7px; 
+        font-size: 12px;
+        width: 100%;        
+    }
+    .work{
+        height: 830px;
+    }
+
+    .work .work-content .card{
+        height: 180px;
+    }
+    .work .work-content .card i{
+        font-size: 10px;
+     }
+     .work .work-content .card .text{
+         font-size: 13px;       
+         width: 100%;
+     }
+     .work .work-content .card p{
+         font-size: 12px;
+         width: 100%;
+     }
+     .site-form{
+        padding-left: 70px;
+    }
+
+    .site-form h5{
+        font-size: 15px;
+    }
+    .site-form div{
+        margin-bottom: 20px;
+    }
+    .site-form input{
+        width: 130px;
+    }
+    .site-form a{
+        height: 1    0px;
+        background: #035D79;
+        padding: 7px 7px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+    }
+    .site-form a:hover{
+        color:crimson;
+        background: #b1b493;
+    }
+    .blogs-site-detail .box #title{
+        font-size: 13px;
+    }
+    .blogs-site-detail .box img{
+        width: 180px
+    }
+    .blogs-site-detail .box .description{
+        text-align: left;
+    }
+    .blogs-site-detail .comments{
+        display: block;
+    }
+    .blogs-site-detail .comments div{
+        margin-top: 10px;
+    }
+    .blogs-site-detail .comments div>p{
+        font-size: 15px;
+    }
+    .form-control i{
+        /* position: absolute; */
+        /* top: 25px; */
+        left: 100px;
+        /* visibility: hidden; */
+    }
+    .form-control small{
+        font-size: 10px;
+    }
+
+    footer a{
+        font-size: 15px;
+    }
+    footer p{
+        font-size: 12px;
+    }
+
+    
+}
