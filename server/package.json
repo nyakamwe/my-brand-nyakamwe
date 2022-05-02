@@ -8,7 +8,7 @@
     "start_dev": "npm run build && nodemon dist/index.js",
     "start": "npm run build && node dist/index.js",
     "test": "mocha src/test --timeout 1000000 --exit",
-    "coverage": "nyc npm run test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "make-badges": "istanbul-badges-readme --readmeDir='../'",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
@@ -41,6 +41,7 @@
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
     "codecov": "^3.8.3",
+    "coveralls": "^3.1.1",
     "istanbul-badges-readme": "^1.8.1",
     "mocha": "^9.2.2",
     "nyc": "^15.1.0"

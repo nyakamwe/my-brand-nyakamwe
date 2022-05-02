@@ -5,4 +5,3 @@ coverage
 *.lcov
 blog_test.js
 .env
-uploads/
