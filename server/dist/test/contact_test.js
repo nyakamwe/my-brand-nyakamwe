@@ -39,8 +39,8 @@ describe('Test for Message Endpoints', () => {
     });
   });
   /**
-  * POST Contact route
-  */
+   * POST Contact route
+   */
 
   describe('POST /api/messages', () => {
     before(() => {
@@ -56,7 +56,7 @@ describe('Test for Message Endpoints', () => {
         password: "password test"
       });
 
-      _chai.default.request(_index.default).post("/api/users").send(newUser).end((err, response) => {
+      _chai.default.request(_index.default).post("/api/users/register").send(newUser).end((err, response) => {
         response.should.have.status(201);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("user created!");
@@ -123,13 +123,6 @@ describe('Test for Message Endpoints', () => {
         response.body.should.property('message').eql("contacts fetched!");
         done();
       });
-    }); // it('don\'t return any message', (done)=>{
-    //     chai.request(server)
-    //     .get("/api/message")
-    //     .end((err, response)=>{
-    //         response.should.have.status(404);
-    //     done();
-    //     })
-    // })
+    });
   });
 });

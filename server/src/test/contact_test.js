@@ -145,14 +145,6 @@ describe('POST /api/messages', ()=>{
         })
     })
 
-    // it('don\'t return any message', (done)=>{
-    //     chai.request(server)
-    //     .get("/api/message")
-    //     .end((err, response)=>{
-    //         response.should.have.status(404);
-    //     done();
-    //     })
-    // })
 })
 
 
