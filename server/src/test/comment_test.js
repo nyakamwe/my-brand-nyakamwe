@@ -55,7 +55,7 @@ describe('Test for Comment Endpoints', ()=>{
         })
 
         chai.request(server)
-        .post("/api/users")
+        .post("/api/users/register")
         .send(newUser)
         .end((err, response)=>{
             response.should.have.status(201);

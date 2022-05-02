@@ -25,13 +25,12 @@ const post_create = async (req, res) => {
 				crop:'fill'
 
 			})
-			const setPoster = cloud_save ? cloud_save.url : ' '
 
 			// new post
 			const post = new Post({
 				title: req.body.title,
 				content: req.body.content,
-				poster: setPoster
+				poster: cloud_save.url
 				
 				
 			})
