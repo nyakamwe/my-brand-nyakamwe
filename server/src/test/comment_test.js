@@ -194,7 +194,7 @@ describe('Test for Comment Endpoints', ()=>{
             const postId = id
             
             chai.request(server)
-            .get(`/api/posts/${postId}/comment`)
+            .get(`/api/posts/${postId}/comments`)
             .send({postId})
             .end((err, response)=>{
                 response.should.have.status(200);
@@ -207,7 +207,7 @@ describe('Test for Comment Endpoints', ()=>{
         
         const postId = "625b07c93cc2f2b0163f1a75"
         chai.request(server)
-        .get(`/api/posts/${postId}/comment`)
+        .get(`/api/posts/${postId}/comments`)
         .send({postId})
         .end((err, response)=>{
             response.should.have.status(404);

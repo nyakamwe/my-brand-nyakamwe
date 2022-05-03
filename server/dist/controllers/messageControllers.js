@@ -13,11 +13,13 @@ const messages_get_all = async (req, res) => {
     const messages = await _Contact.Contact.find();
     if (messages == null) return res.status(404);
     return res.status(200).json({
-      data: messages,
+      messages,
       message: "contacts fetched!"
     });
   } catch (error) {
-    return res.status(404);
+    return res.status(404).json({
+      error: error.message
+    });
   }
 }; // get single message
 
@@ -31,7 +33,7 @@ const message_get_one = async (req, res) => {
       message: "Contact not available"
     });
     return res.status(200).json({
-      data: message
+      message
     });
   } catch (error) {
     return res.status(404).json({

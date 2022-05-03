@@ -26,6 +26,15 @@
 		"bearerAuth": []
 	  }],
 
+	"securityDefinitions": {
+		"bearerAuth": {
+			"type": "apiKey",
+			"name": "x-auth-token",
+			"scheme": "bearer",
+			"in": "header"
+		  }
+	},  
+
 	"paths": {
 		"/api/users/register": {
 			"post": {
@@ -197,7 +206,7 @@
 				
 			}
 		},
-		"/api/messages/{id}": {
+		"/api/messages/{messageId}": {
 			"get": {
 				"security": [{
 					"bearerAuth": []
@@ -273,23 +282,10 @@
 		},
 		"/api/posts": {
 			"get": {
-				"security": [{
-					"bearerAuth": []
-				  }],
 				"tags": ["Posts"],
 				"summary": "Get all posts",
 				"description": "get all posts",
 				"operationId": "get all posts",
-				"parameters":[
-					{
-						"name": "Authorization",
-						"in": "header",
-						"description": "Add the token in the format 'Bearer token'",
-						"required": true,
-						"type": "string",
-						"default": "Bearer "
-					}
-				],
 				"responses": {
 					"200": {
 						"description": "success"
@@ -350,11 +346,8 @@
 				}
 			}
 		},
-		"/api/posts/{id}": {
+		"/api/posts/{postId}": {
 			"get": {
-				"security": [{
-					"bearerAuth": []
-				  }],
 				"tags": ["Posts"],
 				"summary": "Get Single Post",
 				"description": "get single Post",
@@ -363,15 +356,7 @@
 				"produces": ["application/json"],
 				"parameters": [
 					{
-						"name": "Authorization",
-						"in": "header",
-						"description": "Add the token in the format 'Bearer token'",
-						"required": true,
-						"type": "string",
-						"default": "Bearer "
-					},
-					{
-						"name": "id",
+						"name": "postId",
 						"in": "path",
 						"type": "string",
 						"description": "Post Id",
@@ -381,6 +366,9 @@
 				"responses": {
 					"200": {
 						"description": "successfully fetched"
+					},
+					"404": {
+						"description": "not found"
 					}
 				}
 			},
@@ -404,7 +392,7 @@
 						"default": "Bearer "
 					},
 					{
-						"name": "id",
+						"name": "postId",
 						"in": "path",
 						"type": "string",
 						"description": "Post Id",
@@ -463,7 +451,7 @@
 						"default": "Bearer "
 					},
 					{
-						"name": "id",
+						"name": "postId",
 						"in": "path",
 						"type": "string",
 						"description": "Post Id",
@@ -480,15 +468,15 @@
 				}
 			}
 		},
-		"/api/posts/{id}/comment": {
+		"/api/posts/{postId}/comments": {
 			"get": {
 				"tags": ["Comments"],
-				"summary": "Get all comments",
-				"description": "get all comments",
-				"operationId": "get all comments",
+				"summary": "Get all comments of specific post",
+				"description": "get all comments of specific post",
+				"operationId": "get all comments of specific post",
 				"parameters": [
 					{
-						"name": "id",
+						"name": "postId",
 						"in": "path",
 						"type": "string",
 						"description": "Post Id",
@@ -504,7 +492,9 @@
 					}
 				}
 				
-			},
+			}
+		},	
+		"/api/posts/{postId}/comment":{
 			"post": {
 				"security": [{
 					"bearerAuth": []
@@ -523,7 +513,7 @@
 						"default": "Bearer "
 					},
 					{
-						"name": "id",
+						"name": "postId",
 						"in": "path",
 						"type": "string",
 						"description": "Post Id",
@@ -556,7 +546,8 @@
 				}
 			}
 		},
-		"/api/comments/{id}": {
+		
+		"/api/comments/{commentId}": {
 			"get": {
 				"tags": ["Comments"],
 				"summary": "Get Single comment",
@@ -565,7 +556,7 @@
 				"produces": ["application/json"],
 				"parameters": [
 					{
-						"name": "id",
+						"name": "commentId",
 						"in": "path",
 						"type": "string",
 						"description": "Comment Id",
@@ -604,7 +595,7 @@
 						"default": "Bearer "
 					},
 					{
-						"name": "id",
+						"name": "commentId",
 						"in": "path",
 						"type": "string",
 						"description": "Comment Id",
@@ -624,7 +615,7 @@
 				}
 			}
 		},
-		"/api/posts/{id}/like": {
+		"/api/posts/{postId}/like": {
 			"security": [{
 				"bearerAuth": []
 			  }],
@@ -635,7 +626,7 @@
 				"operationId": "New like",
 				"parameters": [
 					{
-						"name":"id",
+						"name":"postId",
 						"in":"path",
 						"type":"string",
 						"description":"Post Id",

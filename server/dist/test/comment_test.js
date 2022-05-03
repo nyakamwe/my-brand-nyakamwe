@@ -86,22 +86,40 @@ describe('Test for Comment Endpoints', () => {
       });
     }); //post creation
 
-    it("creates a new post", done => {
+    it("creates a new post", async () => {
       const userToken = 'Bearer ' + autToken;
-
-      _chai.default.request(_index.default).post("/api/posts") //set the auth header with our token
-      .set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
+      const res = await _chai.default.request(_index.default).post("/api/posts").set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
         title: "unit testing",
         content: "I am testing nodejs api using mocha with chai assertion library"
-      }).attach('poster', _fs.default.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg').end(function (error, response) {
-        response.body.should.have.property('id');
-        response.should.have.status(201);
-        response.body.should.be.a('object');
-        response.body.should.have.property('message').eql("Post Saved successfully");
-        id = response.body.id;
-        done();
-      });
-    });
+      }).attach('poster', _fs.default.readFileSync(`${__dirname}/MPAMAVUTA.png`), 'MPAMAVUTA.png');
+      res.body.should.have.property('id');
+      res.should.have.status(201);
+      res.body.should.be.a('object');
+      res.body.should.have.property('message').eql("Post Saved successfully");
+      id = res.body.id;
+    }); // //post creation
+    // it("creates a new post", (done)=>{
+    //     const userToken = 'Bearer ' + autToken
+    //     chai.request(server)
+    //     .post("/api/posts")
+    //     //set the auth header with our token
+    //     .set('Content-Type', 'multipart/form-data')
+    //     .set('Authorization', 'Bearer ' + autToken)
+    //     .field({
+    //         title: "unit testing",
+    //         content: "I am testing nodejs api using mocha with chai assertion library"
+    //     })
+    //     .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.jpg')
+    //     .end(function(error, response) {
+    //         response.body.should.have.property('id')
+    //         response.should.have.status(201);
+    //         response.body.should.be.a('object');
+    //         response.body.should.have.property('message').eql("Post Saved successfully");
+    //        id = response.body.id
+    //     done();  
+    //     });
+    // })
+
     it('comment on a post', done => {
       const postId = id;
       const newComment = new _Post.Comment({
@@ -141,7 +159,7 @@ describe('Test for Comment Endpoints', () => {
     it('shows all comments related to specific post', done => {
       const postId = id;
 
-      _chai.default.request(_index.default).get(`/api/posts/${postId}/comment`).send({
+      _chai.default.request(_index.default).get(`/api/posts/${postId}/comments`).send({
         postId
       }).end((err, response) => {
         response.should.have.status(200);
@@ -152,7 +170,7 @@ describe('Test for Comment Endpoints', () => {
     it('show error when that post in not in DB', done => {
       const postId = "625b07c93cc2f2b0163f1a75";
 
-      _chai.default.request(_index.default).get(`/api/posts/${postId}/comment`).send({
+      _chai.default.request(_index.default).get(`/api/posts/${postId}/comments`).send({
         postId
       }).end((err, response) => {
         response.should.have.status(404);

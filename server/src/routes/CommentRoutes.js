@@ -7,8 +7,8 @@ const router = express.Router();
 //add comment
 router.post("/posts/:id/comment",  authenticateToken, comment_one)
 
-// get all comment of a post
-router.get("/posts/:id/comment",  comment_get_all)
+// get all comments of a post
+router.get("/posts/:id/comments",  comment_get_all)
 
 // get one comment
 router.get("/comments/:id",  comment_get_one)

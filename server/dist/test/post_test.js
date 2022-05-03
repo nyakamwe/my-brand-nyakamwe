@@ -82,22 +82,39 @@ describe('Test for Post Endpoints', () => {
       });
     }); //post creation
 
-    it("creates a new post", done => {
+    it("creates a new post", async () => {
       const userToken = 'Bearer ' + autToken;
-
-      _chai.default.request(_index.default).post("/api/posts") //set the auth header with our token
-      .set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
+      const res = await _chai.default.request(_index.default).post("/api/posts").set('Content-Type', 'multipart/form-data').set('Authorization', 'Bearer ' + autToken).field({
         title: "unit testing",
         content: "I am testing nodejs api using mocha with chai assertion library"
-      }).attach('poster', _fs.default.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.png').end(function (error, response) {
-        response.body.should.have.property('id');
-        response.should.have.status(201);
-        response.body.should.be.a('object');
-        response.body.should.have.property('message').eql("Post Saved successfully");
-        id = response.body.id;
-        done();
-      });
+      }).attach('poster', _fs.default.readFileSync(`${__dirname}/MPAMAVUTA.png`), 'MPAMAVUTA.png');
+      res.body.should.have.property('id');
+      res.should.have.status(201);
+      res.body.should.be.a('object');
+      res.body.should.have.property('message').eql("Post Saved successfully");
+      id = res.body.id;
     }); // it("creates a new post", (done)=>{
+    //     const userToken = 'Bearer ' + autToken
+    //     chai.request(server)
+    //     .post("/api/posts")
+    //     //set the auth header with our token
+    //     .set('Content-Type', 'multipart/form-data')
+    //     .set('Authorization', 'Bearer ' + autToken)
+    //     .field({
+    //         title: "unit testing",
+    //         content: "I am testing nodejs api using mocha with chai assertion library"
+    //     })
+    //     .attach('poster', fs.readFileSync('/home/nyakamwe/Pictures/MPAMAVUTA.png'), 'images/MPAMAVUTA.png')
+    //     .end(function(error, response) {
+    //         response.body.should.have.property('id')
+    //         response.should.have.status(201);
+    //         response.body.should.be.a('object');
+    //         response.body.should.have.property('message').eql("Post Saved successfully");
+    //         id = response.body.id;
+    //     done();  
+    //     });
+    // })
+    // it("creates a new post", (done)=>{
     //     const userToken = 'Bearer ' + autToken
     //     const post = new Post({
     //         title: "unit testing",
@@ -232,20 +249,6 @@ describe('Test for Post Endpoints', () => {
         response.should.have.status(200);
         response.body.should.be.a('object');
         response.body.should.have.property('message').eql("Post successfully updated!");
-        done();
-      });
-    });
-    it('don\'t updates a post when title or content is empty', done => {
-      const postId = id;
-      const post = {
-        title: "avicii",
-        content: ""
-      };
-
-      _chai.default.request(_index.default).patch(`/api/posts/${postId}`).send(post).set('Authorization', 'Bearer ' + autToken).end((err, response) => {
-        response.should.have.status(400);
-        response.body.should.be.a('object');
-        response.body.should.have.property('message').eql("Title and content need value!");
         done();
       });
     });

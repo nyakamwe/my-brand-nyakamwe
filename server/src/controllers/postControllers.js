@@ -34,8 +34,6 @@ const post_create = async (req, res) => {
 				
 				
 			})
-
-			console.log(post)
 			
 			await post.save()
 	
