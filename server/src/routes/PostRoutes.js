@@ -16,7 +16,7 @@ router.get("/posts",  post_get_all);
 router.post("/posts", authenticateToken, upload.single('poster'),  post_create);
 
 // getting individual post
-router.get("/posts/:id", authenticateToken, post_get_one)
+router.get("/posts/:id",  post_get_one)
 
 // updating post
 router.patch("/posts/:id", authenticateToken, upload.single('poster'), post_update)

@@ -47,7 +47,6 @@ const post_create = async (req, res) => {
         content: req.body.content,
         poster: cloud_save.url
       });
-      console.log(post);
       await post.save();
       return res.status(201).json({
         id: post.id,

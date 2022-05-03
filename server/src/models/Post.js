@@ -1,5 +1,5 @@
 import {mongoose} from "mongoose"
-import  User  from "./User"
+
 
 const commentSchema = new mongoose.Schema({
 	postId:{
@@ -8,20 +8,6 @@ const commentSchema = new mongoose.Schema({
 	},
     description:String
 })
-
-// const likeSchema = new mongoose.Schema({
-// 	userId:{
-// 		type:mongoose.Schema.Types.ObjectId,
-// 		ref: 'User'
-// 	},
-// 	postId:{
-// 		type:mongoose.Schema.Types.ObjectId,
-// 		ref:'Post'
-// 	}
-    
-// })
-
-
 
 
 const schema = new mongoose.Schema({

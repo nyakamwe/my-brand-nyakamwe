@@ -7,10 +7,6 @@ exports.Post = exports.Comment = void 0;
 
 var _mongoose = require("mongoose");
 
-var _User = _interopRequireDefault(require("./User"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 const commentSchema = new _mongoose.mongoose.Schema({
   postId: {
     type: _mongoose.mongoose.Schema.Types.ObjectId,

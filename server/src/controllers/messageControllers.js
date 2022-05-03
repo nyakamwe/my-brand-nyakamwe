@@ -6,9 +6,9 @@ const messages_get_all = async (req, res)=>{
         const messages = await Contact.find();
         if (messages == null) return  res.status(404)
        
-        return res.status(200).json({data:messages, message:"contacts fetched!"})
+        return res.status(200).json({messages, message:"contacts fetched!"})
         } catch(error){
-        return res.status(404)
+        return res.status(404).json({error:error.message})
     }
     
 }
@@ -19,7 +19,7 @@ const message_get_one = async (req, res)=>{
         const message = await Contact.findById(req.params.messageId);
         if (!message) return  res.status(404).json({message:"Contact not available"})
        
-        return res.status(200).json({data:message})
+        return res.status(200).json({message})
 
         } catch(error){
         return res.status(404).json({error:error.message})

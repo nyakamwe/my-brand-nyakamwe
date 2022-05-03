@@ -16,9 +16,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const router = _express.default.Router(); //add comment
 
 
-router.post("/posts/:id/comment", _AuthenticateToken.authenticateToken, _commentControllers.comment_one); // get all comment of a post
+router.post("/posts/:id/comment", _AuthenticateToken.authenticateToken, _commentControllers.comment_one); // get all comments of a post
 
-router.get("/posts/:id/comment", _commentControllers.comment_get_all); // get one comment
+router.get("/posts/:id/comments", _commentControllers.comment_get_all); // get one comment
 
 router.get("/comments/:id", _commentControllers.comment_get_one); // delete comment 
 
