@@ -36,27 +36,29 @@ function checkInputs(){
         setSuccessFor(password_login)
         
 
-        const logged_user={
-            usernameValue,
-            passwordValue
-        }
+        // const logged_user={
+        //     usernameValue,
+        //     passwordValue
+        // }
 
         // check if user exists in our localStorage
 
-        let usersJSON= localStorage.getItem('users');
-        users = JSON.parse(usersJSON);
-        users.forEach(function(user){
+        // let usersJSON= localStorage.getItem('users');
+        // users = JSON.parse(usersJSON);
+        // users.forEach(function(user){
 
-         if (user.username === usernameValue && user.password === passwordValue){
-
+        //  if (user.username === usernameValue && user.password === passwordValue){
+          if(usernameValue && passwordValue){
             setSuccessFor(username_login)
             setSuccessFor(password_login)
 
             //clear the form
             form_login.reset();
 
+            
+
             // redirect to admin page
-             window.location.href="admin-dashboard.html"
+            window.location.href="admin-dashboard.html"
            
 
          }
@@ -68,12 +70,12 @@ function checkInputs(){
              //show error
              setErrorFor(password_login,"Username or Password do not exists!")
          }
-        })
+        }
         
         
         
     }
-}
+
 
 
 // function to show error

@@ -32,18 +32,18 @@
                 <div class="blogs-site-detail">
                     <div>
                         <div class="box">
-                            <img src="images/about1.png" alt="">
-                            <div id="title">Fresh UI Elements</div>
-                            <p class="description">Blog Description:   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet tempore assumenda, vero doloribus et repellendus provident officiis aliquid temporibus expedita qui modi dolorem praesentium hic, iure facere eaque repellat? Corrupti quas nihil maiores quidem nostrum totam voluptatibus exercitationem sapiente dolores, velit, porro non deserunt veritatis corporis, cumque iste autem. Quam obcaecati ex ut quae assumenda fugiat eum neque quisquam voluptatibus. </p>
-                            <p class="time">Posted on| <span id="timer">20 March, 2022</span></p>
-                            <p class="poster">Posted by| <span id="poster">Kamali</span></p>
+                            <img src="" alt="post image" id="blog-detail-poster">
+                            <div id="title"></div>
+                            <p class="description" id="detail-description">Blog Description:</p>
+                            <p class="time">Posted on| <span id="timer"></span></p>
+                            <!-- <p class="poster">Posted by| <span id="poster">Kamali</span></p> -->
                         </div>
                     </div>
                     <div class="like">
                         <button title="Like">
                             <i class="fas fa-thumbs-up"></i>Like</a>
                         </button>
-                        <span style="opacity:1">100</span>
+                        <span style="opacity:1" id="like-number"></span>
                     </div>
                     <form action="" class="comment-form" id="comment-form">
                         <div class="form-control">
@@ -55,12 +55,8 @@
                         
 
                     </form>
-                    <div class="comments">
-                        <img src="images/about2.png"  style="border-radius:50%; height: 60px;width: 80px;"  alt="">
-                        <div>
-                            <p style="color: rgb(36, 36, 230);">4:11 PM</p>
-                            <p>This is the most valuable article I read for life.</p>
-                        </div>
+                    <div class="comments" id="blog-comments">
+                      
                     
                     </div>
                 </div>
@@ -81,5 +77,6 @@
     </main>
     <script src="app.js"></script>
     <script src="validate-comment.js"></script>
+    <script src="details.js"></script>
 </body>
 </html>

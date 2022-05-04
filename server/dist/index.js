@@ -33,6 +33,7 @@ require("dotenv").config();
 
 //creating express app
 const app = (0, _express.default)();
+app.use((0, _cors.default)());
 const port = process.env.PORT || 3000; // allow to pass json into body
 
 app.use(_express.default.json()); //routing routes
@@ -59,8 +60,7 @@ app.use("", _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_sw
 app.use("/poster", _express.default.static("uploads/blog/images"));
 app.use(_express.default.urlencoded({
   extended: true
-}));
-app.use((0, _cors.default)()); // Connect to MongoDB database
+})); // Connect to MongoDB database
 
 const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@node-applications.fe4au.mongodb.net/node-tutorial?retryWrites=true&w=majority`;
 
