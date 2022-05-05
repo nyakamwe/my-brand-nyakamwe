@@ -175,47 +175,86 @@ users.forEach(function(user){
 })
 
 
-// display articles from local storage
+// display articles from an api
+const getPostEndpoint = "https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts";
+async function getPosts(){
+    try {
+        let res = await fetch(getPostEndpoint);
+        if(res.status == 200){
+            const posts_obj = await res.json()
+            const allPosts = posts_obj.posts
+            
 
-const articlesJSON = localStorage.getItem('articles')
-blogs= JSON.parse(articlesJSON)
 
-blogs.forEach(function(blog){
-    // get body of table
-    const tbody = document.querySelector('#blogs-table-body')
-    tbody.insertAdjacentHTML('afterbegin',
-    `
-    <tr>
-        <td>${blog.title}</td>
-        <td>${blog.description}</td>
-        <td>${blog.created_at}</td>
-        <td>
-        <a  href="#edit-article" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
-        <a  href="#delete-article" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
-        </td>
-    </tr>
-    `
-    )
-})
+            allPosts.forEach(post => {
+                const date = new Date(post.createdAt).toDateString()
+                const tbody = document.querySelector('#blogs-table-body')
+               
+                tbody.insertAdjacentHTML('beforeend',
+                `
+                <tr>
+                    <td>${post.title}</td>
+                    <td>${post.content}</td>
+                    <td>${date}</td>
+                    <td>
+                    <a  href="#edit-article#${post._id}" title="Edit"><i class="fas fa-edit edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a  href="#delete-article#${post._id}" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
+                    </td>
+                </tr>
+                `
+                )
 
-// display messages from local storage
+            });
+            
+        }else{
+            console.log('failed to posts')
+        }
 
-const messagesJSON = localStorage.getItem('messages')
-if(messagesJSON !== null){
-    messages = JSON.parse(messagesJSON)
+    } catch (error) {
+        console.log(error);
+    }
+   
 }
 
-messages.forEach(function(message){
-    // get body of the table
-    const tbody = document.querySelector('#messages-table-body')
-    tbody.insertAdjacentHTML('afterbegin',
-    `
-    <tr>
-        <td>${message.sender}</td>
-        <td>${message.message}</td>
-        <td>${message.date}</td>
-    </tr>
-    `
-    )
-})
 
+async function getArticles(){
+    try {
+        let res = await fetch(getPostEndpoint);
+        if(res.status == 200){
+            const posts_obj = await res.json()
+            const allPosts = posts_obj.posts
+            
+
+
+            allPosts.forEach(post => {
+                const date = new Date(post.createdAt).toDateString()
+                const tbody = document.querySelector('#articles-table-body')
+               
+                tbody.insertAdjacentHTML('beforeend',
+                `
+                <tr>
+                    <td>${post.title}</td>
+                    <td>${post.content}</td>
+                    <td>${date}</td>
+                    <td>
+                    <a  href="#edit-article#${post._id}" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a  href="#delete-article#${post._id}" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
+                    </td>
+                </tr>
+                `
+                )
+
+            });
+            
+        }else{
+            console.log('failed to posts')
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+
+
+window.addEventListener('DOMContentLoad',getArticles(), getPosts())

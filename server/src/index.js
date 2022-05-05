@@ -16,6 +16,8 @@ import likeroutes from "./routes/LikeRoutes"
 //creating express app
 const app =express();
 
+app.use(cors())
+
 const port = process.env.PORT || 3000
 
 // allow to pass json into body
@@ -55,7 +57,7 @@ app.use("/poster", express.static("uploads/blog/images"))
 
 app.use(express.urlencoded({extended:true}))
 
-app.use(cors())
+
 
 
 // Connect to MongoDB database

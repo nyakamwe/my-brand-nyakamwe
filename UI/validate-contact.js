@@ -77,6 +77,7 @@ function checkInputs(){
             
         }
 
+        
         messages.push({
             sender:senderEmailValue,
             name:senderNameValue,

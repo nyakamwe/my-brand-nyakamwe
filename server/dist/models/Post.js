@@ -13,17 +13,7 @@ const commentSchema = new _mongoose.mongoose.Schema({
     ref: 'Post'
   },
   description: String
-}); // const likeSchema = new mongoose.Schema({
-// 	userId:{
-// 		type:mongoose.Schema.Types.ObjectId,
-// 		ref: 'User'
-// 	},
-// 	postId:{
-// 		type:mongoose.Schema.Types.ObjectId,
-// 		ref:'Post'
-// 	}
-// })
-
+});
 const schema = new _mongoose.mongoose.Schema({
   title: {
     type: String,

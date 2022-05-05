@@ -73,20 +73,24 @@ function checkInputs(){
         
         // add user to the localstorage
 
-        const usersJSON = localStorage.getItem('users')
-        if(usersJSON !== null){
-            users = JSON.parse(usersJSON)
+        // const usersJSON = localStorage.getItem('users')
+        // if(usersJSON !== null){
+        //     users = JSON.parse(usersJSON)
             
-        }
+        // }
 
-        users.push({
-            email:emailValue,
-            username:usernameValue,
-            password:passwordValue,
-            role:"Admin"
-        })
+        // users.push({
+        //     email:emailValue,
+        //     username:usernameValue,
+        //     password:passwordValue,
+        //     role:"Admin"
+        // })
 
-        localStorage.setItem('users', JSON.stringify(users))
+        // fetch api
+        
+        
+
+        // localStorage.setItem('users', JSON.stringify(users))
 
 
         // redirect to login page

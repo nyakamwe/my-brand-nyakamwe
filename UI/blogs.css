@@ -101,6 +101,7 @@ a{
     margin-bottom: 0;
 }
 
+
 .card__info {
     padding: 15px;
     display: flex;
@@ -127,7 +128,12 @@ a{
 .card__link:hover {
     text-decoration: underline;
 }
+.content__title{
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
 
+}
 
 /* footer section styling */
 
