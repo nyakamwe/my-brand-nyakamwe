@@ -2,7 +2,6 @@
 
  async function getDetails(){
     const blogId = location.hash.substring(1)
-    const readmore = document.querySelector('a#blog-readmore')
 
     const detailsEndpoint = `https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts/${blogId}`;
 
@@ -10,7 +9,7 @@
         if(res.status == 200){
             
             const post_obj = await res.json()
-            
+            console.log(post_obj.post.likes.length)
             
 
             const poster = document.querySelector('#blog-detail-poster')
@@ -48,13 +47,9 @@
             location.assign(`blog-site.html`)
             
         }
-
-    // readmore.addEventListener('click', async (e)=>{
-
-        
-        
-    // })
    
 }
 
-getDetails()
+// getDetails()
+
+window.addEventListener('DOMContentLoad',getDetails())

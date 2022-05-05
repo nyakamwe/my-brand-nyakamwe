@@ -61,17 +61,21 @@ async function getPosts(){
 
 getPosts();
 
-// get individual post
+// // get individual post
 
- function readMore(){
-    const readmore = document.querySelector('a#blog-readmore')
-    readmore.addEventListener('click', async (e)=>{
+//  function readMore(){
+//     const readmore = document.querySelector('a#blog-readmore')
+//     readmore.addEventListener('click', async (e)=>{
         
 
-        location.assign(`blog-details.html#${readmore.dataset.id}`)
+//         location.assign(`blog-details.html#${readmore.dataset.id}`)
        
-    })
+//     })
    
-}
+// }
 
-readMore()
+// readMore()
+
+
+//show animation when window loads
+window.addEventListener('DOMContentLoad',getDetails())
