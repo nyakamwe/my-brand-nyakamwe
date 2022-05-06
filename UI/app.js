@@ -1,81 +1,54 @@
-// fetch api to get all posts
+// related to menu
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".menu");
 
-const getPostEndpoint = "https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts";
+hamburger.addEventListener("click", mobileMenu);
 
-async function getPosts(){
-    try {
-        let res = await fetch(getPostEndpoint);
-        if(res.status == 200){
-            const posts_obj = await res.json()
-            const allPosts = posts_obj.posts
-            const blog_post = document.querySelector('#blog-posts')
-
-
-            allPosts.forEach(post => {
-
-                const blog_post = document.querySelector('#blog-posts')
-                blog_post.insertAdjacentHTML(`afterbegin`,
-                `<div class="card" >
-                <img class="card__image" src="${post.poster}" id="blog-poster" alt="poster image">
-                <div class="card__content">
-                    <p class="content__title" id="blog-title">
-                    ${post.title}
-                    </p>
-                    <p id="blog-content">
-                    ${post.content}
-                    </p>
-                </div>
-                <div class="card__info">
-                    <div>
-                    <i class="fas fa-thumbs-up" id="blog-like"></i>${post.likes.length}
-                    </div>
-                    <div>
-                    <a href="blog-details.html#${post._id}" class="card__link" id="blog-readmore">Read More</a>
-                    </div>
-                </div>`
-                )
-
-                // const blog_title = document.querySelector('#blog-title')
-                // const blog_content = document.querySelector('#blog-content')
-                // const blog_poster = document.querySelector('#blog-poster')
-                // const blog_like = document.querySelector('#blog-like')
-                // const blog_readmore = document.querySelector('#blog-readmore')
-
-                // blog_title.innerHTML += `${post.title}`
-                // blog_content.innerHTML += `${post.content}`
-                // blog_poster.setAttribute("src", `${post.poster}`)
-                // blog_like.insertAdjacentText(`afterend`, `${post.likes.length}`)
-                // blog_readmore.setAttribute("data-id", `${post._id}`)
-
-            });
-            
-        }else{
-            console.log('failed to posts')
-        }
-
-    } catch (error) {
-        console.log(error);
-    }
-   
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
 }
 
-getPosts();
+const navLink = document.querySelectorAll(".item");
 
-// // get individual post
+navLink.forEach(n => n.addEventListener("click", closeMenu));
 
-//  function readMore(){
-//     const readmore = document.querySelector('a#blog-readmore')
-//     readmore.addEventListener('click', async (e)=>{
-        
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
 
-//         location.assign(`blog-details.html#${readmore.dataset.id}`)
-       
-//     })
-   
-// }
+// related to hero text animation
+const text=document.querySelector('.text-1');
+const splitText=text.textContent.split("")
 
-// readMore()
+text.textContent="";
 
+for(let i=0; i < splitText.length; i++){
+  text.innerHTML += "<span>" + splitText[i] + "</span>"
+
+}
+
+let char=0;
+let timer=setInterval(roll,100);
+function roll(){
+  const newText=text.querySelectorAll('span')[char];
+  newText.classList.add('rolling');
+  char++;
+
+  if(char === splitText.length){
+      end();
+      return;
+  }
+
+
+}
+
+function end(){
+  clearInterval(timer);
+  timer=null;
+}
 
 //show animation when window loads
-window.addEventListener('DOMContentLoad',getDetails())
+window.addEventListener('DOMContentLoad',roll())
+
