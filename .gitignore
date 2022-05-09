@@ -3,4 +3,4 @@ requests.rest
 blog_test.js
 coverage
 .nyc_output
-
+.env
