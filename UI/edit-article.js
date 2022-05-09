@@ -31,6 +31,7 @@ const token = localStorage.getItem('token')
         }
    
 }
+getDetails()
 
 // save edited changes
 const editForm = document.querySelector('#edit-article-form')
