@@ -1,4 +1,9 @@
 let messages = []
+let email='';
+let name = '';
+let topic  ='';
+let content = '';
+
 const form_contact = document.getElementById('form-contact')
 const senderName = document.getElementById('name')
 const senderEmail = document.getElementById('email')
@@ -8,34 +13,27 @@ const message = document.getElementById('text')
 form_contact.addEventListener('submit',(e)=>{
     e.preventDefault();
 
-    checkInputs();
-
-})
-
-function checkInputs(){
     //collect values from inputs
     const senderNameValue = senderName.value.trim()
     const senderEmailValue = senderEmail.value.trim()
     const subjectValue = subject.value.trim()
     const textValue = message.value.trim()
 
-
     if(senderNameValue === ''){
         //show error
         setErrorFor(senderName,"Name required!")
 
     }else{
-
+        name = senderNameValue
         setSuccessFor(senderName)
     }
-
 
     if(subjectValue === ''){
         //show error
         setErrorFor(subject,"Subject is required!")
 
     }else{
-
+        topic = subjectValue
         setSuccessFor(subject)
     }
 
@@ -44,12 +42,9 @@ function checkInputs(){
         setErrorFor(message,"Text is required!")
 
     }else{
-
+        content = textValue
         setSuccessFor(message)
     }
-
-
-
 
     if(senderEmailValue === ''){
         //show error
@@ -61,33 +56,46 @@ function checkInputs(){
 
     }
     else{
+        email = senderEmailValue
         setSuccessFor(senderEmail)
         
 
         
     }
-    
-    if(senderEmailValue !== '' && textValue !== '' && subjectValue !== '' && senderNameValue !== ''){
-        
-        window.location.href="index.html"
 
-        const messagesJSON = localStorage.getItem('messages')
-        if(messagesJSON !== null){
-            messages = JSON.parse(messagesJSON)
+    const sendQueryEndpoint = "https://atlp-blog-api-nyakamwe.herokuapp.com/api/messages";
+    console.log(sendQueryEndpoint)
+    async function sendQuery(){
+        const res = await fetch(sendQueryEndpoint,{
+            method: 'POST',
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                "name":`${name}`,
+                "sender":`${email}`,
+                "subject":`${topic}`,
+                "content":`${content}`
+            })
+            
+        })
+
+        if(res.status == 200){
+      
+        window.location.href = 'index.html'
+
+        
+        }else{
+            console.log(await res.json())
             
         }
 
-        
-        messages.push({
-            sender:senderEmailValue,
-            name:senderNameValue,
-            message:textValue,
-            date:"31 March, 2022"
-            
-        })
-        localStorage.setItem('messages',JSON.stringify(messages))
     }
-}
+    sendQuery()
+
+
+
+})
 
 
 // function to show error
