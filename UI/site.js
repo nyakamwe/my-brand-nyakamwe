@@ -8,8 +8,6 @@ async function getPosts(){
         if(res.status == 200){
             const posts_obj = await res.json()
             const allPosts = posts_obj.posts
-            const blog_post = document.querySelector('#blog-posts')
-
 
             allPosts.forEach(post => {
 
@@ -77,5 +75,6 @@ async function getPosts(){
 // readMore()
 
 
+
 //show animation when window loads
-window.addEventListener('DOMContentLoad',getPosts())
+window.addEventListener('DOMContentLoad', getPosts())

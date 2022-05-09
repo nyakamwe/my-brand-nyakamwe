@@ -13,8 +13,55 @@ const profileImage = document.getElementById('profile-image')
 
 add_form.addEventListener('submit', (e)=>{
     e.preventDefault();
+    //collect values from inputs of add-article form
+    const titleValue = title.value.trim()
+    const descriptionValue = description.value.trim()
+    const imageValue = image.value
+    // checkInputs();
 
-    checkInputs();
+    const addPostEndpoint = "https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts";
+
+    // requires token 
+    const token = localStorage.getItem('token')
+    
+    async function addPost(){
+        const fd = new FormData()
+        fd.append('title', `${titleValue}`)
+        fd.append('content', `${descriptionValue}`)
+        fd.append('poster', image.files[0])
+        
+        const post_obj = await fetch(addPostEndpoint,{
+            method: 'POST',
+            headers:{
+                "Authorization":"Bearer " + token
+            },
+            body:fd
+        }
+        )
+        if(post_obj.status == 201){ //created
+            const res = await post_obj.json()
+
+            alert(`${res.message}`)
+            add_form.reset()
+            
+            window.location.href="admin-dashboard.html"
+    
+        }else{
+            const result = await post_obj.json()
+            const p = document.querySelector('#result')
+            if(result.message == "Title and content are required" || 
+                result.message == "Cannot read properties of undefined (reading 'path')"){
+
+                result.message = "All fields are required!"
+            }
+            
+            p.textContent = `${result.message}`
+            p.setAttribute('style', 'color:red; padding-bottom:5px')
+            
+        }
+       
+    }
+    addPost()
 
 })
 
@@ -126,6 +173,8 @@ form_add_user.addEventListener('submit',function(e){
     checkInputs();
 
     // form_add_user.reset();
+
+
 })
 
 // function to show error
@@ -189,7 +238,14 @@ async function getPosts(){
             allPosts.forEach(post => {
                 const date = new Date(post.createdAt).toDateString()
                 const tbody = document.querySelector('#blogs-table-body')
-               
+                // //new
+                // const tTitle = document.querySelector('#blog-table-title')
+                // const tContent = document.querySelector('#blog-table-content')
+                // const tDate = document.querySelector('#blog-table-date')
+                // const tEdit= document.querySelector('#blog-table-edit')
+                // const tDelete= document.querySelector('#blog-table-delete')
+                
+                
                 tbody.insertAdjacentHTML('beforeend',
                 `
                 <tr>
@@ -197,7 +253,7 @@ async function getPosts(){
                     <td>${post.content}</td>
                     <td>${date}</td>
                     <td>
-                    <a  href="#edit-article#${post._id}" title="Edit"><i class="fas fa-edit edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a  href="edit-article.html#${post._id}" title="Edit" id="edit-blog"><i class="fas fa-edit edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
                     <a  href="#delete-article#${post._id}" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
                     </td>
                 </tr>
@@ -255,6 +311,54 @@ async function getArticles(){
     }
    
 }
+
+// display all messages
+const messageEndpoint = `https://atlp-blog-api-nyakamwe.herokuapp.com/api/messages`;
+
+// requires token
+const token = localStorage.getItem('token')
+
+async function getMessage(){
+    const message_obj = await fetch(messageEndpoint,{
+        method: 'GET',
+        headers:{
+            "Authorization":"Bearer " + token
+        }
+        
+    }
+    )
+    if(message_obj.status == 200){ //liked
+
+       const message = await message_obj.json()
+       const messages = message.messages
+       console.log(message)
+
+
+       messages.forEach(message => {
+           const date = new Date(message.createdAt).toDateString()
+           const tbody = document.querySelector('#messages-table-body')
+          
+           tbody.insertAdjacentHTML('beforeend',
+           `
+           <tr>
+                <td>${message.sender}</td>
+                <td>${message}.</td>
+                <td>${date}</td>
+            </tr>
+
+           `)
+
+       });
+
+    }else{
+        // alert('To get message you need to be logged in!')
+        
+    }
+   
+}
+
+getMessage()
+
 
 
 window.addEventListener('DOMContentLoad',getArticles(), getPosts())

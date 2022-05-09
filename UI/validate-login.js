@@ -56,10 +56,12 @@ async function loginUser(){
     if(user_obj.status == 200){
      const userToken = await user_obj.json()
 
-     tokens.push(userToken)
+    //  tokens.push(userToken)
 
      // save token in local storage
-     localStorage.setItem('tokens', JSON.stringify(tokens))
+    //  localStorage.setItem('tokens', JSON.stringify(tokens))
+    
+     localStorage.setItem('token', userToken.Token)
 
      // redirect to admin panel
      window.location.href="admin-dashboard.html"

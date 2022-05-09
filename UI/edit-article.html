@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="admin.css">
+    
+    <title>Admin Panel</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header"> 
+            <ul>
+                <li><a href="index.html">View Site</a></li>
+                <li><a href="login.html">Logout</a></li>
+                <li><i class="fas fa-user-circle"></i></li>
+            </ul>
+        </div>
+
+        <div class="sidenav">
+            <h1>Portfo<span style="color: crimson;">lio.</span></h1>
+            <ul>
+                <li><a href="#dashboard"><i class="fas fa-home"></i>&nbsp;&nbsp;<span>Dashboard</span></a></li>
+                <li><a href="#users"><i class="fas fa-user"></i>&nbsp;&nbsp;<span>Users</span></a></li>
+                <li><a href="#messages"><i class="fas  fa-comment"></i>&nbsp;&nbsp;<span>Messages</span></a></li>
+                <li><a href="#articles"><i class="fas  fa-blog"></i>&nbsp;&nbsp;<span>Articles</span></a></li>
+            </ul>
+
+        </div>
+        <div class="main-content">
+
+            <!-- edit article section start -->
+            <section id="edit-article">
+                <form action="" class="add-form" id="edit-article-form">
+                    <h5>Edit Article</h5>
+                    <div>
+                        <!-- value="Symposium in ICT" -->
+                        <input type="text" name="" id="title" value="" placeholder="Title" required>
+                    </div>
+                    <div>
+                        <textarea name="" id="detail-description" cols="30" rows="10" placeholder="Description"></textarea>
+                    </div>
+                   <p>Currently:<a href="" id="current-image" style="color:black">poster</a></p>
+                    <input type="file" name="article-poster" id="poster"><br>
+                    
+                    <button type="submit">
+                        <a href=""><i class="fas fa-save"></i> Save Changes</a>
+                    </button>
+                </form>
+
+            </section>
+        </div>
+
+    </div>
+    <script src="edit-article.js"></script>
+</body>
+</html>
