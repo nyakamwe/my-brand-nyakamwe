@@ -1,7 +1,5 @@
 # my-brand-nyakamwe
 
-<!-- [![Coverage Status](https://coveralls.io/repos/github/nyakamwe/my-brand-nyakamwe/badge.svg?branch=master)](https://coveralls.io/github/nyakamwe/my-brand-nyakamwe?branch=master) -->
-
 [![Coverage Status](https://coveralls.io/repos/github/nyakamwe/my-brand-nyakamwe/badge.svg?branch=develop)](https://coveralls.io/github/nyakamwe/my-brand-nyakamwe?branch=develop)
 
 [![CircleCI](https://circleci.com/gh/nyakamwe/my-brand-nyakamwe/tree/develop.svg?style=svg)](https://circleci.com/gh/nyakamwe/my-brand-nyakamwe/tree/develop)

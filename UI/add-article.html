@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="admin.css">
     
-    <title>Admin Panel</title>
+    <title>Admin Panel | Add Article</title>
 </head>
 <body>
     <div class="wrapper">
@@ -29,30 +29,37 @@
 
         </div>
         <div class="main-content">
-
-            <!-- edit article section start -->
-            <section id="edit-article">
-                <form action="" class="add-form" id="edit-article-form">
-                    <h5>Edit Article</h5>
-                    <div>
-                        <!-- value="Symposium in ICT" -->
-                        <input type="text" name="" id="title" value="" placeholder="Title" required>
+            <!-- add article section start -->
+            <section id="add-article">
+                <form action="" class="add-form" id="add-article-form">
+                    <h5>Add New Article</h5>
+                    <p id="result"></p>
+                    <div class="form-control">
+                        <input type="text" name="blog-title" id="blog-title" placeholder="Enter Title">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
-                    <div>
-                        <textarea name="" id="detail-description" cols="30" rows="10" placeholder="Description"></textarea>
+                    <div class="form-control">
+                        <textarea name="blog-description" id="blog-description" cols="30" rows="10" placeholder="Description"></textarea>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
-                   <p>Currently:<a href="" id="current-image" style="color:black">poster</a></p>
-                    <input type="file" name="article-poster" id="poster"><br>
+                    <input type="file" name="blog-poster" id="blog-poster"><br>
                     
-                    <button type="submit" value="Save Changes">Save Changes
-                        <!-- <a><i class="fas fa-save"></i> Save Changes</a> -->
+                    <button type="submit">
+                        <i class="fas fa-save"></i> Save
                     </button>
                 </form>
 
             </section>
+
+
+
         </div>
 
     </div>
-    <script src="edit-article.js"></script>
+    <script src="add-article.js"></script>
 </body>
 </html>

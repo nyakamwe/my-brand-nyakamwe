@@ -29,30 +29,32 @@
 
         </div>
         <div class="main-content">
+    
+            
 
-            <!-- edit article section start -->
-            <section id="edit-article">
-                <form action="" class="add-form" id="edit-article-form">
-                    <h5>Edit Article</h5>
-                    <div>
-                        <!-- value="Symposium in ICT" -->
-                        <input type="text" name="" id="title" value="" placeholder="Title" required>
-                    </div>
-                    <div>
-                        <textarea name="" id="detail-description" cols="30" rows="10" placeholder="Description"></textarea>
-                    </div>
-                   <p>Currently:<a href="" id="current-image" style="color:black">poster</a></p>
-                    <input type="file" name="article-poster" id="poster"><br>
-                    
-                    <button type="submit" value="Save Changes">Save Changes
-                        <!-- <a><i class="fas fa-save"></i> Save Changes</a> -->
-                    </button>
-                </form>
+            <!-- article section -->
+            <section id="articles">
+                <table border="1" cellspacing="0"  cellpadding="5" align="center">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Created at</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+                    <tbody  align="center" id="articles-table-body">
+                        
+                    </tbody>
+
+                </table>
 
             </section>
+
         </div>
 
     </div>
-    <script src="edit-article.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>

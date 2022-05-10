@@ -1,12 +1,11 @@
 // get individual post
 const blogId = location.hash.substring(1)
-console.log(blogId)
 const token = localStorage.getItem('token')
 
- async function getDetails(){
-    const detailsEndpoint = `https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts/${blogId}`;
+ async function getEdit(){
+    const getEditEndpoint = `https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts/${blogId}`;
 
-    const res = await fetch(detailsEndpoint)
+    const res = await fetch(getEditEndpoint)
         if(res.status == 200){
             
             const post_obj = await res.json()
@@ -22,6 +21,22 @@ const token = localStorage.getItem('token')
             articleImage.setAttribute('href', `${post_obj.post.poster}`)
             
 
+            // // save edited changes
+            // const editForm = document.querySelector('#edit-article-form')
+            // editForm.addEventListener('submit', ()=>{
+            //     fetch(`https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts/${blogId}`,{
+            //         method:'POST',
+            //         headers:{
+            //             'Content-Type':'application/json',
+            //             'Authorization':'Bearer ' + token
+            //         }
+
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => console.log(data))
+
+
+            // })
 
             
         }else{
@@ -31,41 +46,50 @@ const token = localStorage.getItem('token')
         }
    
 }
-getDetails()
+getEdit()
+
 
 // save edited changes
+const updatePostEndpoint = `https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts/${blogId}`;
+
 const editForm = document.querySelector('#edit-article-form')
-editForm.addEventListener('submit', ()=>{
-    const titleValue = document.querySelector('#title').value
-    const descriptionValue = document.querySelector('#detail-description').value
-    const image = document.querySelector('#poster')
+editForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
 
-    async function updatePost(){
+    const titleValue = document.getElementById('title').value
+    const descriptionValue = document.getElementById('detail-description').value
+    const image = document.getElementById('poster')
 
-    
-    const updatePostEndpoint = `https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts/${blogId}`;
+
+async function updatePost(){
     const fd = new FormData()
     fd.append('title', `${titleValue}`)
     fd.append('content', `${descriptionValue}`)
     fd.append('poster', image.files[0])
-    const res = await fetch(updatePostEndpoint,{
-        method:'PATCH',
+    
+    const post_obj = await fetch(updatePostEndpoint,{
+        method: 'PATCH',
         headers:{
-            'Authorization':'Bearer '+ token
+            "Authorization":"Bearer " + token
         },
         body:fd
     })
-    if(res.status == 200){
-        alert(`${res.message}`)
+
+    if(post_obj.status == 200){ //updated
+        const res = await post_obj.json()
+
+        alert('Updated!')
+        window.location.href = "admin.html"
+
+    }else{
+        alert('failed to update')
     }
-
-
-
-
-
-    }
-    updatePost()
+    
+}
+updatePost()
 })
+
+
 
 
 // // add like on a blog
@@ -148,4 +172,4 @@ editForm.addEventListener('submit', ()=>{
 
 
 
-window.addEventListener('DOMContentLoad',getDetails())
+// window.addEventListener('DOMContentLoad',getEdit())

@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="admin.css">
+    
+    <title>Admin Panel</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header"> 
+            <ul>
+                <li><a href="index.html">View Site</a></li>
+                <!-- <li><a href="login.html" id="logout">Logout</a></li> -->
+                <li><a href="login.html" id="logout">Logout</a></li>
+                <li><i class="fas fa-user-circle"></i></li>
+            </ul>
+        </div>
+
+        <div class="sidenav">
+            <h1>Portfo<span style="color: crimson;">lio.</span></h1>
+            <ul>
+                <li><a href="admin.html"><i class="fas fa-home"></i>&nbsp;&nbsp;<span>Dashboard</span></a></li>
+                <li><a href="users.html"><i class="fas fa-user"></i>&nbsp;&nbsp;<span>Users</span></a></li>
+                <li><a href="messages.html"><i class="fas  fa-comment"></i>&nbsp;&nbsp;<span>Messages</span></a></li>
+                <li><a href="articles.html"><i class="fas  fa-blog"></i>&nbsp;&nbsp;<span>Articles</span></a></li>
+            </ul>
+
+        </div>
+        <div class="main-content">
+                <section id="dashboard">
+                    <p  id="title">Dashboard</p>
+    
+                    <div class="statistics">
+                        <div class="card" >
+                            <p>Articles</p>
+                            <p id="articles-count"></p>
+                        </div>
+                        <div class="card">
+                            <p>Hire</p>
+                            <p> 2</p>
+                        </div>
+                        <div class="card">
+                            <p>Messages</p>
+                            <p id="messages-count"></p>
+                        </div> 
+                        <div class="card">
+                            <p>Users</p>
+                            <p id="users-count"></p>
+                        </div>
+                    </div>
+    
+                    <button>
+                        <a href="add-article.html"><i class="fas fa-plus"></i> Add Article</a>
+                    </button>
+    
+                    <!-- searching -->
+                    <form action="" id="search-form">
+                        <input type="text" name="" id="" placeholder="Search for...." required>
+                        <a  href="" title="Search"><i class="fas fa-search" style="color:#000"></i></a> 
+                    </form>
+                    
+    
+                    <table border="1" cellspacing="0"  cellpadding="5" align="center">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Created at</th>
+                                <th>Actions</th>
+                            </tr>
+    
+                        </thead>
+                        <tbody  align="center" id="blogs-table-body">
+                             <!-- <tr>
+                                <td id="blog-table-title">Full 3D Elements</td>
+                                <td id="blog-table-content">Lorem ipsum dolor sit amet consectetur.</td>
+                                <td id="blog-table-date">12-March,2022</td>
+                                <td>
+                                <a id="blog-table-edit" href="#edit-article" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
+                                <a id="blog-table-delete"href="#delete-article" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
+                                </td>
+                            </tr> -->
+                           <!-- <tr>
+                                <td>Full 3D Elements</td>
+                                <td>Lorem ipsum dolor sit amet consectetur.</td>
+                                <td>12-March,2022</td>
+                                <td>
+                                <a  href="#edit-article" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
+                                <a  href="#delete-article" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
+                                </td>
+                            </tr> -->
+                        </tbody>
+    
+                    </table>
+                </section>
+        </div>
+
+    </div>
+    <script src="admin.js"></script>
+    <script src="logout.js"></script>
+</body>
+</html>
