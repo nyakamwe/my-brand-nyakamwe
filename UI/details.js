@@ -32,13 +32,28 @@ const blogId = location.hash.substring(1)
                 comments.insertAdjacentHTML(`beforeend`, `
                 <img src="images/about2.png"  style="border-radius:50%; height: 60px;width: 80px;"  alt="">
                 <div>
-                    <p style="color: rgb(36, 36, 230);">4:11 PM</p>
                     <p>${comment.description}</p>
                 </div>
             
                 `)
             });
-            
+
+            // //get all comment of this post
+            // fetch(`https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts/${blogId}/comments`)
+            // .then(response => response.json())
+            // .then(data => {
+                
+            //     const allComments = data.comments
+            //     allComments.forEach(comment => {
+            //     const comments = document.querySelector('#blog-comments')
+            //     comments.insertAdjacentHTML(`beforeend`, `
+            //         <img src="images/about2.png"  style="border-radius:50%; height: 60px;width: 80px;"  alt="">
+            //         <div>
+                        
+            //             <p>${comment.description}</p>
+            //         </div>`)
+            //     });
+            // })
             
         }else{
             console.log('failed to get post')
@@ -62,6 +77,7 @@ async function likePost(){
     const like_obj = await fetch(likePostEndpoint,{
         method: 'PUT',
         headers:{
+            "Content-Type":"application/json",
             "Authorization":"Bearer " + token
         }
         
@@ -98,6 +114,7 @@ commentForm.addEventListener('submit', ()=>{
         const comment_obj = await fetch(commentPostEndpoint,{
             method: 'POST',
             headers:{
+                "Content-Type":"application/json",
                 "Authorization":"Bearer " + userToken
             },
             body:JSON.stringify({
@@ -108,12 +125,9 @@ commentForm.addEventListener('submit', ()=>{
     
         if(comment_obj.status == 201){ //commented
             alert("Commented!")
-            const c= await comment_obj.json()
-            console.log(c.comment.description)
     
         }else{
             alert('To comment you need to be logged in!')
-            console.log(await comment_obj.json())
         }
        
     }

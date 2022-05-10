@@ -48,7 +48,6 @@ a{
 .header ul{
     list-style: none;
     margin-left: 714px;
-    
 }
 .header ul li{
     display: inline;
@@ -156,7 +155,7 @@ a{
 
 
 section{
-    height: 100vh;
+    /* height: 100vh; */
     padding-top: 90px;
 }
 

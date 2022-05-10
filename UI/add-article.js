@@ -10,61 +10,60 @@ const email = document.getElementById('email')
 const role = document.getElementById('role')
 const profileImage = document.getElementById('profile-image')
 
-let messageCounter = 0
 
-// add_form.addEventListener('submit', (e)=>{
-//     e.preventDefault();
-//     //collect values from inputs of add-article form
-//     const titleValue = title.value.trim()
-//     const descriptionValue = description.value.trim()
-//     const imageValue = image.value
-//     // checkInputs();
+add_form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    //collect values from inputs of add-article form
+    const titleValue = title.value.trim()
+    const descriptionValue = description.value.trim()
+    const imageValue = image.value
+    // checkInputs();
 
-//     const addPostEndpoint = "https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts";
+    const addPostEndpoint = "https://atlp-blog-api-nyakamwe.herokuapp.com/api/posts";
 
-//     // requires token 
-//     const token = localStorage.getItem('token')
+    // requires token 
+    const token = localStorage.getItem('token')
     
-//     // async function addPost(){
-//     //     const fd = new FormData()
-//     //     fd.append('title', `${titleValue}`)
-//     //     fd.append('content', `${descriptionValue}`)
-//     //     fd.append('poster', image.files[0])
+    async function addPost(){
+        const fd = new FormData()
+        fd.append('title', `${titleValue}`)
+        fd.append('content', `${descriptionValue}`)
+        fd.append('poster', image.files[0])
         
-//     //     const post_obj = await fetch(addPostEndpoint,{
-//     //         method: 'POST',
-//     //         headers:{
-//     //             "Authorization":"Bearer " + token
-//     //         },
-//     //         body:fd
-//     //     }
-//     //     )
-//     //     if(post_obj.status == 201){ //created
-//     //         const res = await post_obj.json()
+        const post_obj = await fetch(addPostEndpoint,{
+            method: 'POST',
+            headers:{
+                "Authorization":"Bearer " + token
+            },
+            body:fd
+        }
+        )
+        if(post_obj.status == 201){ //created
+            const res = await post_obj.json()
 
-//     //         alert(`${res.message}`)
-//     //         add_form.reset()
+            alert(`${res.message}`)
+            add_form.reset()
             
-//     //         window.location.href="admin.html"
+            window.location.href="admin.html"
     
-//     //     }else{
-//     //         const result = await post_obj.json()
-//     //         const p = document.querySelector('#result')
-//     //         if(result.message == "Title and content are required" || 
-//     //             result.message == "Cannot read properties of undefined (reading 'path')"){
+        }else{
+            const result = await post_obj.json()
+            const p = document.querySelector('#result')
+            if(result.message == "Title and content are required" || 
+                result.message == "Cannot read properties of undefined (reading 'path')"){
 
-//     //             result.message = "All fields are required!"
-//     //         }
+                result.message = "All fields are required!"
+            }
             
-//     //         p.textContent = `${result.message}`
-//     //         p.setAttribute('style', 'color:red; padding-bottom:5px')
+            p.textContent = `${result.message}`
+            p.setAttribute('style', 'color:red; padding-bottom:5px')
             
-//     //     }
+        }
        
-//     // }
-//     // addPost()
+    }
+    addPost()
 
-// })
+})
 
 function checkInputs(){
     //collect values from inputs of add-article form
@@ -233,7 +232,8 @@ async function getPosts(){
         if(res.status == 200){
             const posts_obj = await res.json()
             const allPosts = posts_obj.posts
-           
+            
+
 
             allPosts.forEach(post => {
                 const date = new Date(post.createdAt).toDateString()
@@ -261,11 +261,6 @@ async function getPosts(){
                 )
 
             });
-
-            // article counter 
-            const articlesCounter = document.querySelector('#articles-count')
-            articlesCounter.innerHTML = `${allPosts.length}` ? `${allPosts.length}` : 0
-
             
         }else{
             console.log('failed to posts')
@@ -284,6 +279,8 @@ async function getArticles(){
         if(res.status == 200){
             const posts_obj = await res.json()
             const allPosts = posts_obj.posts
+            
+
 
             allPosts.forEach(post => {
                 const date = new Date(post.createdAt).toDateString()
@@ -296,8 +293,8 @@ async function getArticles(){
                     <td>${post.content}</td>
                     <td>${date}</td>
                     <td>
-                    <a  href="edit-article.html#${post._id}" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a  href="delete-article.html#${post._id}" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
+                    <a  href="#edit-article#${post._id}" title="Edit"><i class="fas fa-edit" style="color:#000"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a  href="#delete-article#${post._id}" title="Delete"><i class="fas fa-trash" style="color:red"></i></a>    
                     </td>
                 </tr>
                 `
@@ -309,8 +306,7 @@ async function getArticles(){
             console.log('failed to posts')
         }
 
-    } 
-    catch (error) {
+    } catch (error) {
         console.log(error);
     }
    
@@ -329,13 +325,12 @@ async function getMessage(){
             "Authorization":"Bearer " + token
         }
         
-    })
-
+    }
+    )
     if(message_obj.status == 200){
 
        const message = await message_obj.json()
        const messages = message.messages
-       messageCounter = messages.length
 
        messages.forEach(message => {
            const date = new Date(message.createdAt).toDateString()
@@ -345,20 +340,13 @@ async function getMessage(){
            `
            <tr>
                 <td>${message.sender}</td>
-                <td>${message.name}.</td>
+                <td>${message}.</td>
                 <td>${date}</td>
             </tr>
 
            `)
+
        });
-      
-       const pCounter = document.querySelector('#messages-counter')
-       
-       pCounter.innerHTML = messageCounter
-       console.log(pCounter)
-       
-
-
 
     }else{
         // alert('To get message you need to be logged in!')
@@ -368,56 +356,6 @@ async function getMessage(){
 }
 
 getMessage()
-
-// showing users 
-const usersEndpoint ="https://atlp-blog-api-nyakamwe.herokuapp.com/api/users"
- async function getUsers (){
-    const users_obj = await fetch(usersEndpoint,{
-        method: 'GET',
-        headers:{
-            'Authorization':'Bearer '+ token
-        }
-    })
-    // console.log(await users_obj.json())
-    const data = await users_obj.json()
-
-    data.users.forEach(user => {
-    const usersTable = document.querySelector('#users-table-body')
-    usersTable.insertAdjacentHTML('afterbegin', `
-    <tr>
-        <td>${user.username}</td>
-        <td>${user.email}</td>
-    </tr>`)
-    });
-}
-
-getUsers()
-
-// showing users 
-fetch(usersEndpoint,{
-    method: 'GET',
-    headers:{
-        'Authorization':'Bearer '+ token
-    }
-})
-.then(response => response.json())
-.then(data =>{
-    const usercount = document.querySelector('#users-count')
-    usercount.innerHTML = `${data.users.length}` ? `${data.users.length}` : 0
-})
-
-// counting messages
-fetch(messageEndpoint,{
-    method: 'GET',
-    headers:{
-        'Authorization':'Bearer '+ token
-    }
-})
-.then(response => response.json())
-.then(data =>{
-    const usercount = document.querySelector('#messages-count')
-    usercount.innerHTML = `${data.messages.length}` ? `${data.messages.length}` : 0
-})
 
 
 

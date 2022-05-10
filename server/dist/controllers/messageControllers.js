@@ -74,8 +74,9 @@ const message_create = async (req, res) => {
     const message = new _Contact.Contact({
       sender: req.body.sender,
       name: req.body.name,
-      message: req.body.message
+      content: req.body.message
     });
+    console.log(message);
     await message.save();
     return res.status(201).json({
       message: "Message Sent successfully"

@@ -511,6 +511,7 @@ opacity: 1;
 .blogs-site-detail .box #title{
     font-weight: 700;
     margin: 20px auto;
+    text-transform: uppercase;
 
 }
 .blogs-site-detail .box .description{
@@ -555,10 +556,14 @@ opacity: 1;
     color: crimson;
 }
 .blogs-site-detail .comments{
-    display: flex;
+    display: block;
+}
+.blogs-site-detail .comments img{
+    padding-top: 10px;
 }
 .blogs-site-detail .comments div{
     margin-left: 10px;
+    border-bottom: 1px solid #c4c4c4;
 }
 .blogs-site-detail .comments div>p{
     padding-bottom: 10px;

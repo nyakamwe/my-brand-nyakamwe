@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,7 @@
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="admin.css">
     
-    <title>Admin Panel</title>
+    <title>Admin | Delete Article</title>
 </head>
 <body>
     <div class="wrapper">
@@ -29,23 +30,17 @@
 
         </div>
         <div class="main-content">
-
-            <!-- edit article section start -->
-            <section id="edit-article">
-                <form action="" class="add-form" id="edit-article-form">
-                    <h5>Edit Article</h5>
-                    <div>
-                        <!-- value="Symposium in ICT" -->
-                        <input type="text" name="" id="title" value="" placeholder="Title" required>
-                    </div>
-                    <div>
-                        <textarea name="" id="detail-description" cols="30" rows="10" placeholder="Description"></textarea>
-                    </div>
-                   <p>Currently:<a href="" id="current-image" style="color:black">poster</a></p>
-                    <input type="file" name="article-poster" id="poster"><br>
+    
+            <!-- delete article section start -->
+            <section id="delete-article">
+                <form action="" class="" id="delete-article-form">
+                    <h3>Are you sure you want to delete this article?</h5>
                     
-                    <button type="submit" value="Save Changes">Save Changes
-                        <!-- <a><i class="fas fa-save"></i> Save Changes</a> -->
+                    <button style="background: red;" type="submit">
+                        <i class=""></i> Delete
+                    </button>
+                    <button type="reset">
+                        <i class=""></i> Cancel
                     </button>
                 </form>
 
@@ -53,6 +48,6 @@
         </div>
 
     </div>
-    <script src="edit-article.js"></script>
+    <script src="delete.js"></script>
 </body>
 </html>

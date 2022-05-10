@@ -57,10 +57,7 @@ form_contact.addEventListener('submit',(e)=>{
     }
     else{
         email = senderEmailValue
-        setSuccessFor(senderEmail)
-        
-
-        
+        setSuccessFor(senderEmail) 
     }
 
     const sendQueryEndpoint = "https://atlp-blog-api-nyakamwe.herokuapp.com/api/messages";
@@ -82,8 +79,8 @@ form_contact.addEventListener('submit',(e)=>{
 
         if(res.status == 200){
       
-        window.location.href = 'index.html'
-
+        location.href='/index.html'
+           
         
         }else{
             console.log(await res.json())

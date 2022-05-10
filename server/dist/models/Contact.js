@@ -14,7 +14,7 @@ const contactSchema = new _mongoose.mongoose.Schema({
   name: {
     type: String
   },
-  message: {
+  content: {
     type: String
   }
 }, {

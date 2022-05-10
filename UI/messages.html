@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="admin.css">
     
-    <title>Admin Panel</title>
+    <title>Admin Panel | Messages</title>
 </head>
 <body>
     <div class="wrapper">
@@ -30,29 +30,32 @@
         </div>
         <div class="main-content">
 
-            <!-- edit article section start -->
-            <section id="edit-article">
-                <form action="" class="add-form" id="edit-article-form">
-                    <h5>Edit Article</h5>
-                    <div>
-                        <!-- value="Symposium in ICT" -->
-                        <input type="text" name="" id="title" value="" placeholder="Title" required>
-                    </div>
-                    <div>
-                        <textarea name="" id="detail-description" cols="30" rows="10" placeholder="Description"></textarea>
-                    </div>
-                   <p>Currently:<a href="" id="current-image" style="color:black">poster</a></p>
-                    <input type="file" name="article-poster" id="poster"><br>
-                    
-                    <button type="submit" value="Save Changes">Save Changes
-                        <!-- <a><i class="fas fa-save"></i> Save Changes</a> -->
-                    </button>
-                </form>
+            
+                <!-- messages section start -->
+            <section id="messages">
+                <table border="1" cellspacing="0"  cellpadding="5" align="center">
+                    <thead>
+                        <tr>
+                            <th>Sender Email</th>
+                            <th>Sender Name</th>
+                            <th>Date</th>
+                            
+                        </tr>
 
+                    </thead>
+                    <tbody  align="center" id="messages-table-body">
+                        <!-- <tr>
+                            <td>test@gmail.com</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>12-March,2022</td>
+                        </tr> -->
+                    </tbody>
+
+                </table>
             </section>
         </div>
 
     </div>
-    <script src="edit-article.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>

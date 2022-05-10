@@ -21,9 +21,7 @@ window.addEventListener('load', function(){
                     <div class="text">${post.title}</div>
                     <p>${post.content.slice(0,90)}...</p>
                     </div>
-                    `
-                    
-                    )
+                    `)
     
                 });
                 
