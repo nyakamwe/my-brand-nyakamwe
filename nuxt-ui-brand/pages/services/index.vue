@@ -18,8 +18,8 @@
                 <!-- TODO: Change it to reflect to Third Party API Integration -->
                 <h2 class="text-lg font-bold">API development and integration</h2>
                 <p>I can build RESTful APIs using frameworks like Express.js or Dajngo Rest framework, 
-                    and integrate them with other services like payment gateways or social 
-                    media platforms.
+                    and integrate Third-Party APIs like payment gateways or social 
+                    media platforms into the app.
                 </p>
             </div>
 
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-    
+    <Footer />
 </template>
 
 <style>

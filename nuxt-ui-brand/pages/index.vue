@@ -7,7 +7,7 @@
                 Able to work hybrid jobs (Remote or on-Site) and deliver the deliverables in agreed time.
             </div>
             <div>
-                <button class="btn">
+                <button class="btn" @click=sendEmail>
                     <Icon name="mdi:arrow-right" class="rounded-full border" /> Get in touch
                 </button>
             </div>
@@ -16,9 +16,9 @@
             <div class="flex flex-col items-center">
                 <img class="w-40 h-40 rounded-full border" src="https://avatars.githubusercontent.com/u/53573955?s=400&u=15719f1c24e8edb176d3dba0f98c0c907bd541d1&v=4" alt="profile-image">
                 <div class="grid grid-cols-3 gap-4 mt-5">
-                    <NuxtLink to="https://facebook.com" target="_blank">
+                    <!-- <NuxtLink to="https://facebook.com" target="_blank">
                         <Icon  name="mdi:facebook" class="ml-4" />
-                    </NuxtLink>
+                    </NuxtLink> -->
                     <NuxtLink to="https://twitter.com/N1Aimable" target="_blank">
                         <Icon  name="mdi:twitter" class="ml-4" />
                     </NuxtLink>
@@ -39,6 +39,17 @@
     </div>
     
 </template>
+
+<script setup>
+// useHead({
+//     title: 'NYAKAMWE Aimable - Portfolio'
+// })
+
+const sendEmail = () => {
+  const email = 'nyakamweaimable@gmail.com';
+  window.open(`mailto:${email}`);
+};
+</script>
 
 <style>
   .card-container {
