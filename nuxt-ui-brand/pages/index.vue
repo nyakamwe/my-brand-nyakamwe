@@ -1,75 +1,97 @@
 <template>
-    <div class="h-[460px]">
-        <div class="grid grid-cols-3 gap-10">
-        <div class="bg-white rounded-lg p-6 shadow-xl col-span-2">
-            <span class="text-3xl">Hello, I'm NYAKAMWE Aimable a Full-Stack developer</span> with a bachelor's degree in IT obtained from @UR-CST, currently living in Kigali - Rwanda.
-            <div>
-                Able to work hybrid jobs (Remote or on-Site) and deliver the deliverables in agreed time.
-            </div>
-            <div>
-                <button class="btn" @click=sendEmail>
-                    <Icon name="mdi:arrow-right" class="rounded-full border" /> Get in touch
-                </button>
-            </div>
+    <div class="developer-profile">
+      <h1>Full Stack Developer</h1>
+      <p class="intro">{{ intro }}</p>
+      <div class="skills-container">
+        <div v-for="(skills, category) in skillCategories" :key="category" class="skill-category">
+          <h2>{{ category }}</h2>
+          <ul>
+            <li v-for="skill in skills" :key="skill">{{ skill }}</li>
+          </ul>
         </div>
-        <div class="bg-white rounded-lg p-6 shadow-xl">
-            <div class="flex flex-col items-center">
-                <img class="w-40 h-40 rounded-full border" src="https://avatars.githubusercontent.com/u/53573955?s=400&u=15719f1c24e8edb176d3dba0f98c0c907bd541d1&v=4" alt="profile-image">
-                <div class="grid grid-cols-3 gap-4 mt-5">
-                    <!-- <NuxtLink to="https://facebook.com" target="_blank">
-                        <Icon  name="mdi:facebook" class="ml-4" />
-                    </NuxtLink> -->
-                    <NuxtLink to="https://twitter.com/N1Aimable" target="_blank">
-                        <Icon  name="mdi:twitter" class="ml-4" />
-                    </NuxtLink>
-                    <NuxtLink to="https://github.com/nyakamwe" target="_blank">
-                        <Icon name="uil:github" class="ml-4"/>
-                    </NuxtLink>
-                    <NuxtLink to="https://www.linkedin.com/in/nyakamwe-aimable/" target="_blank">
-                        <Icon name="mdi:linkedin" class="ml-4"/>
-                    </NuxtLink>
-                    <NuxtLink to="mailto:nyakamweaimable@gmail.com" target="_blank">
-                        <Icon name="mdi:gmail" class="ml-4"/>
-                    </NuxtLink>
-                </div>
-            </div>
-        </div>
+      </div>
+      <p class="outro">{{ outro }}</p>
+      
+      <Footer />
     </div>
-
-    </div>
-    
 </template>
 
 <script setup>
-// useHead({
-//     title: 'NYAKAMWE Aimable - Portfolio'
-// })
+    import { ref } from 'vue'
 
-const sendEmail = () => {
-  const email = 'nyakamweaimable@gmail.com';
-  window.open(`mailto:${email}`);
-};
+    const intro = ref("A versatile full stack developer with expertise in both frontend and backend technologies. Skilled in crafting seamless, user-centric web applications from concept to deployment. Proficient in:")
+
+    const skillCategories = ref({
+    Frontend: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Vue.js'],
+    Backend: ['Node.js', 'Nestjs', 'Python'],
+    Databases: ['MySQL', 'PostgreSQL', 'MongoDB'],
+    DevOps: ['Docker', 'Kubernetes', 'AWS', 'CI/CD pipelines'],
+    'Version Control': ['Git', 'GitHub'],
+    'Messaging, Queues and Caching': ['Kafka', 'Bull', 'Redis']
+    })
+
+    const outro = ref("Passionate about clean, efficient code and committed to staying current with emerging technologies. Experienced in agile development methodologies and cross-functional team collaboration. Dedicated to delivering robust, scalable solutions that drive business growth and enhance user experience.")
 </script>
-
-<style>
-  .card-container {
-    position: relative;
+  
+<style scoped>
+  .developer-profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
   }
   
-  .card-image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
+  h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
   
-  .card-text {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    padding: 20px;
-    z-index: 2;
+  .intro, .outro {
+    text-align: justify;
+    margin-bottom: 1.5rem;
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  
+  .skill-category {
+    flex-basis: calc(50% - 1rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  h2 {
+    color: #3498db;
+    margin-bottom: 0.5rem;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    background-color: #ecf0f1;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  li:hover {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .skill-category {
+      flex-basis: 100%;
+    }
   }
 </style>
