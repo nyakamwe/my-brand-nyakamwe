@@ -9,11 +9,17 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "predeploy": "nuxt generate",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "format": "prettier --write \"*.vue\"",
+    "lint": "eslint \"{src,pages,components,layouts}/**/*.vue\" --fix"
   },
   "devDependencies": {
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "nuxt": "^3.3.2",
-    "nuxt-icon": "^0.3.3"
+    "nuxt-icon": "^0.3.3",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.13",
